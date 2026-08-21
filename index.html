@@ -9,7 +9,7 @@
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Consulta de Certificados</title>
+    <title>Consulta de Certificados | Galáxia Navegação</title>
 
 
     <style>
@@ -20,129 +20,393 @@
 
 
         body {
-            font-family: Arial, sans-serif;
-            background: #f4f6f8;
             margin: 0;
-            padding: 20px;
-            color: #333;
-        }
-
-
-        .container {
-            max-width: 800px;
-            margin: 30px auto;
-            background: white;
-            padding: 30px;
-            border-radius: 14px;
-            box-shadow: 0 2px 12px rgba(0,0,0,0.10);
-        }
-
-
-        .logo {
-            text-align: center;
-            font-size: 25px;
-            font-weight: bold;
-            color: #174a8b;
-            margin-bottom: 30px;
-        }
-
-
-        .funcionario {
-            border-bottom: 1px solid #ddd;
-            padding-bottom: 20px;
-            margin-bottom: 25px;
-        }
-
-
-        .funcionario h1 {
-            font-size: 24px;
-            margin: 0 0 10px 0;
+            padding: 0;
+            font-family: Arial, Helvetica, sans-serif;
+            background: #f2f5f8;
             color: #222;
         }
 
 
-        .dados {
-            color: #666;
-            line-height: 1.7;
+        /* =====================================================
+           CABEÇALHO
+        ===================================================== */
+
+        .topo {
+            background: #ffffff;
+            border-bottom: 5px solid #f2c300;
+            padding: 22px 20px 18px;
+            text-align: center;
         }
 
 
-        .titulo {
-            font-size: 20px;
-            font-weight: bold;
+        .logo {
+            max-width: 270px;
+            width: 80%;
+            height: auto;
+            display: block;
+            margin: 0 auto 15px auto;
+        }
+
+
+        .titulo-site {
+            margin: 0;
             color: #174a8b;
+            font-size: 22px;
+            font-weight: bold;
+        }
+
+
+        .subtitulo-site {
+            margin: 6px 0 0;
+            color: #777;
+            font-size: 14px;
+        }
+
+
+        /* =====================================================
+           CONTAINER
+        ===================================================== */
+
+        .container {
+            width: 100%;
+            max-width: 900px;
+            margin: 30px auto;
+            padding: 0 18px;
+        }
+
+
+        /* =====================================================
+           CARD DO FUNCIONÁRIO
+        ===================================================== */
+
+        .funcionario {
+            background: #ffffff;
+            border-radius: 14px;
+            padding: 25px;
+            margin-bottom: 28px;
+            box-shadow: 0 3px 15px rgba(0,0,0,0.08);
+            border-left: 6px solid #174a8b;
+        }
+
+
+        .funcionario h1 {
+            margin: 0 0 18px 0;
+            color: #174a8b;
+            font-size: 25px;
+            line-height: 1.25;
+        }
+
+
+        .dados-funcionario {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 18px;
+        }
+
+
+        .dado {
+            flex: 1;
+            min-width: 180px;
+            background: #f5f7fa;
+            border-radius: 9px;
+            padding: 12px 15px;
+        }
+
+
+        .dado-label {
+            display: block;
+            font-size: 12px;
+            color: #777;
+            margin-bottom: 4px;
+            text-transform: uppercase;
+            font-weight: bold;
+        }
+
+
+        .dado-valor {
+            display: block;
+            color: #333;
+            font-size: 15px;
+            font-weight: bold;
+        }
+
+
+        /* =====================================================
+           TÍTULO CERTIFICADOS
+        ===================================================== */
+
+        .titulo-certificados {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
             margin-bottom: 15px;
         }
 
 
+        .titulo-certificados h2 {
+            margin: 0;
+            color: #174a8b;
+            font-size: 21px;
+        }
+
+
+        .contador {
+            background: #174a8b;
+            color: white;
+            padding: 6px 11px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: bold;
+        }
+
+
+        /* =====================================================
+           CARD DO CERTIFICADO
+        ===================================================== */
+
         .certificado {
-            border: 1px solid #ddd;
-            border-radius: 10px;
-            padding: 16px;
-            margin-bottom: 14px;
-            background: #fff;
+            background: #ffffff;
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 15px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.07);
+            border: 1px solid #e1e5e9;
         }
 
 
         .curso {
+            color: #174a8b;
             font-size: 16px;
             font-weight: bold;
-            color: #174a8b;
-            margin-bottom: 10px;
-            line-height: 1.4;
+            line-height: 1.45;
+            margin-bottom: 16px;
         }
 
 
-        .info {
-            color: #555;
-            line-height: 1.7;
+        .informacoes {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-bottom: 14px;
         }
 
 
-        .botao-pdf {
-            display: inline-block;
-            margin-top: 12px;
-            padding: 9px 14px;
-            background: #174a8b;
-            color: white;
-            text-decoration: none;
-            border-radius: 6px;
+        .informacao {
+            flex: 1;
+            min-width: 150px;
+            background: #f7f8fa;
+            border-radius: 8px;
+            padding: 10px 12px;
+        }
+
+
+        .informacao-label {
+            display: block;
+            font-size: 11px;
+            color: #777;
+            margin-bottom: 4px;
+            text-transform: uppercase;
+            font-weight: bold;
+        }
+
+
+        .informacao-valor {
             font-size: 14px;
             font-weight: bold;
+            color: #333;
         }
 
 
-        .botao-pdf:hover {
-            opacity: 0.85;
-        }
-
+        /* =====================================================
+           STATUS
+        ===================================================== */
 
         .status {
-            margin-top: 8px;
+            display: inline-block;
+            padding: 7px 12px;
+            border-radius: 20px;
+            font-size: 12px;
             font-weight: bold;
+            margin-bottom: 14px;
+        }
+
+
+        .status-valido {
+            background: #e7f6ed;
             color: #16833b;
         }
 
 
-        .erro {
-            text-align: center;
-            padding: 30px 10px;
+        .status-proximo {
+            background: #fff6d8;
+            color: #9a7000;
+        }
+
+
+        .status-vencido {
+            background: #fde8e8;
             color: #b00020;
         }
 
 
-        .carregando {
-            text-align: center;
-            padding: 30px 10px;
-            color: #666;
+        /* =====================================================
+           BOTÃO
+        ===================================================== */
+
+        .botao-pdf {
+            display: inline-block;
+            background: #174a8b;
+            color: #ffffff;
+            text-decoration: none;
+            padding: 11px 17px;
+            border-radius: 7px;
+            font-size: 14px;
+            font-weight: bold;
+            transition: 0.2s;
         }
 
 
+        .botao-pdf:hover {
+            background: #123b70;
+            transform: translateY(-1px);
+        }
+
+
+        /* =====================================================
+           ERRO
+        ===================================================== */
+
+        .erro {
+            background: #ffffff;
+            border-radius: 14px;
+            padding: 40px 20px;
+            text-align: center;
+            color: #b00020;
+            box-shadow: 0 3px 15px rgba(0,0,0,0.08);
+        }
+
+
+        .erro h2 {
+            margin-top: 0;
+        }
+
+
+        /* =====================================================
+           CARREGANDO
+        ===================================================== */
+
+        .carregando {
+            background: #ffffff;
+            border-radius: 14px;
+            padding: 45px 20px;
+            text-align: center;
+            color: #666;
+            box-shadow: 0 3px 15px rgba(0,0,0,0.08);
+        }
+
+
+        /* =====================================================
+           RODAPÉ
+        ===================================================== */
+
         .rodape {
             text-align: center;
-            margin-top: 30px;
-            font-size: 12px;
+            padding: 25px 15px 35px;
             color: #888;
+            font-size: 12px;
+        }
+
+
+        /* =====================================================
+           CELULAR
+        ===================================================== */
+
+        @media (max-width: 600px) {
+
+
+            body {
+                background: #f2f5f8;
+            }
+
+
+            .topo {
+                padding: 18px 15px 15px;
+            }
+
+
+            .logo {
+                max-width: 220px;
+            }
+
+
+            .titulo-site {
+                font-size: 19px;
+            }
+
+
+            .subtitulo-site {
+                font-size: 13px;
+            }
+
+
+            .container {
+                margin-top: 18px;
+                padding: 0 12px;
+            }
+
+
+            .funcionario {
+                padding: 20px;
+                border-left-width: 5px;
+            }
+
+
+            .funcionario h1 {
+                font-size: 21px;
+            }
+
+
+            .dados-funcionario {
+                display: block;
+            }
+
+
+            .dado {
+                margin-bottom: 10px;
+            }
+
+
+            .titulo-certificados h2 {
+                font-size: 19px;
+            }
+
+
+            .certificado {
+                padding: 17px;
+            }
+
+
+            .curso {
+                font-size: 15px;
+            }
+
+
+            .informacoes {
+                display: block;
+            }
+
+
+            .informacao {
+                margin-bottom: 8px;
+            }
+
+
+            .botao-pdf {
+                width: 100%;
+                text-align: center;
+            }
+
         }
 
     </style>
@@ -153,17 +417,47 @@
 <body>
 
 
-<div class="container">
+<!-- =========================================================
+     CABEÇALHO
+========================================================= -->
+
+<header class="topo">
 
 
-    <div class="logo">
+    <img
+        class="logo"
+        src="Logo%20-%20Fonte%20Azul.png"
+        alt="Galáxia Navegação"
+    >
 
-        GALÁXIA NAVEGAÇÃO
 
-    </div>
+    <h1 class="titulo-site">
+
+        Consulta de Certificados
+
+    </h1>
+
+
+    <p class="subtitulo-site">
+
+        Controle de capacitação dos tripulantes
+
+    </p>
+
+
+</header>
+
+
+
+<!-- =========================================================
+     CONTEÚDO
+========================================================= -->
+
+<main class="container">
 
 
     <div id="conteudo">
+
 
         <div class="carregando">
 
@@ -171,17 +465,23 @@
 
         </div>
 
-    </div>
-
-
-    <div class="rodape">
-
-        Consulta de certificados — Galáxia Navegação
 
     </div>
 
 
-</div>
+</main>
+
+
+
+<!-- =========================================================
+     RODAPÉ
+========================================================= -->
+
+<footer class="rodape">
+
+    Galáxia Navegação • Consulta de certificados
+
+</footer>
 
 
 
@@ -207,7 +507,7 @@
 
 
     // =====================================================
-    // 2. VERIFICAR SE A MATRÍCULA FOI INFORMADA
+    // 2. VERIFICAR MATRÍCULA
     // =====================================================
 
 
@@ -232,9 +532,8 @@
     }
 
 
-
     // =====================================================
-    // 3. BUSCAR O ARQUIVO dados.json
+    // 3. BUSCAR dados.json
     // =====================================================
 
 
@@ -260,17 +559,6 @@
             }
 
 
-            /*
-             * Lê o arquivo como texto.
-             * O navegador utiliza UTF-8 para interpretar
-             * corretamente caracteres como:
-             *
-             * á é í ó ú
-             * ã õ
-             * ç
-             * º
-             */
-
             return resposta.text();
 
         })
@@ -279,17 +567,13 @@
         .then(texto => {
 
 
-            // =================================================
-            // 4. CONVERTER O TEXTO PARA JSON
-            // =================================================
-
-
             let dados;
 
 
             try {
 
-                dados = JSON.parse(texto);
+                dados =
+                    JSON.parse(texto);
 
             }
 
@@ -297,12 +581,12 @@
             catch (erroJSON) {
 
                 console.error(
-                    "Erro ao interpretar dados.json:",
+                    "Erro no dados.json:",
                     erroJSON
                 );
 
                 throw new Error(
-                    "O arquivo dados.json possui um problema de formatação."
+                    "Problema ao interpretar o dados.json."
                 );
 
             }
@@ -310,7 +594,7 @@
 
 
             // =================================================
-            // 5. ENCONTRAR A MATRÍCULA
+            // 4. ENCONTRAR FUNCIONÁRIO
             // =================================================
 
 
@@ -345,37 +629,70 @@
 
 
             // =================================================
-            // 6. CABEÇALHO DO FUNCIONÁRIO
+            // 5. CABEÇALHO DO FUNCIONÁRIO
             // =================================================
 
 
             let html = `
 
-                <div class="funcionario">
+                <section class="funcionario">
+
 
                     <h1>
                         ${funcionario.nome}
                     </h1>
 
 
-                    <div class="dados">
+                    <div class="dados-funcionario">
 
-                        <strong>Matrícula:</strong>
-                        ${matricula}
 
-                        <br>
+                        <div class="dado">
 
-                        <strong>Cargo:</strong>
-                        ${funcionario.cargo}
+                            <span class="dado-label">
+                                Matrícula
+                            </span>
+
+                            <span class="dado-valor">
+                                ${matricula}
+                            </span>
+
+                        </div>
+
+
+                        <div class="dado">
+
+                            <span class="dado-label">
+                                Cargo
+                            </span>
+
+                            <span class="dado-valor">
+                                ${funcionario.cargo}
+                            </span>
+
+                        </div>
+
 
                     </div>
 
-                </div>
+
+                </section>
 
 
-                <div class="titulo">
 
-                    Certificados
+                <div class="titulo-certificados">
+
+                    <h2>
+                        Certificados
+                    </h2>
+
+
+                    <span class="contador">
+
+                        ${funcionario.certificados.length}
+
+                        certificado(s)
+
+                    </span>
 
                 </div>
 
@@ -384,7 +701,7 @@
 
 
             // =================================================
-            // 7. MOSTRAR OS CERTIFICADOS
+            // 6. CERTIFICADOS
             // =================================================
 
 
@@ -392,9 +709,107 @@
                 certificado => {
 
 
+                    // -----------------------------------------
+                    // CONVERTER DATA DE VENCIMENTO
+                    // -----------------------------------------
+
+
+                    const partes =
+                        certificado.vencimento.split("/");
+
+
+                    const dataVencimento =
+                        new Date(
+                            partes[2],
+                            partes[1] - 1,
+                            partes[0]
+                        );
+
+
+                    const hoje =
+                        new Date();
+
+
+                    hoje.setHours(
+                        0,
+                        0,
+                        0,
+                        0
+                    );
+
+
+                    const diferenca =
+                        dataVencimento - hoje;
+
+
+                    const diasRestantes =
+                        Math.ceil(
+                            diferenca /
+                            (1000 * 60 * 60 * 24)
+                        );
+
+
+
+                    // -----------------------------------------
+                    // DEFINIR STATUS
+                    // -----------------------------------------
+
+
+                    let statusTexto;
+
+                    let statusClasse;
+
+
+                    if (diasRestantes < 0) {
+
+
+                        statusTexto =
+                            "🔴 Certificado vencido";
+
+
+                        statusClasse =
+                            "status status-vencido";
+
+
+                    }
+
+
+                    else if (diasRestantes <= 90) {
+
+
+                        statusTexto =
+                            "🟡 Próximo do vencimento";
+
+
+                        statusClasse =
+                            "status status-proximo";
+
+
+                    }
+
+
+                    else {
+
+
+                        statusTexto =
+                            "🟢 Certificado válido";
+
+
+                        statusClasse =
+                            "status status-valido";
+
+                    }
+
+
+
+                    // -----------------------------------------
+                    // MONTAR CARD
+                    // -----------------------------------------
+
+
                     html += `
 
-                        <div class="certificado">
+                        <article class="certificado">
 
 
                             <div class="curso">
@@ -404,24 +819,46 @@
                             </div>
 
 
-                            <div class="info">
+                            <div class="informacoes">
 
-                                Conclusão:
-                                ${certificado.conclusao}
 
-                                <br>
+                                <div class="informacao">
 
-                                Vencimento:
-                                ${certificado.vencimento}
+                                    <span class="informacao-label">
+                                        Conclusão
+                                    </span>
+
+                                    <span class="informacao-valor">
+                                        ${certificado.conclusao}
+                                    </span>
+
+                                </div>
+
+
+                                <div class="informacao">
+
+                                    <span class="informacao-label">
+                                        Vencimento
+                                    </span>
+
+                                    <span class="informacao-valor">
+                                        ${certificado.vencimento}
+                                    </span>
+
+                                </div>
+
 
                             </div>
 
 
-                            <div class="status">
+                            <div class="${statusClasse}">
 
-                                Certificado válido
+                                ${statusTexto}
 
                             </div>
+
+
+                            <br>
 
 
                             <a
@@ -436,7 +873,7 @@
                             </a>
 
 
-                        </div>
+                        </article>
 
                     `;
 
@@ -446,7 +883,7 @@
 
 
             // =================================================
-            // 8. COLOCAR TUDO NA TELA
+            // 7. MOSTRAR NA TELA
             // =================================================
 
 
@@ -458,7 +895,7 @@
 
 
         // =====================================================
-        // 9. CASO OCORRA ALGUM ERRO
+        // 8. ERRO
         // =====================================================
 
 
