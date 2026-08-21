@@ -5,15 +5,19 @@
 
     <meta charset="UTF-8">
 
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>Consulta de Certificados</title>
+
 
     <style>
 
         * {
             box-sizing: border-box;
         }
+
 
         body {
             font-family: Arial, sans-serif;
@@ -22,6 +26,7 @@
             padding: 20px;
             color: #333;
         }
+
 
         .container {
             max-width: 800px;
@@ -32,6 +37,7 @@
             box-shadow: 0 2px 12px rgba(0,0,0,0.10);
         }
 
+
         .logo {
             text-align: center;
             font-size: 25px;
@@ -40,11 +46,13 @@
             margin-bottom: 30px;
         }
 
+
         .funcionario {
             border-bottom: 1px solid #ddd;
             padding-bottom: 20px;
             margin-bottom: 25px;
         }
+
 
         .funcionario h1 {
             font-size: 24px;
@@ -52,10 +60,12 @@
             color: #222;
         }
 
+
         .dados {
             color: #666;
             line-height: 1.7;
         }
+
 
         .titulo {
             font-size: 20px;
@@ -63,6 +73,7 @@
             color: #174a8b;
             margin-bottom: 15px;
         }
+
 
         .certificado {
             border: 1px solid #ddd;
@@ -72,6 +83,7 @@
             background: #fff;
         }
 
+
         .curso {
             font-size: 16px;
             font-weight: bold;
@@ -80,10 +92,12 @@
             line-height: 1.4;
         }
 
+
         .info {
             color: #555;
             line-height: 1.7;
         }
+
 
         .botao-pdf {
             display: inline-block;
@@ -97,9 +111,11 @@
             font-weight: bold;
         }
 
+
         .botao-pdf:hover {
             opacity: 0.85;
         }
+
 
         .status {
             margin-top: 8px;
@@ -107,17 +123,20 @@
             color: #16833b;
         }
 
+
         .erro {
             text-align: center;
             padding: 30px 10px;
             color: #b00020;
         }
 
+
         .carregando {
             text-align: center;
             padding: 30px 10px;
             color: #666;
         }
+
 
         .rodape {
             text-align: center;
@@ -173,19 +192,27 @@
     // 1. PEGAR A MATRÍCULA DA URL
     // =====================================================
 
-    const parametros = new URLSearchParams(window.location.search);
 
-    const matricula = parametros.get("matricula");
+    const parametros =
+        new URLSearchParams(window.location.search);
 
 
-    const conteudo = document.getElementById("conteudo");
+    const matricula =
+        parametros.get("matricula");
+
+
+    const conteudo =
+        document.getElementById("conteudo");
+
 
 
     // =====================================================
     // 2. VERIFICAR SE A MATRÍCULA FOI INFORMADA
     // =====================================================
 
+
     if (!matricula) {
+
 
         conteudo.innerHTML = `
 
@@ -201,105 +228,174 @@
 
         `;
 
+
     }
+
 
 
     // =====================================================
     // 3. BUSCAR O ARQUIVO dados.json
     // =====================================================
 
+
     else {
 
-        fetch("dados.json")
 
-            .then(resposta => {
+        fetch("dados.json", {
 
-                if (!resposta.ok) {
+            cache: "no-cache"
 
-                    throw new Error("Não foi possível carregar os dados.");
+        })
 
-                }
 
-                return resposta.json();
+        .then(resposta => {
 
-            })
+
+            if (!resposta.ok) {
+
+                throw new Error(
+                    "Não foi possível carregar os dados."
+                );
+
+            }
+
+
+            /*
+             * Lê o arquivo como texto.
+             * O navegador utiliza UTF-8 para interpretar
+             * corretamente caracteres como:
+             *
+             * á é í ó ú
+             * ã õ
+             * ç
+             * º
+             */
+
+            return resposta.text();
+
+        })
+
+
+        .then(texto => {
 
 
             // =================================================
-            // 4. ENCONTRAR A MATRÍCULA
+            // 4. CONVERTER O TEXTO PARA JSON
             // =================================================
 
-            .then(dados => {
 
-                const funcionario = dados[matricula];
-
-
-                if (!funcionario) {
-
-                    conteudo.innerHTML = `
-
-                        <div class="erro">
-
-                            <h2>Funcionário não encontrado</h2>
-
-                            <p>
-                                Matrícula: ${matricula}
-                            </p>
-
-                        </div>
-
-                    `;
-
-                    return;
-
-                }
+            let dados;
 
 
-                // =============================================
-                // 5. CABEÇALHO DO FUNCIONÁRIO
-                // =============================================
+            try {
 
-                let html = `
+                dados = JSON.parse(texto);
 
-                    <div class="funcionario">
-
-                        <h1>
-                            ${funcionario.nome}
-                        </h1>
-
-                        <div class="dados">
-
-                            <strong>Matrícula:</strong>
-                            ${matricula}
-
-                            <br>
-
-                            <strong>Cargo:</strong>
-                            ${funcionario.cargo}
-
-                        </div>
-
-                    </div>
+            }
 
 
-                    <div class="titulo">
+            catch (erroJSON) {
 
-                        Certificados
+                console.error(
+                    "Erro ao interpretar dados.json:",
+                    erroJSON
+                );
+
+                throw new Error(
+                    "O arquivo dados.json possui um problema de formatação."
+                );
+
+            }
+
+
+
+            // =================================================
+            // 5. ENCONTRAR A MATRÍCULA
+            // =================================================
+
+
+            const funcionario =
+                dados[matricula];
+
+
+            if (!funcionario) {
+
+
+                conteudo.innerHTML = `
+
+                    <div class="erro">
+
+                        <h2>
+                            Funcionário não encontrado
+                        </h2>
+
+                        <p>
+                            Matrícula: ${matricula}
+                        </p>
 
                     </div>
 
                 `;
 
 
-                // =============================================
-                // 6. MOSTRAR OS CERTIFICADOS
-                // =============================================
+                return;
 
-                funcionario.certificados.forEach(certificado => {
+            }
+
+
+
+            // =================================================
+            // 6. CABEÇALHO DO FUNCIONÁRIO
+            // =================================================
+
+
+            let html = `
+
+                <div class="funcionario">
+
+                    <h1>
+                        ${funcionario.nome}
+                    </h1>
+
+
+                    <div class="dados">
+
+                        <strong>Matrícula:</strong>
+                        ${matricula}
+
+                        <br>
+
+                        <strong>Cargo:</strong>
+                        ${funcionario.cargo}
+
+                    </div>
+
+                </div>
+
+
+                <div class="titulo">
+
+                    Certificados
+
+                </div>
+
+            `;
+
+
+
+            // =================================================
+            // 7. MOSTRAR OS CERTIFICADOS
+            // =================================================
+
+
+            funcionario.certificados.forEach(
+                certificado => {
+
 
                     html += `
 
                         <div class="certificado">
+
 
                             <div class="curso">
 
@@ -332,51 +428,63 @@
                                 class="botao-pdf"
                                 href="${certificado.link}"
                                 target="_blank"
+                                rel="noopener noreferrer"
                             >
 
                                 📄 Ver certificado
 
                             </a>
 
+
                         </div>
 
                     `;
 
-                });
+                }
+            );
 
-
-                // =============================================
-                // 7. COLOCAR TUDO NA TELA
-                // =============================================
-
-                conteudo.innerHTML = html;
-
-            })
 
 
             // =================================================
-            // 8. CASO OCORRA ALGUM ERRO
+            // 8. COLOCAR TUDO NA TELA
             // =================================================
 
-            .catch(erro => {
 
-                console.error(erro);
+            conteudo.innerHTML =
+                html;
 
-                conteudo.innerHTML = `
 
-                    <div class="erro">
+        })
 
-                        <h2>Erro ao carregar os dados</h2>
 
-                        <p>
-                            Tente novamente mais tarde.
-                        </p>
+        // =====================================================
+        // 9. CASO OCORRA ALGUM ERRO
+        // =====================================================
 
-                    </div>
 
-                `;
+        .catch(erro => {
 
-            });
+
+            console.error(erro);
+
+
+            conteudo.innerHTML = `
+
+                <div class="erro">
+
+                    <h2>
+                        Erro ao carregar os dados
+                    </h2>
+
+                    <p>
+                        Tente novamente mais tarde.
+                    </p>
+
+                </div>
+
+            `;
+
+        });
 
     }
 
