@@ -1,12 +1,16 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
+
     <meta charset="UTF-8">
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>Consulta de Certificados</title>
 
     <style>
+
         * {
             box-sizing: border-box;
         }
@@ -81,6 +85,22 @@
             line-height: 1.7;
         }
 
+        .botao-pdf {
+            display: inline-block;
+            margin-top: 12px;
+            padding: 9px 14px;
+            background: #174a8b;
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            font-size: 14px;
+            font-weight: bold;
+        }
+
+        .botao-pdf:hover {
+            opacity: 0.85;
+        }
+
         .status {
             margin-top: 8px;
             font-weight: bold;
@@ -93,158 +113,65 @@
             color: #b00020;
         }
 
+        .carregando {
+            text-align: center;
+            padding: 30px 10px;
+            color: #666;
+        }
+
         .rodape {
             text-align: center;
             margin-top: 30px;
             font-size: 12px;
             color: #888;
         }
+
     </style>
+
 </head>
+
 
 <body>
 
+
 <div class="container">
 
+
     <div class="logo">
+
         GALÁXIA NAVEGAÇÃO
+
     </div>
 
-    <div id="conteudo"></div>
+
+    <div id="conteudo">
+
+        <div class="carregando">
+
+            Carregando informações...
+
+        </div>
+
+    </div>
+
 
     <div class="rodape">
+
         Consulta de certificados — Galáxia Navegação
+
     </div>
+
 
 </div>
 
 
+
 <script>
 
-    /*
-     * BASE DE TESTE
-     *
-     * Por enquanto vamos trabalhar somente
-     * com duas matrículas:
-     *
-     * 261 = Elison
-     * 3   = Adilson
-     */
 
-    const funcionarios = {
-
-        "261": {
-            nome: "ELISON DA SILVA FIRMINO",
-            cargo: "ELETRICISTA",
-
-            certificados: [
-                {
-                    curso: "NR 06 - EQUIPAMENTOS DE PROTEÇÃO INDIVIDUAL (EPI) - PRESENCIAL",
-                    conclusao: "16/01/2026",
-                    vencimento: "16/01/2028"
-                },
-                {
-                    curso: "NR 20 - SEGURANÇA NO TRABALHO COM INFLAMÁVEIS E COMBUSTÍVEIS (INTERMEDIÁRIO) - PRESENCIAL",
-                    conclusao: "05/02/2026",
-                    vencimento: "05/02/2028"
-                },
-                {
-                    curso: "NR 26 - SEGURANÇA NO MANUSEIO DE PRODUTOS PERIGOSOS - PRESENCIAL",
-                    conclusao: "29/01/2026",
-                    vencimento: "29/01/2028"
-                },
-                {
-                    curso: "NR 30 - SEGURANÇA NO TRABALHO AQUAVIÁRIO - CAPACITAÇÃO INICIAL - PRESENCIAL",
-                    conclusao: "15/01/2026",
-                    vencimento: "15/01/2028"
-                },
-                {
-                    curso: "NR 34 - CONDIÇÕES DE TRABALHO NA INDÚSTRIA DA CONSTRUÇÃO E REPARAÇÃO NAVAL (ADMISSIONAL/PERIÓDICO) - PRESENCIAL",
-                    conclusao: "15/01/2026",
-                    vencimento: "15/01/2027"
-                },
-                {
-                    curso: "NR 34 - CONDIÇÕES DE TRABALHO NA INDÚSTRIA DA CONSTRUÇÃO E REPARAÇÃO NAVAL (BÁSICO TRABALHO A QUENTE) - PRESENCIAL",
-                    conclusao: "27/01/2026",
-                    vencimento: "27/01/2027"
-                },
-                {
-                    curso: "NR 10 - SEGURANÇA EM INSTALAÇÕES E SERVIÇOS EM ELETRICIDADE (BÁSICO) - PRESENCIAL",
-                    conclusao: "11/02/2026",
-                    vencimento: "11/02/2028"
-                },
-                {
-                    curso: "NR 12 - SEGURANÇA NO TRABALHO EM MÁQUINAS E EQUIPAMENTOS - PRESENCIAL",
-                    conclusao: "29/01/2026",
-                    vencimento: "29/01/2028"
-                },
-                {
-                    curso: "NR 34 - CURSO BÁSICO DE SEGURANÇA EM OPERAÇÕES DE MOVIMENTAÇÃO DE CARGAS - PRESENCIAL",
-                    conclusao: "01/02/2026",
-                    vencimento: "01/02/2028"
-                },
-                {
-                    curso: "NR 13 - CALDEIRAS, VASOS DE PRESSÃO E TUBULAÇÃO (OPERAÇÃO DE CALDEIRAS)",
-                    conclusao: "16/04/2026",
-                    vencimento: "16/04/2029"
-                },
-                {
-                    curso: "NR 34 - CONDIÇÕES DE TRABALHO NA INDÚSTRIA DA CONSTRUÇÃO E REPARAÇÃO NAVAL (OBSERVADOR DE TRABALHO A QUENTE) - PRESENCIAL",
-                    conclusao: "27/01/2026",
-                    vencimento: "27/01/2027"
-                },
-                {
-                    curso: "NR 34 - CONDIÇÕES DE TRABALHO NA INDÚSTRIA DA CONSTRUÇÃO E REPARAÇÃO NAVAL (OPERADORES DE EQUIPAMENTO DE GUINDAR) - PRESENCIAL",
-                    conclusao: "03/02/2026",
-                    vencimento: "03/02/2028"
-                },
-                {
-                    curso: "NR 35 - TRABALHO EM ALTURA - PRESENCIAL",
-                    conclusao: "20/01/2026",
-                    vencimento: "20/01/2028"
-                },
-                {
-                    curso: "NR 35 - RESGATE EM ALTURA (EQUIPE DE RESGATE E SALVAMENTO) - NÍVEL COORDENADOR - PRESENCIAL",
-                    conclusao: "22/01/2026",
-                    vencimento: "22/01/2028"
-                },
-                {
-                    curso: "NR 33 - RESGATE EM ESPAÇO CONFINADO (EQUIPE DE RESGATE E SALVAMENTO) - NÍVEL COORDENADOR - PRESENCIAL",
-                    conclusao: "25/01/2026",
-                    vencimento: "25/01/2028"
-                },
-                {
-                    curso: "OPERAÇÃO DO SISTEMA ACON",
-                    conclusao: "01/02/2026",
-                    vencimento: "01/02/2027"
-                }
-            ]
-        },
-
-
-        "3": {
-            nome: "ADILSON MACEDO AMARAL",
-            cargo: "COLOQUE O CARGO AQUI",
-
-            certificados: [
-                {
-                    curso: "TESTE - CERTIFICADO",
-                    conclusao: "01/01/2026",
-                    vencimento: "01/01/2028"
-                }
-            ]
-        }
-
-    };
-
-
-    /*
-     * PEGA A MATRÍCULA DA URL
-     *
-     * Exemplo:
-     *
-     * ?matricula=261
-     */
+    // =====================================================
+    // 1. PEGAR A MATRÍCULA DA URL
+    // =====================================================
 
     const parametros = new URLSearchParams(window.location.search);
 
@@ -254,119 +181,209 @@
     const conteudo = document.getElementById("conteudo");
 
 
-    /*
-     * SE NÃO TIVER MATRÍCULA
-     */
+    // =====================================================
+    // 2. VERIFICAR SE A MATRÍCULA FOI INFORMADA
+    // =====================================================
 
     if (!matricula) {
 
         conteudo.innerHTML = `
+
             <div class="erro">
+
                 <h2>Matrícula não informada</h2>
-                <p>Utilize o QR Code para acessar a consulta.</p>
+
+                <p>
+                    Utilize o QR Code para acessar a consulta.
+                </p>
+
             </div>
+
         `;
 
     }
 
 
-    /*
-     * PROCURA O FUNCIONÁRIO
-     */
-
-    else if (!funcionarios[matricula]) {
-
-        conteudo.innerHTML = `
-            <div class="erro">
-                <h2>Funcionário não encontrado</h2>
-                <p>Matrícula: ${matricula}</p>
-            </div>
-        `;
-
-    }
-
-
-    /*
-     * MOSTRA O FUNCIONÁRIO
-     */
+    // =====================================================
+    // 3. BUSCAR O ARQUIVO dados.json
+    // =====================================================
 
     else {
 
-        const funcionario = funcionarios[matricula];
+        fetch("dados.json")
+
+            .then(resposta => {
+
+                if (!resposta.ok) {
+
+                    throw new Error("Não foi possível carregar os dados.");
+
+                }
+
+                return resposta.json();
+
+            })
 
 
-        let html = `
+            // =================================================
+            // 4. ENCONTRAR A MATRÍCULA
+            // =================================================
 
-            <div class="funcionario">
+            .then(dados => {
 
-                <h1>
-                    ${funcionario.nome}
-                </h1>
-
-                <div class="dados">
-
-                    <strong>Matrícula:</strong>
-                    ${matricula}
-
-                    <br>
-
-                    <strong>Cargo:</strong>
-                    ${funcionario.cargo}
-
-                </div>
-
-            </div>
+                const funcionario = dados[matricula];
 
 
-            <div class="titulo">
-                Certificados
-            </div>
+                if (!funcionario) {
 
-        `;
+                    conteudo.innerHTML = `
+
+                        <div class="erro">
+
+                            <h2>Funcionário não encontrado</h2>
+
+                            <p>
+                                Matrícula: ${matricula}
+                            </p>
+
+                        </div>
+
+                    `;
+
+                    return;
+
+                }
 
 
-        /*
-         * ADICIONA CADA CERTIFICADO
-         */
+                // =============================================
+                // 5. CABEÇALHO DO FUNCIONÁRIO
+                // =============================================
 
-        funcionario.certificados.forEach(certificado => {
+                let html = `
 
-            html += `
+                    <div class="funcionario">
 
-                <div class="certificado">
+                        <h1>
+                            ${funcionario.nome}
+                        </h1>
 
-                    <div class="curso">
-                        ${certificado.curso}
+                        <div class="dados">
+
+                            <strong>Matrícula:</strong>
+                            ${matricula}
+
+                            <br>
+
+                            <strong>Cargo:</strong>
+                            ${funcionario.cargo}
+
+                        </div>
+
                     </div>
 
-                    <div class="info">
 
-                        Conclusão:
-                        ${certificado.conclusao}
+                    <div class="titulo">
 
-                        <br>
-
-                        Vencimento:
-                        ${certificado.vencimento}
+                        Certificados
 
                     </div>
 
-                    <div class="status">
-                        Certificado válido
+                `;
+
+
+                // =============================================
+                // 6. MOSTRAR OS CERTIFICADOS
+                // =============================================
+
+                funcionario.certificados.forEach(certificado => {
+
+                    html += `
+
+                        <div class="certificado">
+
+                            <div class="curso">
+
+                                ${certificado.curso}
+
+                            </div>
+
+
+                            <div class="info">
+
+                                Conclusão:
+                                ${certificado.conclusao}
+
+                                <br>
+
+                                Vencimento:
+                                ${certificado.vencimento}
+
+                            </div>
+
+
+                            <div class="status">
+
+                                Certificado válido
+
+                            </div>
+
+
+                            <a
+                                class="botao-pdf"
+                                href="${certificado.link}"
+                                target="_blank"
+                            >
+
+                                📄 Ver certificado
+
+                            </a>
+
+                        </div>
+
+                    `;
+
+                });
+
+
+                // =============================================
+                // 7. COLOCAR TUDO NA TELA
+                // =============================================
+
+                conteudo.innerHTML = html;
+
+            })
+
+
+            // =================================================
+            // 8. CASO OCORRA ALGUM ERRO
+            // =================================================
+
+            .catch(erro => {
+
+                console.error(erro);
+
+                conteudo.innerHTML = `
+
+                    <div class="erro">
+
+                        <h2>Erro ao carregar os dados</h2>
+
+                        <p>
+                            Tente novamente mais tarde.
+                        </p>
+
                     </div>
 
-                </div>
+                `;
 
-            `;
-
-        });
-
-
-        conteudo.innerHTML = html;
+            });
 
     }
 
+
 </script>
 
+
 </body>
+
 </html>
