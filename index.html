@@ -4,6 +4,7 @@
 <head>
 
     <meta charset="UTF-8">
+
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -21,11 +22,8 @@
         body {
             margin: 0;
             padding: 0;
-
             font-family: Arial, Helvetica, sans-serif;
-
             background: #f2f5f8;
-
             color: #222;
         }
 
@@ -36,44 +34,32 @@
 
         .topo {
             background: #ffffff;
-
             border-bottom: 5px solid #f2c300;
-
             padding: 22px 20px 18px;
-
             text-align: center;
         }
 
 
         .logo {
             max-width: 270px;
-
             width: 80%;
-
             height: auto;
-
             display: block;
-
             margin: 0 auto 15px auto;
         }
 
 
         .titulo-site {
             margin: 0;
-
             color: #174a8b;
-
             font-size: 22px;
-
             font-weight: bold;
         }
 
 
         .subtitulo-site {
             margin: 6px 0 0;
-
             color: #777;
-
             font-size: 14px;
         }
 
@@ -84,164 +70,180 @@
 
         .container {
             width: 100%;
-
             max-width: 900px;
-
             margin: 30px auto;
-
             padding: 0 18px;
         }
 
 
         /* =====================================================
-           FUNCIONÁRIO
+           CARD DO FUNCIONÁRIO
         ===================================================== */
 
         .funcionario {
             background: #ffffff;
-
             border-radius: 14px;
-
             padding: 25px;
-
-            margin-bottom: 25px;
-
-            box-shadow:
-                0 3px 15px rgba(0,0,0,0.08);
-
+            margin-bottom: 22px;
+            box-shadow: 0 3px 15px rgba(0,0,0,0.08);
             border-left: 6px solid #174a8b;
         }
 
 
         .funcionario h1 {
             margin: 0 0 18px 0;
-
             color: #174a8b;
-
             font-size: 25px;
-
             line-height: 1.25;
         }
 
 
         .dados-funcionario {
             display: flex;
-
             flex-wrap: wrap;
-
             gap: 18px;
         }
 
 
         .dado {
             flex: 1;
-
             min-width: 180px;
-
             background: #f5f7fa;
-
             border-radius: 9px;
-
             padding: 12px 15px;
         }
 
 
         .dado-label {
             display: block;
-
             font-size: 12px;
-
             color: #777;
-
             margin-bottom: 4px;
-
             text-transform: uppercase;
-
             font-weight: bold;
         }
 
 
         .dado-valor {
             display: block;
-
             color: #333;
-
             font-size: 15px;
-
             font-weight: bold;
         }
 
 
         /* =====================================================
-           RESUMO
+           CARD ASO
         ===================================================== */
 
-        .resumo {
-            display: grid;
-
-            grid-template-columns:
-                repeat(4, 1fr);
-
-            gap: 12px;
-
-            margin-bottom: 28px;
-        }
-
-
-        .resumo-card {
+        .aso-card {
             background: #ffffff;
-
-            border-radius: 12px;
-
-            padding: 16px 10px;
-
-            text-align: center;
-
-            box-shadow:
-                0 2px 10px rgba(0,0,0,0.06);
-
-            border: 1px solid #e1e5e9;
+            border-radius: 14px;
+            padding: 22px 25px;
+            margin-bottom: 28px;
+            box-shadow: 0 3px 15px rgba(0,0,0,0.08);
+            border-left: 6px solid #174a8b;
         }
 
 
-        .resumo-numero {
-            display: block;
+        .aso-titulo {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 10px;
+            margin-bottom: 18px;
+        }
 
-            font-size: 25px;
 
-            font-weight: bold;
-
+        .aso-titulo h2 {
+            margin: 0;
             color: #174a8b;
-
-            margin-bottom: 5px;
+            font-size: 20px;
         }
 
 
-        .resumo-label {
+        .aso-icone {
+            font-size: 24px;
+        }
+
+
+        .aso-informacoes {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+
+        .aso-informacao {
+            flex: 1;
+            min-width: 180px;
+            background: #f7f8fa;
+            border-radius: 9px;
+            padding: 12px 14px;
+        }
+
+
+        .aso-label {
             display: block;
-
             font-size: 11px;
-
             color: #777;
-
+            margin-bottom: 5px;
             text-transform: uppercase;
-
             font-weight: bold;
         }
 
 
-        .resumo-valido .resumo-numero {
+        .aso-valor {
+            display: block;
+            font-size: 15px;
+            color: #333;
+            font-weight: bold;
+        }
+
+
+        /* =====================================================
+           STATUS DO ASO
+        ===================================================== */
+
+        .aso-parecer {
+            display: inline-block;
+            padding: 7px 13px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: bold;
+        }
+
+
+        .aso-apto {
+            background: #e7f6ed;
             color: #16833b;
         }
 
 
-        .resumo-proximo .resumo-numero {
+        .aso-restricao {
+            background: #fff6d8;
             color: #9a7000;
         }
 
 
-        .resumo-vencido .resumo-numero {
+        .aso-inapto {
+            background: #fde8e8;
             color: #b00020;
+        }
+
+
+        .aso-outro {
+            background: #eef1f4;
+            color: #555;
+        }
+
+
+        .aso-sem-registro {
+            color: #777;
+            font-size: 14px;
+            background: #f7f8fa;
+            border-radius: 9px;
+            padding: 15px;
         }
 
 
@@ -251,327 +253,149 @@
 
         .titulo-certificados {
             display: flex;
-
             align-items: center;
-
             justify-content: space-between;
-
-            gap: 15px;
-
             margin-bottom: 15px;
         }
 
 
         .titulo-certificados h2 {
             margin: 0;
-
             color: #174a8b;
-
             font-size: 21px;
         }
 
 
         .contador {
             background: #174a8b;
-
             color: white;
-
             padding: 6px 11px;
-
             border-radius: 20px;
-
             font-size: 12px;
-
             font-weight: bold;
-
-            white-space: nowrap;
         }
 
 
         /* =====================================================
-           BUSCA
-        ===================================================== */
-
-        .busca {
-            background: #ffffff;
-
-            padding: 15px;
-
-            border-radius: 12px;
-
-            margin-bottom: 15px;
-
-            box-shadow:
-                0 2px 8px rgba(0,0,0,0.05);
-        }
-
-
-        .campo-busca {
-            width: 100%;
-
-            border: 1px solid #d5dbe0;
-
-            border-radius: 8px;
-
-            padding: 12px 14px;
-
-            font-size: 14px;
-
-            outline: none;
-        }
-
-
-        .campo-busca:focus {
-            border-color: #174a8b;
-
-            box-shadow:
-                0 0 0 2px rgba(23,74,139,0.10);
-        }
-
-
-        /* =====================================================
-           FILTROS
-        ===================================================== */
-
-        .filtros {
-            display: flex;
-
-            flex-wrap: wrap;
-
-            gap: 8px;
-
-            margin-bottom: 18px;
-        }
-
-
-        .filtro {
-            border: 1px solid #d7dce1;
-
-            background: #ffffff;
-
-            color: #555;
-
-            padding: 8px 13px;
-
-            border-radius: 20px;
-
-            font-size: 12px;
-
-            font-weight: bold;
-
-            cursor: pointer;
-        }
-
-
-        .filtro:hover {
-            border-color: #174a8b;
-
-            color: #174a8b;
-        }
-
-
-        .filtro.ativo {
-            background: #174a8b;
-
-            color: #ffffff;
-
-            border-color: #174a8b;
-        }
-
-
-        /* =====================================================
-           CARD CERTIFICADO
+           CARD DO CERTIFICADO
         ===================================================== */
 
         .certificado {
             background: #ffffff;
-
             border-radius: 12px;
-
             padding: 20px;
-
             margin-bottom: 15px;
-
-            box-shadow:
-                0 2px 10px rgba(0,0,0,0.07);
-
+            box-shadow: 0 2px 10px rgba(0,0,0,0.07);
             border: 1px solid #e1e5e9;
         }
 
 
         .curso {
             color: #174a8b;
-
             font-size: 16px;
-
             font-weight: bold;
-
             line-height: 1.45;
-
             margin-bottom: 16px;
         }
 
 
         .informacoes {
             display: flex;
-
             flex-wrap: wrap;
-
             gap: 12px;
-
             margin-bottom: 14px;
         }
 
 
         .informacao {
             flex: 1;
-
             min-width: 150px;
-
             background: #f7f8fa;
-
             border-radius: 8px;
-
             padding: 10px 12px;
         }
 
 
         .informacao-label {
             display: block;
-
             font-size: 11px;
-
             color: #777;
-
             margin-bottom: 4px;
-
             text-transform: uppercase;
-
             font-weight: bold;
         }
 
 
         .informacao-valor {
             font-size: 14px;
-
             font-weight: bold;
-
             color: #333;
         }
 
 
         /* =====================================================
-           STATUS
+           STATUS CERTIFICADO
         ===================================================== */
 
         .status {
             display: inline-block;
-
             padding: 7px 12px;
-
             border-radius: 20px;
-
             font-size: 12px;
-
             font-weight: bold;
-
             margin-bottom: 14px;
         }
 
 
         .status-valido {
             background: #e7f6ed;
-
             color: #16833b;
         }
 
 
         .status-proximo {
             background: #fff6d8;
-
             color: #9a7000;
         }
 
 
         .status-vencido {
             background: #fde8e8;
-
             color: #b00020;
         }
 
 
         /* =====================================================
-           DOCUMENTO SEM LINK
-        ===================================================== */
-
-        .sem-documento {
-            margin-top: 2px;
-
-            padding: 11px 13px;
-
-            border-radius: 8px;
-
-            background: #fff8e5;
-
-            border: 1px solid #f0dfaa;
-
-            color: #806500;
-
-            font-size: 13px;
-
-            line-height: 1.4;
-        }
-
-
-        /* =====================================================
-           BOTÃO PDF
+           BOTÃO
         ===================================================== */
 
         .botao-pdf {
             display: inline-block;
-
             background: #174a8b;
-
             color: #ffffff;
-
             text-decoration: none;
-
             padding: 11px 17px;
-
             border-radius: 7px;
-
             font-size: 14px;
-
             font-weight: bold;
-
             transition: 0.2s;
         }
 
 
         .botao-pdf:hover {
             background: #123b70;
-
             transform: translateY(-1px);
         }
 
 
-        /* =====================================================
-           SEM RESULTADOS
-        ===================================================== */
-
-        .sem-resultados {
-            background: #ffffff;
-
-            border-radius: 12px;
-
-            padding: 30px 20px;
-
-            text-align: center;
-
+        .botao-indisponivel {
+            display: inline-block;
+            background: #eef1f4;
             color: #777;
-
-            box-shadow:
-                0 2px 10px rgba(0,0,0,0.06);
+            padding: 11px 17px;
+            border-radius: 7px;
+            font-size: 14px;
+            font-weight: bold;
         }
 
 
@@ -581,17 +405,11 @@
 
         .erro {
             background: #ffffff;
-
             border-radius: 14px;
-
             padding: 40px 20px;
-
             text-align: center;
-
             color: #b00020;
-
-            box-shadow:
-                0 3px 15px rgba(0,0,0,0.08);
+            box-shadow: 0 3px 15px rgba(0,0,0,0.08);
         }
 
 
@@ -606,17 +424,11 @@
 
         .carregando {
             background: #ffffff;
-
             border-radius: 14px;
-
             padding: 45px 20px;
-
             text-align: center;
-
             color: #666;
-
-            box-shadow:
-                0 3px 15px rgba(0,0,0,0.08);
+            box-shadow: 0 3px 15px rgba(0,0,0,0.08);
         }
 
 
@@ -626,11 +438,8 @@
 
         .rodape {
             text-align: center;
-
             padding: 25px 15px 35px;
-
             color: #888;
-
             font-size: 12px;
         }
 
@@ -640,6 +449,10 @@
         ===================================================== */
 
         @media (max-width: 600px) {
+
+            body {
+                background: #f2f5f8;
+            }
 
 
             .topo {
@@ -664,15 +477,12 @@
 
             .container {
                 margin-top: 18px;
-
                 padding: 0 12px;
             }
 
 
             .funcionario {
                 padding: 20px;
-
-                border-left-width: 5px;
             }
 
 
@@ -691,14 +501,18 @@
             }
 
 
-            .resumo {
-                grid-template-columns:
-                    repeat(2, 1fr);
+            .aso-card {
+                padding: 20px;
             }
 
 
-            .titulo-certificados {
-                align-items: flex-start;
+            .aso-informacoes {
+                display: block;
+            }
+
+
+            .aso-informacao {
+                margin-bottom: 8px;
             }
 
 
@@ -729,22 +543,13 @@
 
             .botao-pdf {
                 width: 100%;
-
                 text-align: center;
             }
 
 
-            .filtros {
-                overflow-x: auto;
-
-                flex-wrap: nowrap;
-
-                padding-bottom: 4px;
-            }
-
-
-            .filtro {
-                flex-shrink: 0;
+            .botao-indisponivel {
+                width: 100%;
+                text-align: center;
             }
 
         }
@@ -763,26 +568,21 @@
 
 <header class="topo">
 
-
     <img
         class="logo"
         src="Logo%20-%20Fonte%20Azul.png"
         alt="Galáxia Navegação"
     >
 
-
     <h1 class="titulo-site">
         Consulta de Certificados
     </h1>
-
 
     <p class="subtitulo-site">
         Controle de capacitação dos tripulantes
     </p>
 
-
 </header>
-
 
 
 <!-- =========================================================
@@ -790,7 +590,6 @@
 ========================================================= -->
 
 <main class="container">
-
 
     <div id="conteudo">
 
@@ -800,9 +599,7 @@
 
     </div>
 
-
 </main>
-
 
 
 <!-- =========================================================
@@ -816,52 +613,34 @@
 </footer>
 
 
-
 <script>
 
 
     // =====================================================
-    // VARIÁVEIS
+    // 1. PEGAR MATRÍCULA DA URL
     // =====================================================
 
-
     const parametros =
-        new URLSearchParams(
-            window.location.search
-        );
-
+        new URLSearchParams(window.location.search);
 
     const matricula =
         parametros.get("matricula");
 
-
     const conteudo =
-        document.getElementById(
-            "conteudo"
-        );
-
-
-    let todosCertificados = [];
-
-    let filtroAtual = "todos";
-
+        document.getElementById("conteudo");
 
 
     // =====================================================
-    // VERIFICAR MATRÍCULA
+    // 2. VERIFICAR MATRÍCULA
     // =====================================================
-
 
     if (!matricula) {
-
 
         conteudo.innerHTML = `
 
             <div class="erro">
 
-                <h2>
-                    Matrícula não informada
-                </h2>
+                <h2>Matrícula não informada</h2>
 
                 <p>
                     Utilize o QR Code para acessar a consulta.
@@ -874,1048 +653,623 @@
     }
 
 
+    // =====================================================
+    // 3. BUSCAR DADOS
+    // =====================================================
+
     else {
 
+        Promise.all([
 
-        // =================================================
-        // CARREGAR dados.json
-        // =================================================
-
-
-        fetch(
-            "dados.json",
-            {
+            fetch("dados.json", {
                 cache: "no-cache"
-            }
-        )
-
-
-        .then(
-            resposta => {
-
+            }).then(resposta => {
 
                 if (!resposta.ok) {
-
                     throw new Error(
-                        "Não foi possível carregar os dados."
+                        "Não foi possível carregar os certificados."
                     );
-
                 }
-
 
                 return resposta.json();
 
-            }
-        )
+            }),
 
+            fetch("aso.json", {
+                cache: "no-cache"
+            })
+            .then(resposta => {
 
-        .then(
-            dados => {
+                if (!resposta.ok) {
 
+                    console.warn(
+                        "aso.json não encontrado."
+                    );
 
-                // =============================================
-                // FUNCIONÁRIO
-                // =============================================
-
-
-                const funcionario =
-                    dados[matricula];
-
-
-                if (!funcionario) {
-
-
-                    conteudo.innerHTML = `
-
-                        <div class="erro">
-
-                            <h2>
-                                Funcionário não encontrado
-                            </h2>
-
-                            <p>
-                                Matrícula: ${escapeHTML(matricula)}
-                            </p>
-
-                        </div>
-
-                    `;
-
-
-                    return;
+                    return {};
 
                 }
 
+                return resposta.json();
 
+            })
+            .catch(erro => {
 
-                // =============================================
-                // CALCULAR STATUS
-                // =============================================
-
-
-                todosCertificados =
-                    funcionario.certificados.map(
-                        certificado => {
-
-
-                            const status =
-                                calcularStatus(
-                                    certificado.vencimento
-                                );
-
-
-                            return {
-
-                                ...certificado,
-
-                                status:
-                                    status.status,
-
-                                statusTexto:
-                                    status.texto,
-
-                                statusClasse:
-                                    status.classe
-
-                            };
-
-                        }
-                    );
-
-
-
-                // =============================================
-                // CONTADORES
-                // =============================================
-
-
-                const total =
-                    todosCertificados.length;
-
-
-                const validos =
-                    todosCertificados.filter(
-                        certificado =>
-                            certificado.status ===
-                            "valido"
-                    ).length;
-
-
-                const proximos =
-                    todosCertificados.filter(
-                        certificado =>
-                            certificado.status ===
-                            "proximo"
-                    ).length;
-
-
-                const vencidos =
-                    todosCertificados.filter(
-                        certificado =>
-                            certificado.status ===
-                            "vencido"
-                    ).length;
-
-
-
-                // =============================================
-                // MONTAR PÁGINA
-                // =============================================
-
-
-                conteudo.innerHTML = `
-
-                    <section class="funcionario">
-
-
-                        <h1>
-                            ${escapeHTML(funcionario.nome)}
-                        </h1>
-
-
-                        <div class="dados-funcionario">
-
-
-                            <div class="dado">
-
-                                <span class="dado-label">
-                                    Matrícula
-                                </span>
-
-                                <span class="dado-valor">
-                                    ${escapeHTML(matricula)}
-                                </span>
-
-                            </div>
-
-
-                            <div class="dado">
-
-                                <span class="dado-label">
-                                    Cargo
-                                </span>
-
-                                <span class="dado-valor">
-                                    ${escapeHTML(funcionario.cargo)}
-                                </span>
-
-                            </div>
-
-
-                        </div>
-
-
-                    </section>
-
-
-
-                    <!-- =====================================
-                         RESUMO
-                    ====================================== -->
-
-
-                    <section class="resumo">
-
-
-                        <div class="resumo-card">
-
-                            <span class="resumo-numero">
-                                ${total}
-                            </span>
-
-                            <span class="resumo-label">
-                                Total
-                            </span>
-
-                        </div>
-
-
-                        <div class="resumo-card resumo-valido">
-
-                            <span class="resumo-numero">
-                                ${validos}
-                            </span>
-
-                            <span class="resumo-label">
-                                Válidos
-                            </span>
-
-                        </div>
-
-
-                        <div class="resumo-card resumo-proximo">
-
-                            <span class="resumo-numero">
-                                ${proximos}
-                            </span>
-
-                            <span class="resumo-label">
-                                Próximos
-                            </span>
-
-                        </div>
-
-
-                        <div class="resumo-card resumo-vencido">
-
-                            <span class="resumo-numero">
-                                ${vencidos}
-                            </span>
-
-                            <span class="resumo-label">
-                                Vencidos
-                            </span>
-
-                        </div>
-
-
-                    </section>
-
-
-
-                    <!-- =====================================
-                         CERTIFICADOS
-                    ====================================== -->
-
-
-                    <section>
-
-
-                        <div class="titulo-certificados">
-
-
-                            <h2>
-                                Certificados
-                            </h2>
-
-
-                            <span
-                                id="contador"
-                                class="contador"
-                            >
-                                ${total} certificado(s)
-                            </span>
-
-
-                        </div>
-
-
-
-                        <!-- BUSCA -->
-
-
-                        <div class="busca">
-
-                            <input
-                                id="campoBusca"
-                                class="campo-busca"
-                                type="text"
-                                placeholder="🔎 Buscar certificado..."
-                            >
-
-                        </div>
-
-
-
-                        <!-- FILTROS -->
-
-
-                        <div class="filtros">
-
-
-                            <button
-                                class="filtro ativo"
-                                data-filtro="todos"
-                            >
-                                Todos
-                            </button>
-
-
-                            <button
-                                class="filtro"
-                                data-filtro="valido"
-                            >
-                                🟢 Válidos
-                            </button>
-
-
-                            <button
-                                class="filtro"
-                                data-filtro="proximo"
-                            >
-                                🟡 Próximos
-                            </button>
-
-
-                            <button
-                                class="filtro"
-                                data-filtro="vencido"
-                            >
-                                🔴 Vencidos
-                            </button>
-
-
-                        </div>
-
-
-
-                        <div id="listaCertificados"></div>
-
-
-                    </section>
-
-                `;
-
-
-
-                // =============================================
-                // EVENTOS DOS FILTROS
-                // =============================================
-
-
-                document
-                    .querySelectorAll(".filtro")
-                    .forEach(
-                        botao => {
-
-
-                            botao.addEventListener(
-                                "click",
-                                function () {
-
-
-                                    document
-                                        .querySelectorAll(".filtro")
-                                        .forEach(
-                                            b =>
-                                                b.classList.remove(
-                                                    "ativo"
-                                                )
-                                        );
-
-
-                                    this.classList.add(
-                                        "ativo"
-                                    );
-
-
-                                    filtroAtual =
-                                        this.dataset.filtro;
-
-
-                                    renderizarCertificados();
-
-                                }
-                            );
-
-                        }
-                    );
-
-
-
-                // =============================================
-                // CAMPO DE BUSCA
-                // =============================================
-
-
-                document
-                    .getElementById("campoBusca")
-                    .addEventListener(
-                        "input",
-                        renderizarCertificados
-                    );
-
-
-
-                // =============================================
-                // PRIMEIRA RENDERIZAÇÃO
-                // =============================================
-
-
-                renderizarCertificados();
-
-            }
-        )
-
-
-        .catch(
-            erro => {
-
-
-                console.error(
+                console.warn(
+                    "Não foi possível carregar o aso.json.",
                     erro
                 );
 
+                return {};
+
+            })
+
+        ])
+
+        .then(([dados, dadosASO]) => {
+
+
+            // =================================================
+            // 4. ENCONTRAR FUNCIONÁRIO
+            // =================================================
+
+            const funcionario =
+                dados[matricula];
+
+
+            if (!funcionario) {
 
                 conteudo.innerHTML = `
 
                     <div class="erro">
 
                         <h2>
-                            Erro ao carregar os dados
+                            Funcionário não encontrado
                         </h2>
 
                         <p>
-                            Tente novamente mais tarde.
+                            Matrícula: ${matricula}
                         </p>
 
                     </div>
 
                 `;
 
+                return;
+
             }
-        );
 
-    }
 
+            // =================================================
+            // 5. BUSCAR ASO
+            // =================================================
 
+            const aso =
+                dadosASO[matricula];
 
-    // =====================================================
-    // CALCULAR STATUS
-    // =====================================================
 
-    function calcularStatus(vencimento) {
+            // =================================================
+            // 6. CABEÇALHO DO FUNCIONÁRIO
+            // =================================================
 
+            let html = `
 
-        /*
-         * IMPORTANTE:
-         *
-         * Se não existir data de vencimento,
-         * o certificado será considerado VÁLIDO.
-         *
-         * Exemplo:
-         *
-         * "vencimento": ""
-         *
-         * ou
-         *
-         * "vencimento": null
-         *
-         * ou qualquer texto que não contenha
-         * uma data no formato DD/MM/AAAA.
-         */
+                <section class="funcionario">
 
+                    <h1>
+                        ${funcionario.nome}
+                    </h1>
 
-        if (
-            !vencimento ||
-            !String(vencimento).includes("/")
-        ) {
+                    <div class="dados-funcionario">
 
+                        <div class="dado">
 
-            return {
+                            <span class="dado-label">
+                                Matrícula
+                            </span>
 
-                status: "valido",
+                            <span class="dado-valor">
+                                ${matricula}
+                            </span>
 
-                texto:
-                    "🟢 Certificado válido",
+                        </div>
 
-                classe:
-                    "status status-valido"
 
-            };
+                        <div class="dado">
 
-        }
+                            <span class="dado-label">
+                                Cargo
+                            </span>
 
+                            <span class="dado-valor">
+                                ${funcionario.cargo}
+                            </span>
 
+                        </div>
 
-        // =================================================
-        // CONVERTER DATA
-        // =================================================
+                    </div>
 
+                </section>
 
-        const partes =
-            String(vencimento).split("/");
 
+            `;
 
-        if (
-            partes.length !== 3
-        ) {
 
+            // =================================================
+            // 7. CARD DO ASO
+            // =================================================
 
-            return {
+            html += `
 
-                status: "valido",
+                <section class="aso-card">
 
-                texto:
-                    "🟢 Certificado válido",
+                    <div class="aso-titulo">
 
-                classe:
-                    "status status-valido"
+                        <h2>
+                            🩺 ASO — Exame Ocupacional
+                        </h2>
 
-            };
+                        <span class="aso-icone">
+                            🩺
+                        </span>
 
-        }
+                    </div>
 
+            `;
 
-        const dia =
-            parseInt(
-                partes[0],
-                10
-            );
 
+            if (aso) {
 
-        const mes =
-            parseInt(
-                partes[1],
-                10
-            );
 
+                // ---------------------------------------------
+                // PARECER
+                // ---------------------------------------------
 
-        const ano =
-            parseInt(
-                partes[2],
-                10
-            );
+                const parecerOriginal =
+                    aso.parecer || "Não informado";
 
 
-        if (
-            isNaN(dia) ||
-            isNaN(mes) ||
-            isNaN(ano)
-        ) {
+                const parecer =
+                    parecerOriginal
+                        .trim()
+                        .toUpperCase();
 
 
-            return {
+                let classeParecer =
+                    "aso-outro";
 
-                status: "valido",
 
-                texto:
-                    "🟢 Certificado válido",
+                let iconeParecer =
+                    "⚪";
 
-                classe:
-                    "status status-valido"
 
-            };
+                if (
+                    parecer.includes("APTO COM RESTRI")
+                ) {
 
-        }
+                    classeParecer =
+                        "aso-restricao";
 
-
-
-        const dataVencimento =
-            new Date(
-                ano,
-                mes - 1,
-                dia
-            );
-
-
-        const hoje =
-            new Date();
-
-
-        hoje.setHours(
-            0,
-            0,
-            0,
-            0
-        );
-
-
-
-        // =================================================
-        // DIAS RESTANTES
-        // =================================================
-
-
-        const diferenca =
-            dataVencimento -
-            hoje;
-
-
-        const diasRestantes =
-            Math.ceil(
-                diferenca /
-                (
-                    1000 *
-                    60 *
-                    60 *
-                    24
-                )
-            );
-
-
-
-        // =================================================
-        // VENCIDO
-        // =================================================
-
-
-        if (
-            diasRestantes < 0
-        ) {
-
-
-            return {
-
-                status: "vencido",
-
-                texto:
-                    "🔴 Certificado vencido",
-
-                classe:
-                    "status status-vencido"
-
-            };
-
-        }
-
-
-
-        // =================================================
-        // PRÓXIMO DO VENCIMENTO
-        // =================================================
-
-
-        if (
-            diasRestantes <= 90
-        ) {
-
-
-            return {
-
-                status: "proximo",
-
-                texto:
-                    "🟡 Próximo do vencimento",
-
-                classe:
-                    "status status-proximo"
-
-            };
-
-        }
-
-
-
-        // =================================================
-        // VÁLIDO
-        // =================================================
-
-
-        return {
-
-            status: "valido",
-
-            texto:
-                "🟢 Certificado válido",
-
-            classe:
-                "status status-valido"
-
-        };
-
-    }
-
-
-
-    // =====================================================
-    // RENDERIZAR CERTIFICADOS
-    // =====================================================
-
-    function renderizarCertificados() {
-
-
-        const lista =
-            document.getElementById(
-                "listaCertificados"
-            );
-
-
-        const contador =
-            document.getElementById(
-                "contador"
-            );
-
-
-        const campoBusca =
-            document.getElementById(
-                "campoBusca"
-            );
-
-
-        if (
-            !lista
-        ) {
-
-            return;
-
-        }
-
-
-
-        const busca =
-            campoBusca
-                ? campoBusca.value
-                    .toLowerCase()
-                    .trim()
-                : "";
-
-
-
-        // =================================================
-        // FILTRAR
-        // =================================================
-
-
-        const filtrados =
-            todosCertificados.filter(
-                certificado => {
-
-
-                    // -----------------------------------------
-                    // STATUS
-                    // -----------------------------------------
-
-
-                    if (
-                        filtroAtual !== "todos" &&
-                        certificado.status !== filtroAtual
-                    ) {
-
-                        return false;
-
-                    }
-
-
-
-                    // -----------------------------------------
-                    // BUSCA
-                    // -----------------------------------------
-
-
-                    if (
-                        busca &&
-                        !String(
-                            certificado.curso || ""
-                        )
-                        .toLowerCase()
-                        .includes(
-                            busca
-                        )
-                    ) {
-
-                        return false;
-
-                    }
-
-
-                    return true;
+                    iconeParecer =
+                        "🟡";
 
                 }
-            );
+
+                else if (
+                    parecer.includes("INAPTO")
+                ) {
+
+                    classeParecer =
+                        "aso-inapto";
+
+                    iconeParecer =
+                        "🔴";
+
+                }
+
+                else if (
+                    parecer.includes("APTO")
+                ) {
+
+                    classeParecer =
+                        "aso-apto";
+
+                    iconeParecer =
+                        "🟢";
+
+                }
 
 
+                html += `
 
-        // =================================================
-        // CONTADOR
-        // =================================================
-
-
-        contador.textContent =
-            filtrados.length +
-            " certificado(s)";
+                    <div class="aso-informacoes">
 
 
+                        <div class="aso-informacao">
 
-        // =================================================
-        // NENHUM RESULTADO
-        // =================================================
+                            <span class="aso-label">
+                                Data do ASO
+                            </span>
+
+                            <span class="aso-valor">
+                                ${aso.data || "Não informado"}
+                            </span>
+
+                        </div>
 
 
-        if (
-            filtrados.length === 0
-        ) {
+                        <div class="aso-informacao">
+
+                            <span class="aso-label">
+                                Tipo do exame
+                            </span>
+
+                            <span class="aso-valor">
+                                ${aso.tipo || "Não informado"}
+                            </span>
+
+                        </div>
 
 
-            lista.innerHTML = `
+                        <div class="aso-informacao">
 
-                <div class="sem-resultados">
+                            <span class="aso-label">
+                                Parecer
+                            </span>
 
-                    <strong>
-                        Nenhum certificado encontrado.
-                    </strong>
+                            <span class="aso-valor">
 
-                    <br>
+                                <span class="aso-parecer ${classeParecer}">
 
-                    <small>
-                        Tente alterar o filtro ou a busca.
-                    </small>
+                                    ${iconeParecer}
+                                    ${parecerOriginal}
+
+                                </span>
+
+                            </span>
+
+                        </div>
+
+
+                    </div>
+
+                `;
+
+
+            }
+
+            else {
+
+
+                html += `
+
+                    <div class="aso-sem-registro">
+
+                        ⚠️ Não há registro de ASO disponível
+                        para esta matrícula.
+
+                    </div>
+
+                `;
+
+            }
+
+
+            html += `
+
+                </section>
+
+            `;
+
+
+            // =================================================
+            // 8. TÍTULO CERTIFICADOS
+            // =================================================
+
+            html += `
+
+                <div class="titulo-certificados">
+
+                    <h2>
+                        Certificados
+                    </h2>
+
+                    <span class="contador">
+
+                        ${funcionario.certificados.length}
+
+                        certificado(s)
+
+                    </span>
 
                 </div>
 
             `;
 
 
-            return;
+            // =================================================
+            // 9. CERTIFICADOS
+            // =================================================
 
-        }
-
-
-
-        lista.innerHTML = "";
-
+            funcionario.certificados.forEach(
+                certificado => {
 
 
-        // =================================================
-        // CRIAR CARDS
-        // =================================================
+                    // -----------------------------------------
+                    // DATA DE VENCIMENTO
+                    // -----------------------------------------
+
+                    let diasRestantes = null;
 
 
-        filtrados.forEach(
-            certificado => {
+                    if (
+                        certificado.vencimento &&
+                        certificado.vencimento.trim() !== ""
+                    ) {
 
 
-                const card =
-                    document.createElement(
-                        "article"
-                    );
+                        const partes =
+                            certificado.vencimento.split("/");
 
 
-                card.className =
-                    "certificado";
+                        if (
+                            partes.length === 3 &&
+                            !isNaN(partes[0]) &&
+                            !isNaN(partes[1]) &&
+                            !isNaN(partes[2])
+                        ) {
 
 
-
-                // =============================================
-                // BOTÃO OU AVISO
-                // =============================================
-
-
-                let documentoHTML = "";
-
+                            const dataVencimento =
+                                new Date(
+                                    partes[2],
+                                    partes[1] - 1,
+                                    partes[0]
+                                );
 
 
-                if (
-                    certificado.link &&
-                    String(certificado.link).trim() !== ""
-                ) {
+                            const hoje =
+                                new Date();
 
 
-                    documentoHTML = `
+                            hoje.setHours(
+                                0,
+                                0,
+                                0,
+                                0
+                            );
 
-                        <a
-                            class="botao-pdf"
-                            href="${escapeHTML(
-                                certificado.link
-                            )}"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                        >
 
-                            📄 Ver certificado
+                            const diferenca =
+                                dataVencimento - hoje;
 
-                        </a>
+
+                            diasRestantes =
+                                Math.ceil(
+                                    diferenca /
+                                    (1000 * 60 * 60 * 24)
+                                );
+
+                        }
+
+                    }
+
+
+                    // -----------------------------------------
+                    // STATUS
+                    // -----------------------------------------
+
+                    let statusTexto;
+                    let statusClasse;
+
+
+                    // Sem vencimento = válido / indeterminado
+                    if (
+                        diasRestantes === null
+                    ) {
+
+                        statusTexto =
+                            "🟢 Certificado válido";
+
+                        statusClasse =
+                            "status status-valido";
+
+                    }
+
+
+                    else if (
+                        diasRestantes < 0
+                    ) {
+
+                        statusTexto =
+                            "🔴 Certificado vencido";
+
+                        statusClasse =
+                            "status status-vencido";
+
+                    }
+
+
+                    else if (
+                        diasRestantes <= 90
+                    ) {
+
+                        statusTexto =
+                            "🟡 Próximo do vencimento";
+
+                        statusClasse =
+                            "status status-proximo";
+
+                    }
+
+
+                    else {
+
+                        statusTexto =
+                            "🟢 Certificado válido";
+
+                        statusClasse =
+                            "status status-valido";
+
+                    }
+
+
+                    // -----------------------------------------
+                    // BOTÃO DO CERTIFICADO
+                    // -----------------------------------------
+
+                    let botaoCertificado;
+
+
+                    if (
+                        certificado.link &&
+                        certificado.link.trim() !== ""
+                    ) {
+
+                        botaoCertificado = `
+
+                            <a
+                                class="botao-pdf"
+                                href="${certificado.link}"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                            >
+
+                                📄 Ver certificado
+
+                            </a>
+
+                        `;
+
+                    }
+
+                    else {
+
+                        botaoCertificado = `
+
+                            <span class="botao-indisponivel">
+
+                                📄 Certificado não disponível
+
+                            </span>
+
+                        `;
+
+                    }
+
+
+                    // -----------------------------------------
+                    // CARD
+                    // -----------------------------------------
+
+                    html += `
+
+                        <article class="certificado">
+
+
+                            <div class="curso">
+
+                                ${certificado.curso}
+
+                            </div>
+
+
+                            <div class="informacoes">
+
+
+                                <div class="informacao">
+
+                                    <span class="informacao-label">
+                                        Conclusão
+                                    </span>
+
+                                    <span class="informacao-valor">
+                                        ${certificado.conclusao || "Não informado"}
+                                    </span>
+
+                                </div>
+
+
+                                <div class="informacao">
+
+                                    <span class="informacao-label">
+                                        Vencimento
+                                    </span>
+
+                                    <span class="informacao-valor">
+
+                                        ${
+                                            certificado.vencimento &&
+                                            certificado.vencimento.trim() !== ""
+                                            ? certificado.vencimento
+                                            : "Indeterminado"
+                                        }
+
+                                    </span>
+
+                                </div>
+
+
+                            </div>
+
+
+                            <div class="${statusClasse}">
+
+                                ${statusTexto}
+
+                            </div>
+
+
+                            <br>
+
+
+                            ${botaoCertificado}
+
+
+                        </article>
 
                     `;
 
                 }
+            );
 
 
-                else {
+            // =================================================
+            // 10. MOSTRAR NA TELA
+            // =================================================
 
+            conteudo.innerHTML =
+                html;
 
-                    documentoHTML = `
 
-                        <div class="sem-documento">
+        })
 
-                            ⚠️ Documento não disponível
-                            para visualização online.
 
-                        </div>
+        // =====================================================
+        // 11. ERRO
+        // =====================================================
 
-                    `;
+        .catch(erro => {
 
-                }
+            console.error(erro);
 
+            conteudo.innerHTML = `
 
+                <div class="erro">
 
-                // =============================================
-                // HTML DO CARD
-                // =============================================
+                    <h2>
+                        Erro ao carregar os dados
+                    </h2>
 
+                    <p>
+                        Tente novamente mais tarde.
+                    </p>
 
-                card.innerHTML = `
+                </div>
 
-                    <div class="curso">
+            `;
 
-                        ${escapeHTML(
-                            certificado.curso
-                        )}
-
-                    </div>
-
-
-
-                    <div class="informacoes">
-
-
-                        <div class="informacao">
-
-                            <span class="informacao-label">
-                                Conclusão
-                            </span>
-
-
-                            <span class="informacao-valor">
-
-                                ${escapeHTML(
-                                    certificado.conclusao || "-"
-                                )}
-
-                            </span>
-
-                        </div>
-
-
-
-                        <div class="informacao">
-
-                            <span class="informacao-label">
-                                Vencimento
-                            </span>
-
-
-                            <span class="informacao-valor">
-
-                                ${
-                                    certificado.vencimento &&
-                                    String(certificado.vencimento).trim() !== ""
-                                    ?
-                                    escapeHTML(certificado.vencimento)
-                                    :
-                                    "Indeterminado"
-                                }
-
-                            </span>
-
-                        </div>
-
-
-                    </div>
-
-
-
-                    <div class="${certificado.statusClasse}">
-
-                        ${certificado.statusTexto}
-
-                    </div>
-
-
-                    <br>
-
-
-                    ${documentoHTML}
-
-                `;
-
-
-                lista.appendChild(
-                    card
-                );
-
-            }
-        );
-
-    }
-
-
-
-    // =====================================================
-    // PROTEGER TEXTO HTML
-    // =====================================================
-
-    function escapeHTML(texto) {
-
-
-        return String(
-            texto ?? ""
-        )
-
-        .replace(
-            /&/g,
-            "&amp;"
-        )
-
-        .replace(
-            /</g,
-            "&lt;"
-        )
-
-        .replace(
-            />/g,
-            "&gt;"
-        )
-
-        .replace(
-            /"/g,
-            "&quot;"
-        )
-
-        .replace(
-            /'/g,
-            "&#039;"
-        );
+        });
 
     }
 
