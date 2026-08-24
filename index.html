@@ -4,9 +4,7 @@
 <head>
 
     <meta charset="UTF-8">
-
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>Consulta de Certificados | Galáxia Navegação</title>
@@ -21,10 +19,9 @@
 
         body {
             margin: 0;
-            padding: 0;
             font-family: Arial, Helvetica, sans-serif;
-            background: #f2f5f8;
-            color: #222;
+            background: #f3f6fa;
+            color: #1f2933;
         }
 
 
@@ -34,18 +31,18 @@
 
         .topo {
             background: #ffffff;
-            border-bottom: 5px solid #f2c300;
-            padding: 22px 20px 18px;
+            border-bottom: 4px solid #f2c300;
+            padding: 25px 20px 22px;
             text-align: center;
         }
 
 
         .logo {
-            max-width: 270px;
-            width: 80%;
+            max-width: 255px;
+            width: 78%;
             height: auto;
             display: block;
-            margin: 0 auto 15px auto;
+            margin: 0 auto 14px;
         }
 
 
@@ -53,13 +50,13 @@
             margin: 0;
             color: #174a8b;
             font-size: 22px;
-            font-weight: bold;
+            font-weight: 700;
         }
 
 
         .subtitulo-site {
-            margin: 6px 0 0;
-            color: #777;
+            margin: 7px 0 0;
+            color: #7a8490;
             font-size: 14px;
         }
 
@@ -70,8 +67,8 @@
 
         .container {
             width: 100%;
-            max-width: 900px;
-            margin: 30px auto;
+            max-width: 950px;
+            margin: 32px auto;
             padding: 0 18px;
         }
 
@@ -81,53 +78,190 @@
         ===================================================== */
 
         .funcionario {
+            position: relative;
+            overflow: hidden;
+
             background: #ffffff;
-            border-radius: 14px;
-            padding: 25px;
-            margin-bottom: 28px;
-            box-shadow: 0 3px 15px rgba(0,0,0,0.08);
-            border-left: 6px solid #174a8b;
+
+            border-radius: 18px;
+
+            padding: 28px;
+
+            margin-bottom: 30px;
+
+            box-shadow:
+                0 5px 20px rgba(23, 74, 139, 0.09);
+
+            border: 1px solid #e3e8ee;
+        }
+
+
+        .funcionario::before {
+            content: "";
+
+            position: absolute;
+
+            top: 0;
+            left: 0;
+            bottom: 0;
+
+            width: 7px;
+
+            background: #174a8b;
+        }
+
+
+        .funcionario-conteudo {
+            padding-left: 8px;
+        }
+
+
+        .etiqueta {
+            display: inline-block;
+
+            font-size: 11px;
+
+            font-weight: bold;
+
+            color: #174a8b;
+
+            background: #edf3fa;
+
+            padding: 6px 10px;
+
+            border-radius: 20px;
+
+            text-transform: uppercase;
+
+            letter-spacing: 0.4px;
+
+            margin-bottom: 12px;
         }
 
 
         .funcionario h1 {
-            margin: 0 0 18px 0;
-            color: #174a8b;
-            font-size: 25px;
-            line-height: 1.25;
+            margin: 0;
+
+            color: #172b4d;
+
+            font-size: 27px;
+
+            line-height: 1.2;
+
+            max-width: 720px;
         }
 
 
-        .dados-funcionario {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 18px;
-        }
+        .cargo {
+            margin-top: 8px;
 
+            color: #667085;
 
-        .dado {
-            flex: 1;
-            min-width: 180px;
-            background: #f5f7fa;
-            border-radius: 9px;
-            padding: 12px 15px;
-        }
-
-
-        .dado-label {
-            display: block;
-            font-size: 12px;
-            color: #777;
-            margin-bottom: 4px;
-            text-transform: uppercase;
-            font-weight: bold;
-        }
-
-
-        .dado-valor {
-            display: block;
-            color: #333;
             font-size: 15px;
+
+            font-weight: 500;
+        }
+
+
+        /* =====================================================
+           INFORMAÇÕES DO FUNCIONÁRIO
+        ===================================================== */
+
+        .resumo-funcionario {
+            display: flex;
+
+            justify-content: space-between;
+
+            align-items: stretch;
+
+            gap: 15px;
+
+            margin-top: 25px;
+        }
+
+
+        .matricula-box {
+            flex: 1;
+
+            background: #f7f9fc;
+
+            border: 1px solid #e3e8ee;
+
+            border-radius: 12px;
+
+            padding: 14px 16px;
+        }
+
+
+        .label {
+            display: block;
+
+            font-size: 10px;
+
+            font-weight: bold;
+
+            color: #7b8491;
+
+            text-transform: uppercase;
+
+            letter-spacing: 0.6px;
+
+            margin-bottom: 5px;
+        }
+
+
+        .matricula {
+            color: #174a8b;
+
+            font-size: 20px;
+
+            font-weight: 700;
+        }
+
+
+        /* =====================================================
+           CONTADOR
+        ===================================================== */
+
+        .contador-box {
+            min-width: 170px;
+
+            background: #174a8b;
+
+            color: #ffffff;
+
+            border-radius: 12px;
+
+            padding: 13px 18px;
+
+            text-align: center;
+        }
+
+
+        .contador-numero {
+            display: block;
+
+            font-size: 28px;
+
+            line-height: 1;
+
+            font-weight: 700;
+
+            margin-bottom: 5px;
+        }
+
+
+        .contador-texto {
+            display: block;
+
+            font-size: 10px;
+
+            text-transform: uppercase;
+
+            letter-spacing: 0.6px;
+
+            opacity: 0.9;
+
             font-weight: bold;
         }
 
@@ -136,85 +270,148 @@
            TÍTULO CERTIFICADOS
         ===================================================== */
 
-        .titulo-certificados {
+        .cabecalho-certificados {
             display: flex;
-            align-items: center;
+
             justify-content: space-between;
-            margin-bottom: 15px;
+
+            align-items: center;
+
+            gap: 15px;
+
+            margin-bottom: 18px;
         }
 
 
-        .titulo-certificados h2 {
+        .titulo-certificados {
             margin: 0;
+
             color: #174a8b;
-            font-size: 21px;
+
+            font-size: 22px;
         }
 
 
-        .contador {
-            background: #174a8b;
-            color: white;
-            padding: 6px 11px;
-            border-radius: 20px;
-            font-size: 12px;
-            font-weight: bold;
+        .subtitulo-certificados {
+            margin: 4px 0 0;
+
+            color: #7a8490;
+
+            font-size: 13px;
         }
 
 
         /* =====================================================
-           CARD DO CERTIFICADO
+           PESQUISA
+        ===================================================== */
+
+        .pesquisa {
+            position: relative;
+
+            margin-bottom: 20px;
+        }
+
+
+        .pesquisa input {
+            width: 100%;
+
+            border: 1px solid #d8dee6;
+
+            border-radius: 10px;
+
+            background: #ffffff;
+
+            padding: 13px 16px 13px 42px;
+
+            font-size: 14px;
+
+            outline: none;
+
+            transition: 0.2s;
+
+            box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+        }
+
+
+        .pesquisa input:focus {
+            border-color: #174a8b;
+
+            box-shadow:
+                0 0 0 3px rgba(23, 74, 139, 0.08);
+        }
+
+
+        .icone-pesquisa {
+            position: absolute;
+
+            left: 15px;
+
+            top: 50%;
+
+            transform: translateY(-50%);
+
+            font-size: 17px;
+
+            color: #7d8793;
+        }
+
+
+        /* =====================================================
+           CARD CERTIFICADO
         ===================================================== */
 
         .certificado {
+            position: relative;
+
             background: #ffffff;
-            border-radius: 12px;
-            padding: 20px;
-            margin-bottom: 15px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.07);
-            border: 1px solid #e1e5e9;
-        }
 
+            border: 1px solid #e0e5eb;
 
-        .curso {
-            color: #174a8b;
-            font-size: 16px;
-            font-weight: bold;
-            line-height: 1.45;
-            margin-bottom: 16px;
-        }
+            border-radius: 14px;
 
+            padding: 21px 22px 21px 25px;
 
-        .informacoes {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 12px;
             margin-bottom: 14px;
+
+            box-shadow:
+                0 3px 12px rgba(0,0,0,0.045);
+
+            overflow: hidden;
+
+            transition: 0.2s;
         }
 
 
-        .informacao {
-            flex: 1;
-            min-width: 150px;
-            background: #f7f8fa;
-            border-radius: 8px;
-            padding: 10px 12px;
+        .certificado:hover {
+            transform: translateY(-2px);
+
+            box-shadow:
+                0 7px 18px rgba(0,0,0,0.08);
         }
 
 
-        .informacao-label {
-            display: block;
-            font-size: 11px;
-            color: #777;
-            margin-bottom: 4px;
-            text-transform: uppercase;
-            font-weight: bold;
+        .certificado::before {
+            content: "";
+
+            position: absolute;
+
+            left: 0;
+            top: 0;
+            bottom: 0;
+
+            width: 5px;
+
+            background: #16833b;
         }
 
 
-        .informacao-valor {
-            font-size: 14px;
-            font-weight: bold;
-            color: #333;
+        .certificado.proximo::before {
+            background: #d59b00;
+        }
+
+
+        .certificado.vencido::before {
+            background: #b00020;
         }
 
 
@@ -223,30 +420,125 @@
         ===================================================== */
 
         .status {
-            display: inline-block;
-            padding: 7px 12px;
-            border-radius: 20px;
-            font-size: 12px;
+            display: inline-flex;
+
+            align-items: center;
+
+            gap: 6px;
+
+            font-size: 11px;
+
             font-weight: bold;
-            margin-bottom: 14px;
+
+            text-transform: uppercase;
+
+            letter-spacing: 0.3px;
+
+            margin-bottom: 12px;
+        }
+
+
+        .status-ponto {
+            width: 8px;
+            height: 8px;
+
+            border-radius: 50%;
+
+            background: #16833b;
         }
 
 
         .status-valido {
-            background: #e7f6ed;
             color: #16833b;
         }
 
 
         .status-proximo {
-            background: #fff6d8;
             color: #9a7000;
         }
 
 
+        .status-proximo .status-ponto {
+            background: #d59b00;
+        }
+
+
         .status-vencido {
-            background: #fde8e8;
             color: #b00020;
+        }
+
+
+        .status-vencido .status-ponto {
+            background: #b00020;
+        }
+
+
+        /* =====================================================
+           CURSO
+        ===================================================== */
+
+        .curso {
+            color: #174a8b;
+
+            font-size: 16px;
+
+            font-weight: 700;
+
+            line-height: 1.45;
+
+            margin-bottom: 17px;
+        }
+
+
+        /* =====================================================
+           DATAS
+        ===================================================== */
+
+        .informacoes {
+            display: flex;
+
+            gap: 12px;
+
+            margin-bottom: 17px;
+        }
+
+
+        .informacao {
+            background: #f7f9fb;
+
+            border-radius: 9px;
+
+            padding: 11px 14px;
+
+            min-width: 150px;
+
+            border: 1px solid #edf0f3;
+        }
+
+
+        .informacao-label {
+            display: block;
+
+            font-size: 10px;
+
+            font-weight: bold;
+
+            color: #7c8793;
+
+            text-transform: uppercase;
+
+            margin-bottom: 5px;
+
+            letter-spacing: 0.4px;
+        }
+
+
+        .informacao-valor {
+            font-size: 14px;
+
+            color: #303b48;
+
+            font-weight: 700;
         }
 
 
@@ -255,21 +547,55 @@
         ===================================================== */
 
         .botao-pdf {
-            display: inline-block;
+            display: inline-flex;
+
+            align-items: center;
+
+            gap: 7px;
+
             background: #174a8b;
+
             color: #ffffff;
+
             text-decoration: none;
-            padding: 11px 17px;
+
+            padding: 10px 16px;
+
             border-radius: 7px;
-            font-size: 14px;
+
+            font-size: 13px;
+
             font-weight: bold;
+
             transition: 0.2s;
         }
 
 
         .botao-pdf:hover {
             background: #123b70;
+
             transform: translateY(-1px);
+        }
+
+
+        /* =====================================================
+           SEM RESULTADOS
+        ===================================================== */
+
+        .sem-resultados {
+            display: none;
+
+            background: #ffffff;
+
+            border-radius: 12px;
+
+            padding: 30px;
+
+            text-align: center;
+
+            color: #777;
+
+            border: 1px solid #e2e6eb;
         }
 
 
@@ -279,11 +605,17 @@
 
         .erro {
             background: #ffffff;
-            border-radius: 14px;
-            padding: 40px 20px;
+
+            border-radius: 15px;
+
+            padding: 45px 20px;
+
             text-align: center;
+
             color: #b00020;
-            box-shadow: 0 3px 15px rgba(0,0,0,0.08);
+
+            box-shadow:
+                0 4px 15px rgba(0,0,0,0.07);
         }
 
 
@@ -298,11 +630,17 @@
 
         .carregando {
             background: #ffffff;
-            border-radius: 14px;
-            padding: 45px 20px;
+
+            border-radius: 15px;
+
+            padding: 50px 20px;
+
             text-align: center;
+
             color: #666;
-            box-shadow: 0 3px 15px rgba(0,0,0,0.08);
+
+            box-shadow:
+                0 4px 15px rgba(0,0,0,0.07);
         }
 
 
@@ -312,9 +650,12 @@
 
         .rodape {
             text-align: center;
+
             padding: 25px 15px 35px;
-            color: #888;
-            font-size: 12px;
+
+            color: #89919b;
+
+            font-size: 11px;
         }
 
 
@@ -325,18 +666,13 @@
         @media (max-width: 600px) {
 
 
-            body {
-                background: #f2f5f8;
-            }
-
-
             .topo {
-                padding: 18px 15px 15px;
+                padding: 20px 15px 18px;
             }
 
 
             .logo {
-                max-width: 220px;
+                max-width: 215px;
             }
 
 
@@ -346,19 +682,19 @@
 
 
             .subtitulo-site {
-                font-size: 13px;
+                font-size: 12px;
             }
 
 
             .container {
                 margin-top: 18px;
+
                 padding: 0 12px;
             }
 
 
             .funcionario {
-                padding: 20px;
-                border-left-width: 5px;
+                padding: 22px 19px;
             }
 
 
@@ -367,23 +703,35 @@
             }
 
 
-            .dados-funcionario {
+            .resumo-funcionario {
                 display: block;
             }
 
 
-            .dado {
+            .matricula-box {
                 margin-bottom: 10px;
             }
 
 
-            .titulo-certificados h2 {
-                font-size: 19px;
+            .contador-box {
+                min-width: 0;
+            }
+
+
+            .cabecalho-certificados {
+                display: block;
+            }
+
+
+            .titulo-certificados {
+                font-size: 20px;
+
+                margin-bottom: 4px;
             }
 
 
             .certificado {
-                padding: 17px;
+                padding: 18px 17px 18px 20px;
             }
 
 
@@ -399,12 +747,15 @@
 
             .informacao {
                 margin-bottom: 8px;
+
+                min-width: 0;
             }
 
 
             .botao-pdf {
                 width: 100%;
-                text-align: center;
+
+                justify-content: center;
             }
 
         }
@@ -432,16 +783,12 @@
 
 
     <h1 class="titulo-site">
-
         Consulta de Certificados
-
     </h1>
 
 
     <p class="subtitulo-site">
-
         Controle de capacitação dos tripulantes
-
     </p>
 
 
@@ -460,9 +807,7 @@
 
 
         <div class="carregando">
-
             Carregando informações...
-
         </div>
 
 
@@ -489,9 +834,8 @@
 
 
     // =====================================================
-    // 1. PEGAR A MATRÍCULA DA URL
+    // 1. PEGAR MATRÍCULA DA URL
     // =====================================================
-
 
     const parametros =
         new URLSearchParams(window.location.search);
@@ -510,7 +854,6 @@
     // 2. VERIFICAR MATRÍCULA
     // =====================================================
 
-
     if (!matricula) {
 
 
@@ -528,14 +871,12 @@
 
         `;
 
-
     }
 
 
     // =====================================================
-    // 3. BUSCAR dados.json
+    // 3. BUSCAR DADOS
     // =====================================================
-
 
     else {
 
@@ -592,11 +933,9 @@
             }
 
 
-
             // =================================================
             // 4. ENCONTRAR FUNCIONÁRIO
             // =================================================
-
 
             const funcionario =
                 dados[matricula];
@@ -627,92 +966,117 @@
             }
 
 
-
             // =================================================
             // 5. CABEÇALHO DO FUNCIONÁRIO
             // =================================================
-
 
             let html = `
 
                 <section class="funcionario">
 
+                    <div class="funcionario-conteudo">
 
-                    <h1>
-                        ${funcionario.nome}
-                    </h1>
-
-
-                    <div class="dados-funcionario">
+                        <span class="etiqueta">
+                            Tripulante
+                        </span>
 
 
-                        <div class="dado">
+                        <h1>
+                            ${funcionario.nome}
+                        </h1>
 
-                            <span class="dado-label">
-                                Matrícula
-                            </span>
 
-                            <span class="dado-valor">
-                                ${matricula}
-                            </span>
-
+                        <div class="cargo">
+                            ${funcionario.cargo}
                         </div>
 
 
-                        <div class="dado">
+                        <div class="resumo-funcionario">
 
-                            <span class="dado-label">
-                                Cargo
-                            </span>
 
-                            <span class="dado-valor">
-                                ${funcionario.cargo}
-                            </span>
+                            <div class="matricula-box">
+
+                                <span class="label">
+                                    Matrícula
+                                </span>
+
+                                <span class="matricula">
+                                    ${matricula}
+                                </span>
+
+                            </div>
+
+
+                            <div class="contador-box">
+
+                                <span class="contador-numero">
+                                    ${funcionario.certificados.length}
+                                </span>
+
+                                <span class="contador-texto">
+                                    Certificados
+                                </span>
+
+                            </div>
+
 
                         </div>
-
 
                     </div>
-
 
                 </section>
 
 
 
-                <div class="titulo-certificados">
+                <div class="cabecalho-certificados">
 
-                    <h2>
-                        Certificados
-                    </h2>
+                    <div>
 
+                        <h2 class="titulo-certificados">
+                            Certificados
+                        </h2>
 
-                    <span class="contador">
+                        <p class="subtitulo-certificados">
+                            Consulte os certificados disponíveis
+                        </p>
 
-                        ${funcionario.certificados.length}
-
-                        certificado(s)
-
-                    </span>
+                    </div>
 
                 </div>
 
-            `;
 
+
+                <div class="pesquisa">
+
+                    <span class="icone-pesquisa">
+                        🔎
+                    </span>
+
+                    <input
+                        type="text"
+                        id="pesquisaCertificado"
+                        placeholder="Pesquisar certificado..."
+                    >
+
+                </div>
+
+
+                <div id="listaCertificados">
+
+            `;
 
 
             // =================================================
             // 6. CERTIFICADOS
             // =================================================
 
-
             funcionario.certificados.forEach(
-                certificado => {
+                (certificado, indice) => {
 
 
                     // -----------------------------------------
-                    // CONVERTER DATA DE VENCIMENTO
+                    // DATA DE VENCIMENTO
                     // -----------------------------------------
-
 
                     const partes =
                         certificado.vencimento.split("/");
@@ -749,26 +1113,28 @@
                         );
 
 
-
                     // -----------------------------------------
-                    // DEFINIR STATUS
+                    // STATUS
                     // -----------------------------------------
-
 
                     let statusTexto;
-
                     let statusClasse;
+                    let classeCard;
 
 
                     if (diasRestantes < 0) {
 
 
                         statusTexto =
-                            "🔴 Certificado vencido";
+                            "Vencido";
 
 
                         statusClasse =
                             "status status-vencido";
+
+
+                        classeCard =
+                            "certificado vencido";
 
 
                     }
@@ -778,11 +1144,15 @@
 
 
                         statusTexto =
-                            "🟡 Próximo do vencimento";
+                            "Próximo do vencimento";
 
 
                         statusClasse =
                             "status status-proximo";
+
+
+                        classeCard =
+                            "certificado proximo";
 
 
                     }
@@ -792,24 +1162,38 @@
 
 
                         statusTexto =
-                            "🟢 Certificado válido";
+                            "Válido";
 
 
                         statusClasse =
                             "status status-valido";
 
+
+                        classeCard =
+                            "certificado";
+
                     }
 
 
-
                     // -----------------------------------------
-                    // MONTAR CARD
+                    // CARD
                     // -----------------------------------------
-
 
                     html += `
 
-                        <article class="certificado">
+                        <article
+                            class="${classeCard}"
+                            data-curso="${certificado.curso.toLowerCase()}"
+                        >
+
+
+                            <div class="${statusClasse}">
+
+                                <span class="status-ponto"></span>
+
+                                ${statusTexto}
+
+                            </div>
 
 
                             <div class="curso">
@@ -851,16 +1235,6 @@
                             </div>
 
 
-                            <div class="${statusClasse}">
-
-                                ${statusTexto}
-
-                            </div>
-
-
-                            <br>
-
-
                             <a
                                 class="botao-pdf"
                                 href="${certificado.link}"
@@ -881,23 +1255,140 @@
             );
 
 
+            // =================================================
+            // 7. FINALIZAR LISTA
+            // =================================================
+
+            html += `
+
+                </div>
+
+
+                <div
+                    id="semResultados"
+                    class="sem-resultados"
+                >
+
+                    <strong>
+                        Nenhum certificado encontrado.
+                    </strong>
+
+                    <br>
+
+                    <small>
+                        Tente pesquisar por outro termo.
+                    </small>
+
+                </div>
+
+            `;
+
 
             // =================================================
-            // 7. MOSTRAR NA TELA
+            // 8. COLOCAR NA TELA
             // =================================================
-
 
             conteudo.innerHTML =
                 html;
+
+
+
+            // =================================================
+            // 9. PESQUISA
+            // =================================================
+
+            const campoPesquisa =
+                document.getElementById(
+                    "pesquisaCertificado"
+                );
+
+
+            const cards =
+                document.querySelectorAll(
+                    ".certificado"
+                );
+
+
+            const semResultados =
+                document.getElementById(
+                    "semResultados"
+                );
+
+
+            campoPesquisa.addEventListener(
+                "input",
+                function () {
+
+
+                    const termo =
+                        this.value
+                            .toLowerCase()
+                            .trim();
+
+
+                    let encontrados = 0;
+
+
+                    cards.forEach(card => {
+
+
+                        const curso =
+                            card.dataset.curso;
+
+
+                        if (
+                            curso.includes(termo)
+                        ) {
+
+
+                            card.style.display =
+                                "";
+
+
+                            encontrados++;
+
+                        }
+
+
+                        else {
+
+
+                            card.style.display =
+                                "none";
+
+                        }
+
+                    });
+
+
+                    if (encontrados === 0) {
+
+
+                        semResultados.style.display =
+                            "block";
+
+
+                    }
+
+
+                    else {
+
+
+                        semResultados.style.display =
+                            "none";
+
+                    }
+
+                }
+            );
 
 
         })
 
 
         // =====================================================
-        // 8. ERRO
+        // 10. ERRO
         // =====================================================
-
 
         .catch(erro => {
 
