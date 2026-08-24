@@ -4,7 +4,9 @@
 <head>
 
     <meta charset="UTF-8">
+
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>Consulta de Certificados | Galáxia Navegação</title>
@@ -19,9 +21,16 @@
 
         body {
             margin: 0;
-            font-family: Arial, Helvetica, sans-serif;
-            background: #f3f6fa;
-            color: #1f2933;
+            padding: 0;
+
+            font-family:
+                Arial,
+                Helvetica,
+                sans-serif;
+
+            background: #f2f5f8;
+
+            color: #222;
         }
 
 
@@ -31,32 +40,44 @@
 
         .topo {
             background: #ffffff;
-            border-bottom: 4px solid #f2c300;
-            padding: 25px 20px 22px;
+
+            border-bottom: 5px solid #f2c300;
+
+            padding: 22px 20px 18px;
+
             text-align: center;
         }
 
 
         .logo {
-            max-width: 255px;
-            width: 78%;
+            max-width: 270px;
+
+            width: 80%;
+
             height: auto;
+
             display: block;
-            margin: 0 auto 14px;
+
+            margin: 0 auto 15px auto;
         }
 
 
         .titulo-site {
             margin: 0;
+
             color: #174a8b;
+
             font-size: 22px;
-            font-weight: 700;
+
+            font-weight: bold;
         }
 
 
         .subtitulo-site {
-            margin: 7px 0 0;
-            color: #7a8490;
+            margin: 6px 0 0;
+
+            color: #777;
+
             font-size: 14px;
         }
 
@@ -67,8 +88,11 @@
 
         .container {
             width: 100%;
-            max-width: 950px;
-            margin: 32px auto;
+
+            max-width: 900px;
+
+            margin: 30px auto;
+
             padding: 0 18px;
         }
 
@@ -78,340 +102,365 @@
         ===================================================== */
 
         .funcionario {
-            position: relative;
-            overflow: hidden;
-
             background: #ffffff;
 
-            border-radius: 18px;
+            border-radius: 14px;
 
-            padding: 28px;
+            padding: 25px;
 
-            margin-bottom: 30px;
+            margin-bottom: 25px;
 
             box-shadow:
-                0 5px 20px rgba(23, 74, 139, 0.09);
+                0 3px 15px rgba(0,0,0,0.08);
 
-            border: 1px solid #e3e8ee;
-        }
-
-
-        .funcionario::before {
-            content: "";
-
-            position: absolute;
-
-            top: 0;
-            left: 0;
-            bottom: 0;
-
-            width: 7px;
-
-            background: #174a8b;
-        }
-
-
-        .funcionario-conteudo {
-            padding-left: 8px;
-        }
-
-
-        .etiqueta {
-            display: inline-block;
-
-            font-size: 11px;
-
-            font-weight: bold;
-
-            color: #174a8b;
-
-            background: #edf3fa;
-
-            padding: 6px 10px;
-
-            border-radius: 20px;
-
-            text-transform: uppercase;
-
-            letter-spacing: 0.4px;
-
-            margin-bottom: 12px;
+            border-left: 6px solid #174a8b;
         }
 
 
         .funcionario h1 {
-            margin: 0;
+            margin: 0 0 18px 0;
 
-            color: #172b4d;
+            color: #174a8b;
 
-            font-size: 27px;
+            font-size: 25px;
 
-            line-height: 1.2;
-
-            max-width: 720px;
+            line-height: 1.25;
         }
 
 
-        .cargo {
-            margin-top: 8px;
+        .dados-funcionario {
+            display: flex;
 
-            color: #667085;
+            flex-wrap: wrap;
+
+            gap: 18px;
+        }
+
+
+        .dado {
+            flex: 1;
+
+            min-width: 180px;
+
+            background: #f5f7fa;
+
+            border-radius: 9px;
+
+            padding: 12px 15px;
+        }
+
+
+        .dado-label {
+            display: block;
+
+            font-size: 12px;
+
+            color: #777;
+
+            margin-bottom: 4px;
+
+            text-transform: uppercase;
+
+            font-weight: bold;
+        }
+
+
+        .dado-valor {
+            display: block;
+
+            color: #333;
 
             font-size: 15px;
 
-            font-weight: 500;
-        }
-
-
-        /* =====================================================
-           INFORMAÇÕES DO FUNCIONÁRIO
-        ===================================================== */
-
-        .resumo-funcionario {
-            display: flex;
-
-            justify-content: space-between;
-
-            align-items: stretch;
-
-            gap: 15px;
-
-            margin-top: 25px;
-        }
-
-
-        .matricula-box {
-            flex: 1;
-
-            background: #f7f9fc;
-
-            border: 1px solid #e3e8ee;
-
-            border-radius: 12px;
-
-            padding: 14px 16px;
-        }
-
-
-        .label {
-            display: block;
-
-            font-size: 10px;
-
             font-weight: bold;
-
-            color: #7b8491;
-
-            text-transform: uppercase;
-
-            letter-spacing: 0.6px;
-
-            margin-bottom: 5px;
-        }
-
-
-        .matricula {
-            color: #174a8b;
-
-            font-size: 20px;
-
-            font-weight: 700;
         }
 
 
         /* =====================================================
-           CONTADOR
+           RESUMO
         ===================================================== */
 
-        .contador-box {
-            min-width: 170px;
+        .resumo {
+            display: grid;
 
-            background: #174a8b;
+            grid-template-columns:
+                repeat(4, 1fr);
 
-            color: #ffffff;
+            gap: 12px;
+
+            margin-bottom: 28px;
+        }
+
+
+        .resumo-card {
+            background: #ffffff;
 
             border-radius: 12px;
 
-            padding: 13px 18px;
+            padding: 16px 10px;
 
             text-align: center;
+
+            box-shadow:
+                0 2px 10px rgba(0,0,0,0.06);
+
+            border: 1px solid #e1e5e9;
         }
 
 
-        .contador-numero {
+        .resumo-numero {
             display: block;
 
-            font-size: 28px;
+            font-size: 25px;
 
-            line-height: 1;
+            font-weight: bold;
 
-            font-weight: 700;
+            color: #174a8b;
 
             margin-bottom: 5px;
         }
 
 
-        .contador-texto {
+        .resumo-label {
             display: block;
 
-            font-size: 10px;
+            font-size: 11px;
+
+            color: #777;
 
             text-transform: uppercase;
-
-            letter-spacing: 0.6px;
-
-            opacity: 0.9;
 
             font-weight: bold;
         }
 
 
+        .resumo-valido .resumo-numero {
+            color: #16833b;
+        }
+
+
+        .resumo-proximo .resumo-numero {
+            color: #9a7000;
+        }
+
+
+        .resumo-vencido .resumo-numero {
+            color: #b00020;
+        }
+
+
         /* =====================================================
-           TÍTULO CERTIFICADOS
+           TÍTULO
         ===================================================== */
 
-        .cabecalho-certificados {
+        .titulo-certificados {
             display: flex;
-
-            justify-content: space-between;
 
             align-items: center;
 
+            justify-content: space-between;
+
             gap: 15px;
+
+            margin-bottom: 15px;
+        }
+
+
+        .titulo-certificados h2 {
+            margin: 0;
+
+            color: #174a8b;
+
+            font-size: 21px;
+        }
+
+
+        .contador {
+            background: #174a8b;
+
+            color: white;
+
+            padding: 6px 11px;
+
+            border-radius: 20px;
+
+            font-size: 12px;
+
+            font-weight: bold;
+
+            white-space: nowrap;
+        }
+
+
+        /* =====================================================
+           BUSCA
+        ===================================================== */
+
+        .busca {
+            background: #ffffff;
+
+            padding: 15px;
+
+            border-radius: 12px;
+
+            margin-bottom: 15px;
+
+            box-shadow:
+                0 2px 8px rgba(0,0,0,0.05);
+        }
+
+
+        .campo-busca {
+            width: 100%;
+
+            border: 1px solid #d5dbe0;
+
+            border-radius: 8px;
+
+            padding: 12px 14px;
+
+            font-size: 14px;
+
+            outline: none;
+        }
+
+
+        .campo-busca:focus {
+            border-color: #174a8b;
+
+            box-shadow:
+                0 0 0 2px rgba(23,74,139,0.10);
+        }
+
+
+        /* =====================================================
+           FILTROS
+        ===================================================== */
+
+        .filtros {
+            display: flex;
+
+            flex-wrap: wrap;
+
+            gap: 8px;
 
             margin-bottom: 18px;
         }
 
 
-        .titulo-certificados {
-            margin: 0;
-
-            color: #174a8b;
-
-            font-size: 22px;
-        }
-
-
-        .subtitulo-certificados {
-            margin: 4px 0 0;
-
-            color: #7a8490;
-
-            font-size: 13px;
-        }
-
-
-        /* =====================================================
-           PESQUISA
-        ===================================================== */
-
-        .pesquisa {
-            position: relative;
-
-            margin-bottom: 20px;
-        }
-
-
-        .pesquisa input {
-            width: 100%;
-
-            border: 1px solid #d8dee6;
-
-            border-radius: 10px;
+        .filtro {
+            border: 1px solid #d7dce1;
 
             background: #ffffff;
 
-            padding: 13px 16px 13px 42px;
+            color: #555;
 
-            font-size: 14px;
+            padding: 8px 13px;
 
-            outline: none;
+            border-radius: 20px;
 
-            transition: 0.2s;
+            font-size: 12px;
 
-            box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+            font-weight: bold;
+
+            cursor: pointer;
         }
 
 
-        .pesquisa input:focus {
+        .filtro:hover {
             border-color: #174a8b;
 
-            box-shadow:
-                0 0 0 3px rgba(23, 74, 139, 0.08);
+            color: #174a8b;
         }
 
 
-        .icone-pesquisa {
-            position: absolute;
+        .filtro.ativo {
+            background: #174a8b;
 
-            left: 15px;
+            color: #ffffff;
 
-            top: 50%;
-
-            transform: translateY(-50%);
-
-            font-size: 17px;
-
-            color: #7d8793;
+            border-color: #174a8b;
         }
 
 
         /* =====================================================
-           CARD CERTIFICADO
+           CERTIFICADO
         ===================================================== */
 
         .certificado {
-            position: relative;
-
             background: #ffffff;
 
-            border: 1px solid #e0e5eb;
+            border-radius: 12px;
 
-            border-radius: 14px;
+            padding: 20px;
 
-            padding: 21px 22px 21px 25px;
+            margin-bottom: 15px;
+
+            box-shadow:
+                0 2px 10px rgba(0,0,0,0.07);
+
+            border: 1px solid #e1e5e9;
+        }
+
+
+        .curso {
+            color: #174a8b;
+
+            font-size: 16px;
+
+            font-weight: bold;
+
+            line-height: 1.45;
+
+            margin-bottom: 16px;
+        }
+
+
+        .informacoes {
+            display: flex;
+
+            flex-wrap: wrap;
+
+            gap: 12px;
 
             margin-bottom: 14px;
-
-            box-shadow:
-                0 3px 12px rgba(0,0,0,0.045);
-
-            overflow: hidden;
-
-            transition: 0.2s;
         }
 
 
-        .certificado:hover {
-            transform: translateY(-2px);
+        .informacao {
+            flex: 1;
 
-            box-shadow:
-                0 7px 18px rgba(0,0,0,0.08);
+            min-width: 150px;
+
+            background: #f7f8fa;
+
+            border-radius: 8px;
+
+            padding: 10px 12px;
         }
 
 
-        .certificado::before {
-            content: "";
+        .informacao-label {
+            display: block;
 
-            position: absolute;
+            font-size: 11px;
 
-            left: 0;
-            top: 0;
-            bottom: 0;
+            color: #777;
 
-            width: 5px;
+            margin-bottom: 4px;
 
-            background: #16833b;
+            text-transform: uppercase;
+
+            font-weight: bold;
         }
 
 
-        .certificado.proximo::before {
-            background: #d59b00;
-        }
+        .informacao-valor {
+            font-size: 14px;
 
+            font-weight: bold;
 
-        .certificado.vencido::before {
-            background: #b00020;
+            color: #333;
         }
 
 
@@ -420,138 +469,70 @@
         ===================================================== */
 
         .status {
-            display: inline-flex;
+            display: inline-block;
 
-            align-items: center;
+            padding: 7px 12px;
 
-            gap: 6px;
+            border-radius: 20px;
 
-            font-size: 11px;
+            font-size: 12px;
 
             font-weight: bold;
 
-            text-transform: uppercase;
-
-            letter-spacing: 0.3px;
-
-            margin-bottom: 12px;
-        }
-
-
-        .status-ponto {
-            width: 8px;
-            height: 8px;
-
-            border-radius: 50%;
-
-            background: #16833b;
+            margin-bottom: 14px;
         }
 
 
         .status-valido {
+            background: #e7f6ed;
+
             color: #16833b;
         }
 
 
         .status-proximo {
+            background: #fff6d8;
+
             color: #9a7000;
         }
 
 
-        .status-proximo .status-ponto {
-            background: #d59b00;
-        }
-
-
         .status-vencido {
+            background: #fde8e8;
+
             color: #b00020;
         }
 
 
-        .status-vencido .status-ponto {
-            background: #b00020;
-        }
-
-
         /* =====================================================
-           CURSO
+           DOCUMENTO NÃO DISPONÍVEL
         ===================================================== */
 
-        .curso {
-            color: #174a8b;
+        .sem-documento {
+            margin-top: 2px;
 
-            font-size: 16px;
+            padding: 11px 13px;
 
-            font-weight: 700;
+            border-radius: 8px;
 
-            line-height: 1.45;
+            background: #fff8e5;
 
-            margin-bottom: 17px;
+            border: 1px solid #f0dfaa;
+
+            color: #806500;
+
+            font-size: 13px;
+
+            line-height: 1.4;
         }
 
 
         /* =====================================================
-           DATAS
-        ===================================================== */
-
-        .informacoes {
-            display: flex;
-
-            gap: 12px;
-
-            margin-bottom: 17px;
-        }
-
-
-        .informacao {
-            background: #f7f9fb;
-
-            border-radius: 9px;
-
-            padding: 11px 14px;
-
-            min-width: 150px;
-
-            border: 1px solid #edf0f3;
-        }
-
-
-        .informacao-label {
-            display: block;
-
-            font-size: 10px;
-
-            font-weight: bold;
-
-            color: #7c8793;
-
-            text-transform: uppercase;
-
-            margin-bottom: 5px;
-
-            letter-spacing: 0.4px;
-        }
-
-
-        .informacao-valor {
-            font-size: 14px;
-
-            color: #303b48;
-
-            font-weight: 700;
-        }
-
-
-        /* =====================================================
-           BOTÃO
+           BOTÃO PDF
         ===================================================== */
 
         .botao-pdf {
-            display: inline-flex;
-
-            align-items: center;
-
-            gap: 7px;
+            display: inline-block;
 
             background: #174a8b;
 
@@ -559,11 +540,11 @@
 
             text-decoration: none;
 
-            padding: 10px 16px;
+            padding: 11px 17px;
 
             border-radius: 7px;
 
-            font-size: 13px;
+            font-size: 14px;
 
             font-weight: bold;
 
@@ -583,19 +564,18 @@
         ===================================================== */
 
         .sem-resultados {
-            display: none;
-
             background: #ffffff;
 
             border-radius: 12px;
 
-            padding: 30px;
+            padding: 30px 20px;
 
             text-align: center;
 
             color: #777;
 
-            border: 1px solid #e2e6eb;
+            box-shadow:
+                0 2px 10px rgba(0,0,0,0.06);
         }
 
 
@@ -606,16 +586,16 @@
         .erro {
             background: #ffffff;
 
-            border-radius: 15px;
+            border-radius: 14px;
 
-            padding: 45px 20px;
+            padding: 40px 20px;
 
             text-align: center;
 
             color: #b00020;
 
             box-shadow:
-                0 4px 15px rgba(0,0,0,0.07);
+                0 3px 15px rgba(0,0,0,0.08);
         }
 
 
@@ -631,16 +611,16 @@
         .carregando {
             background: #ffffff;
 
-            border-radius: 15px;
+            border-radius: 14px;
 
-            padding: 50px 20px;
+            padding: 45px 20px;
 
             text-align: center;
 
             color: #666;
 
             box-shadow:
-                0 4px 15px rgba(0,0,0,0.07);
+                0 3px 15px rgba(0,0,0,0.08);
         }
 
 
@@ -653,9 +633,9 @@
 
             padding: 25px 15px 35px;
 
-            color: #89919b;
+            color: #888;
 
-            font-size: 11px;
+            font-size: 12px;
         }
 
 
@@ -666,13 +646,18 @@
         @media (max-width: 600px) {
 
 
+            body {
+                background: #f2f5f8;
+            }
+
+
             .topo {
-                padding: 20px 15px 18px;
+                padding: 18px 15px 15px;
             }
 
 
             .logo {
-                max-width: 215px;
+                max-width: 220px;
             }
 
 
@@ -682,7 +667,7 @@
 
 
             .subtitulo-site {
-                font-size: 12px;
+                font-size: 13px;
             }
 
 
@@ -694,7 +679,9 @@
 
 
             .funcionario {
-                padding: 22px 19px;
+                padding: 20px;
+
+                border-left-width: 5px;
             }
 
 
@@ -703,35 +690,34 @@
             }
 
 
-            .resumo-funcionario {
+            .dados-funcionario {
                 display: block;
             }
 
 
-            .matricula-box {
+            .dado {
                 margin-bottom: 10px;
             }
 
 
-            .contador-box {
-                min-width: 0;
-            }
-
-
-            .cabecalho-certificados {
-                display: block;
+            .resumo {
+                grid-template-columns:
+                    repeat(2, 1fr);
             }
 
 
             .titulo-certificados {
-                font-size: 20px;
+                align-items: flex-start;
+            }
 
-                margin-bottom: 4px;
+
+            .titulo-certificados h2 {
+                font-size: 19px;
             }
 
 
             .certificado {
-                padding: 18px 17px 18px 20px;
+                padding: 17px;
             }
 
 
@@ -747,15 +733,27 @@
 
             .informacao {
                 margin-bottom: 8px;
-
-                min-width: 0;
             }
 
 
             .botao-pdf {
                 width: 100%;
 
-                justify-content: center;
+                text-align: center;
+            }
+
+
+            .filtros {
+                overflow-x: auto;
+
+                flex-wrap: nowrap;
+
+                padding-bottom: 4px;
+            }
+
+
+            .filtro {
+                flex-shrink: 0;
             }
 
         }
@@ -783,12 +781,16 @@
 
 
     <h1 class="titulo-site">
+
         Consulta de Certificados
+
     </h1>
 
 
     <p class="subtitulo-site">
+
         Controle de capacitação dos tripulantes
+
     </p>
 
 
@@ -807,7 +809,9 @@
 
 
         <div class="carregando">
+
             Carregando informações...
+
         </div>
 
 
@@ -834,11 +838,14 @@
 
 
     // =====================================================
-    // 1. PEGAR MATRÍCULA DA URL
+    // VARIÁVEIS
     // =====================================================
 
+
     const parametros =
-        new URLSearchParams(window.location.search);
+        new URLSearchParams(
+            window.location.search
+        );
 
 
     const matricula =
@@ -846,13 +853,23 @@
 
 
     const conteudo =
-        document.getElementById("conteudo");
+        document.getElementById(
+            "conteudo"
+        );
+
+
+    let todosCertificados = [];
+
+
+    let filtroAtual =
+        "todos";
 
 
 
     // =====================================================
-    // 2. VERIFICAR MATRÍCULA
+    // 1. VERIFICAR MATRÍCULA
     // =====================================================
+
 
     if (!matricula) {
 
@@ -861,7 +878,9 @@
 
             <div class="erro">
 
-                <h2>Matrícula não informada</h2>
+                <h2>
+                    Matrícula não informada
+                </h2>
 
                 <p>
                     Utilize o QR Code para acessar a consulta.
@@ -871,77 +890,452 @@
 
         `;
 
+
     }
 
 
     // =====================================================
-    // 3. BUSCAR DADOS
+    // 2. CARREGAR dados.json
     // =====================================================
+
 
     else {
 
 
-        fetch("dados.json", {
-
-            cache: "no-cache"
-
-        })
-
-
-        .then(resposta => {
+        fetch(
+            "dados.json",
+            {
+                cache: "no-cache"
+            }
+        )
 
 
-            if (!resposta.ok) {
+        .then(
+            resposta => {
 
-                throw new Error(
-                    "Não foi possível carregar os dados."
-                );
+
+                if (!resposta.ok) {
+
+                    throw new Error(
+                        "Não foi possível carregar os dados."
+                    );
+
+                }
+
+
+                return resposta.json();
 
             }
+        )
 
 
-            return resposta.text();
-
-        })
-
-
-        .then(texto => {
+        .then(
+            dados => {
 
 
-            let dados;
+                // =============================================
+                // ENCONTRAR FUNCIONÁRIO
+                // =============================================
 
 
-            try {
+                const funcionario =
+                    dados[matricula];
 
-                dados =
-                    JSON.parse(texto);
+
+                if (!funcionario) {
+
+
+                    conteudo.innerHTML = `
+
+                        <div class="erro">
+
+                            <h2>
+                                Funcionário não encontrado
+                            </h2>
+
+                            <p>
+                                Matrícula: ${matricula}
+                            </p>
+
+                        </div>
+
+                    `;
+
+
+                    return;
+
+                }
+
+
+
+                // =============================================
+                // CALCULAR STATUS
+                // =============================================
+
+
+                todosCertificados =
+                    funcionario.certificados.map(
+                        certificado => {
+
+
+                            const status =
+                                calcularStatus(
+                                    certificado.vencimento
+                                );
+
+
+                            return {
+
+                                ...certificado,
+
+                                status:
+                                    status.status,
+
+                                statusTexto:
+                                    status.texto,
+
+                                statusClasse:
+                                    status.classe
+
+                            };
+
+                        }
+                    );
+
+
+
+                // =============================================
+                // CONTADORES
+                // =============================================
+
+
+                const total =
+                    todosCertificados.length;
+
+
+                const validos =
+                    todosCertificados.filter(
+                        c =>
+                            c.status === "valido"
+                    ).length;
+
+
+                const proximos =
+                    todosCertificados.filter(
+                        c =>
+                            c.status === "proximo"
+                    ).length;
+
+
+                const vencidos =
+                    todosCertificados.filter(
+                        c =>
+                            c.status === "vencido"
+                    ).length;
+
+
+
+                // =============================================
+                // CABEÇALHO
+                // =============================================
+
+
+                conteudo.innerHTML = `
+
+                    <section class="funcionario">
+
+
+                        <h1>
+                            ${escapeHTML(
+                                funcionario.nome
+                            )}
+                        </h1>
+
+
+                        <div class="dados-funcionario">
+
+
+                            <div class="dado">
+
+                                <span class="dado-label">
+                                    Matrícula
+                                </span>
+
+                                <span class="dado-valor">
+                                    ${escapeHTML(
+                                        matricula
+                                    )}
+                                </span>
+
+                            </div>
+
+
+                            <div class="dado">
+
+                                <span class="dado-label">
+                                    Cargo
+                                </span>
+
+                                <span class="dado-valor">
+                                    ${escapeHTML(
+                                        funcionario.cargo
+                                    )}
+                                </span>
+
+                            </div>
+
+
+                        </div>
+
+
+                    </section>
+
+
+
+                    <section class="resumo">
+
+
+                        <div class="resumo-card">
+
+                            <span
+                                class="resumo-numero"
+                            >
+                                ${total}
+                            </span>
+
+                            <span
+                                class="resumo-label"
+                            >
+                                Total
+                            </span>
+
+                        </div>
+
+
+                        <div
+                            class="resumo-card resumo-valido"
+                        >
+
+                            <span
+                                class="resumo-numero"
+                            >
+                                ${validos}
+                            </span>
+
+                            <span
+                                class="resumo-label"
+                            >
+                                Válidos
+                            </span>
+
+                        </div>
+
+
+                        <div
+                            class="resumo-card resumo-proximo"
+                        >
+
+                            <span
+                                class="resumo-numero"
+                            >
+                                ${proximos}
+                            </span>
+
+                            <span
+                                class="resumo-label"
+                            >
+                                Próximos
+                            </span>
+
+                        </div>
+
+
+                        <div
+                            class="resumo-card resumo-vencido"
+                        >
+
+                            <span
+                                class="resumo-numero"
+                            >
+                                ${vencidos}
+                            </span>
+
+                            <span
+                                class="resumo-label"
+                            >
+                                Vencidos
+                            </span>
+
+                        </div>
+
+
+                    </section>
+
+
+
+                    <section>
+
+
+                        <div class="titulo-certificados">
+
+                            <h2>
+                                Certificados
+                            </h2>
+
+
+                            <span
+                                id="contador"
+                                class="contador"
+                            >
+                                ${total} certificado(s)
+                            </span>
+
+                        </div>
+
+
+
+                        <div class="busca">
+
+                            <input
+                                id="campoBusca"
+                                class="campo-busca"
+                                type="text"
+                                placeholder="🔎 Buscar certificado..."
+                            >
+
+                        </div>
+
+
+
+                        <div class="filtros">
+
+
+                            <button
+                                class="filtro ativo"
+                                data-filtro="todos"
+                            >
+                                Todos
+                            </button>
+
+
+                            <button
+                                class="filtro"
+                                data-filtro="valido"
+                            >
+                                🟢 Válidos
+                            </button>
+
+
+                            <button
+                                class="filtro"
+                                data-filtro="proximo"
+                            >
+                                🟡 Próximos
+                            </button>
+
+
+                            <button
+                                class="filtro"
+                                data-filtro="vencido"
+                            >
+                                🔴 Vencidos
+                            </button>
+
+
+                        </div>
+
+
+
+                        <div
+                            id="listaCertificados"
+                        ></div>
+
+
+                    </section>
+
+                `;
+
+
+
+                // =============================================
+                // EVENTOS DOS FILTROS
+                // =============================================
+
+
+                document
+                    .querySelectorAll(".filtro")
+                    .forEach(
+                        botao => {
+
+
+                            botao.addEventListener(
+                                "click",
+                                function () {
+
+
+                                    document
+                                        .querySelectorAll(
+                                            ".filtro"
+                                        )
+                                        .forEach(
+                                            b =>
+                                                b.classList.remove(
+                                                    "ativo"
+                                                )
+                                        );
+
+
+                                    this.classList.add(
+                                        "ativo"
+                                    );
+
+
+                                    filtroAtual =
+                                        this.dataset.filtro;
+
+
+                                    renderizarCertificados();
+
+                                }
+                            );
+
+                        }
+                    );
+
+
+
+                // =============================================
+                // BUSCA
+                // =============================================
+
+
+                document
+                    .getElementById("campoBusca")
+                    .addEventListener(
+                        "input",
+                        renderizarCertificados
+                    );
+
+
+
+                // =============================================
+                // PRIMEIRA RENDERIZAÇÃO
+                // =============================================
+
+
+                renderizarCertificados();
 
             }
+        )
 
 
-            catch (erroJSON) {
+        .catch(
+            erro => {
+
 
                 console.error(
-                    "Erro no dados.json:",
-                    erroJSON
+                    erro
                 );
-
-                throw new Error(
-                    "Problema ao interpretar o dados.json."
-                );
-
-            }
-
-
-            // =================================================
-            // 4. ENCONTRAR FUNCIONÁRIO
-            // =================================================
-
-            const funcionario =
-                dados[matricula];
-
-
-            if (!funcionario) {
 
 
                 conteudo.innerHTML = `
@@ -949,325 +1343,283 @@
                     <div class="erro">
 
                         <h2>
-                            Funcionário não encontrado
+                            Erro ao carregar os dados
                         </h2>
 
                         <p>
-                            Matrícula: ${matricula}
+                            Tente novamente mais tarde.
                         </p>
 
                     </div>
 
                 `;
 
-
-                return;
-
             }
+        );
 
-
-            // =================================================
-            // 5. CABEÇALHO DO FUNCIONÁRIO
-            // =================================================
-
-            let html = `
-
-                <section class="funcionario">
-
-                    <div class="funcionario-conteudo">
-
-                        <span class="etiqueta">
-                            Tripulante
-                        </span>
-
-
-                        <h1>
-                            ${funcionario.nome}
-                        </h1>
-
-
-                        <div class="cargo">
-                            ${funcionario.cargo}
-                        </div>
-
-
-                        <div class="resumo-funcionario">
-
-
-                            <div class="matricula-box">
-
-                                <span class="label">
-                                    Matrícula
-                                </span>
-
-                                <span class="matricula">
-                                    ${matricula}
-                                </span>
-
-                            </div>
-
-
-                            <div class="contador-box">
-
-                                <span class="contador-numero">
-                                    ${funcionario.certificados.length}
-                                </span>
-
-                                <span class="contador-texto">
-                                    Certificados
-                                </span>
-
-                            </div>
-
-
-                        </div>
-
-                    </div>
-
-                </section>
+    }
 
 
 
-                <div class="cabecalho-certificados">
-
-                    <div>
-
-                        <h2 class="titulo-certificados">
-                            Certificados
-                        </h2>
-
-                        <p class="subtitulo-certificados">
-                            Consulte os certificados disponíveis
-                        </p>
-
-                    </div>
-
-                </div>
+    // =====================================================
+    // CALCULAR STATUS
+    // =====================================================
 
 
-
-                <div class="pesquisa">
-
-                    <span class="icone-pesquisa">
-                        🔎
-                    </span>
-
-                    <input
-                        type="text"
-                        id="pesquisaCertificado"
-                        placeholder="Pesquisar certificado..."
-                    >
-
-                </div>
+    function calcularStatus(
+        vencimento
+    ) {
 
 
-                <div id="listaCertificados">
+        if (
+            !vencimento ||
+            !vencimento.includes("/")
+        ) {
 
-            `;
+
+            return {
+
+                status: "proximo",
+
+                texto:
+                    "⚠️ Data de vencimento não informada",
+
+                classe:
+                    "status status-proximo"
+
+            };
+
+        }
 
 
-            // =================================================
-            // 6. CERTIFICADOS
-            // =================================================
+        const partes =
+            vencimento.split("/");
 
-            funcionario.certificados.forEach(
-                (certificado, indice) => {
+
+        const dia =
+            parseInt(
+                partes[0],
+                10
+            );
+
+
+        const mes =
+            parseInt(
+                partes[1],
+                10
+            );
+
+
+        const ano =
+            parseInt(
+                partes[2],
+                10
+            );
+
+
+        const dataVencimento =
+            new Date(
+                ano,
+                mes - 1,
+                dia
+            );
+
+
+        const hoje =
+            new Date();
+
+
+        hoje.setHours(
+            0,
+            0,
+            0,
+            0
+        );
+
+
+        const diferenca =
+            dataVencimento -
+            hoje;
+
+
+        const diasRestantes =
+            Math.ceil(
+                diferenca /
+                (
+                    1000 *
+                    60 *
+                    60 *
+                    24
+                )
+            );
+
+
+        if (
+            diasRestantes < 0
+        ) {
+
+
+            return {
+
+                status:
+                    "vencido",
+
+                texto:
+                    "🔴 Certificado vencido",
+
+                classe:
+                    "status status-vencido"
+
+            };
+
+        }
+
+
+        if (
+            diasRestantes <= 90
+        ) {
+
+
+            return {
+
+                status:
+                    "proximo",
+
+                texto:
+                    "🟡 Próximo do vencimento",
+
+                classe:
+                    "status status-proximo"
+
+            };
+
+        }
+
+
+        return {
+
+            status:
+                "valido",
+
+            texto:
+                "🟢 Certificado válido",
+
+            classe:
+                "status status-valido"
+
+        };
+
+    }
+
+
+
+    // =====================================================
+    // RENDERIZAR CERTIFICADOS
+    // =====================================================
+
+
+    function renderizarCertificados() {
+
+
+        const lista =
+            document.getElementById(
+                "listaCertificados"
+            );
+
+
+        const contador =
+            document.getElementById(
+                "contador"
+            );
+
+
+        const campoBusca =
+            document.getElementById(
+                "campoBusca"
+            );
+
+
+        if (
+            !lista
+        ) {
+
+            return;
+
+        }
+
+
+        const busca =
+            campoBusca
+                ? campoBusca.value
+                    .toLowerCase()
+                    .trim()
+                : "";
+
+
+
+        const filtrados =
+            todosCertificados.filter(
+                certificado => {
 
 
                     // -----------------------------------------
-                    // DATA DE VENCIMENTO
+                    // FILTRO STATUS
                     // -----------------------------------------
 
-                    const partes =
-                        certificado.vencimento.split("/");
 
+                    if (
+                        filtroAtual !==
+                        "todos" &&
+                        certificado.status !==
+                        filtroAtual
+                    ) {
 
-                    const dataVencimento =
-                        new Date(
-                            partes[2],
-                            partes[1] - 1,
-                            partes[0]
-                        );
-
-
-                    const hoje =
-                        new Date();
-
-
-                    hoje.setHours(
-                        0,
-                        0,
-                        0,
-                        0
-                    );
-
-
-                    const diferenca =
-                        dataVencimento - hoje;
-
-
-                    const diasRestantes =
-                        Math.ceil(
-                            diferenca /
-                            (1000 * 60 * 60 * 24)
-                        );
-
-
-                    // -----------------------------------------
-                    // STATUS
-                    // -----------------------------------------
-
-                    let statusTexto;
-                    let statusClasse;
-                    let classeCard;
-
-
-                    if (diasRestantes < 0) {
-
-
-                        statusTexto =
-                            "Vencido";
-
-
-                        statusClasse =
-                            "status status-vencido";
-
-
-                        classeCard =
-                            "certificado vencido";
-
+                        return false;
 
                     }
 
 
-                    else if (diasRestantes <= 90) {
+
+                    // -----------------------------------------
+                    // BUSCA
+                    // -----------------------------------------
 
 
-                        statusTexto =
-                            "Próximo do vencimento";
+                    if (
+                        busca &&
+                        !certificado.curso
+                            .toLowerCase()
+                            .includes(
+                                busca
+                            )
+                    ) {
 
-
-                        statusClasse =
-                            "status status-proximo";
-
-
-                        classeCard =
-                            "certificado proximo";
-
+                        return false;
 
                     }
 
 
-                    else {
-
-
-                        statusTexto =
-                            "Válido";
-
-
-                        statusClasse =
-                            "status status-valido";
-
-
-                        classeCard =
-                            "certificado";
-
-                    }
-
-
-                    // -----------------------------------------
-                    // CARD
-                    // -----------------------------------------
-
-                    html += `
-
-                        <article
-                            class="${classeCard}"
-                            data-curso="${certificado.curso.toLowerCase()}"
-                        >
-
-
-                            <div class="${statusClasse}">
-
-                                <span class="status-ponto"></span>
-
-                                ${statusTexto}
-
-                            </div>
-
-
-                            <div class="curso">
-
-                                ${certificado.curso}
-
-                            </div>
-
-
-                            <div class="informacoes">
-
-
-                                <div class="informacao">
-
-                                    <span class="informacao-label">
-                                        Conclusão
-                                    </span>
-
-                                    <span class="informacao-valor">
-                                        ${certificado.conclusao}
-                                    </span>
-
-                                </div>
-
-
-                                <div class="informacao">
-
-                                    <span class="informacao-label">
-                                        Vencimento
-                                    </span>
-
-                                    <span class="informacao-valor">
-                                        ${certificado.vencimento}
-                                    </span>
-
-                                </div>
-
-
-                            </div>
-
-
-                            <a
-                                class="botao-pdf"
-                                href="${certificado.link}"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                            >
-
-                                📄 Ver certificado
-
-                            </a>
-
-
-                        </article>
-
-                    `;
+                    return true;
 
                 }
             );
 
 
-            // =================================================
-            // 7. FINALIZAR LISTA
-            // =================================================
 
-            html += `
-
-                </div>
+        contador.textContent =
+            filtrados.length +
+            " certificado(s)";
 
 
-                <div
-                    id="semResultados"
-                    class="sem-resultados"
-                >
+
+        if (
+            filtrados.length === 0
+        ) {
+
+
+            lista.innerHTML = `
+
+                <div class="sem-resultados">
 
                     <strong>
                         Nenhum certificado encontrado.
@@ -1276,7 +1628,7 @@
                     <br>
 
                     <small>
-                        Tente pesquisar por outro termo.
+                        Tente alterar o filtro ou a busca.
                     </small>
 
                 </div>
@@ -1284,135 +1636,216 @@
             `;
 
 
-            // =================================================
-            // 8. COLOCAR NA TELA
-            // =================================================
+            return;
 
-            conteudo.innerHTML =
-                html;
+        }
 
 
 
-            // =================================================
-            // 9. PESQUISA
-            // =================================================
-
-            const campoPesquisa =
-                document.getElementById(
-                    "pesquisaCertificado"
-                );
+        lista.innerHTML = "";
 
 
-            const cards =
-                document.querySelectorAll(
-                    ".certificado"
-                );
+
+        filtrados.forEach(
+            certificado => {
 
 
-            const semResultados =
-                document.getElementById(
-                    "semResultados"
-                );
+                const card =
+                    document.createElement(
+                        "article"
+                    );
 
 
-            campoPesquisa.addEventListener(
-                "input",
-                function () {
+                card.className =
+                    "certificado";
 
 
-                    const termo =
-                        this.value
-                            .toLowerCase()
-                            .trim();
+
+                // =============================================
+                // DOCUMENTO
+                // =============================================
 
 
-                    let encontrados = 0;
+                let documentoHTML =
+                    "";
 
 
-                    cards.forEach(card => {
+
+                if (
+                    certificado.link &&
+                    certificado.link.trim() !== ""
+                ) {
 
 
-                        const curso =
-                            card.dataset.curso;
+                    documentoHTML = `
 
+                        <a
+                            class="botao-pdf"
+                            href="${escapeHTML(
+                                certificado.link
+                            )}"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                        >
 
-                        if (
-                            curso.includes(termo)
-                        ) {
+                            📄 Ver certificado
 
+                        </a>
 
-                            card.style.display =
-                                "";
-
-
-                            encontrados++;
-
-                        }
-
-
-                        else {
-
-
-                            card.style.display =
-                                "none";
-
-                        }
-
-                    });
-
-
-                    if (encontrados === 0) {
-
-
-                        semResultados.style.display =
-                            "block";
-
-
-                    }
-
-
-                    else {
-
-
-                        semResultados.style.display =
-                            "none";
-
-                    }
+                    `;
 
                 }
-            );
 
 
-        })
+                else {
 
 
-        // =====================================================
-        // 10. ERRO
-        // =====================================================
+                    documentoHTML = `
 
-        .catch(erro => {
+                        <div class="sem-documento">
+
+                            ⚠️ Documento não disponível
+                            para visualização online.
+
+                        </div>
+
+                    `;
+
+                }
 
 
-            console.error(erro);
+
+                // =============================================
+                // CARD
+                // =============================================
 
 
-            conteudo.innerHTML = `
+                card.innerHTML = `
 
-                <div class="erro">
+                    <div class="curso">
 
-                    <h2>
-                        Erro ao carregar os dados
-                    </h2>
+                        ${escapeHTML(
+                            certificado.curso
+                        )}
 
-                    <p>
-                        Tente novamente mais tarde.
-                    </p>
+                    </div>
 
-                </div>
 
-            `;
+                    <div class="informacoes">
 
-        });
+
+                        <div class="informacao">
+
+                            <span
+                                class="informacao-label"
+                            >
+                                Conclusão
+                            </span>
+
+
+                            <span
+                                class="informacao-valor"
+                            >
+                                ${escapeHTML(
+                                    certificado.conclusao ||
+                                    "-"
+                                )}
+                            </span>
+
+                        </div>
+
+
+
+                        <div class="informacao">
+
+                            <span
+                                class="informacao-label"
+                            >
+                                Vencimento
+                            </span>
+
+
+                            <span
+                                class="informacao-valor"
+                            >
+                                ${escapeHTML(
+                                    certificado.vencimento ||
+                                    "-"
+                                )}
+                            </span>
+
+                        </div>
+
+
+                    </div>
+
+
+                    <div
+                        class="${certificado.statusClasse}"
+                    >
+
+                        ${certificado.statusTexto}
+
+                    </div>
+
+
+                    <br>
+
+
+                    ${documentoHTML}
+
+                `;
+
+
+                lista.appendChild(
+                    card
+                );
+
+            }
+        );
+
+    }
+
+
+
+    // =====================================================
+    // PROTEGER TEXTO HTML
+    // =====================================================
+
+
+    function escapeHTML(
+        texto
+    ) {
+
+
+        return String(
+            texto ?? ""
+        )
+
+        .replace(
+            /&/g,
+            "&amp;"
+        )
+
+        .replace(
+            /</g,
+            "&lt;"
+        )
+
+        .replace(
+            />/g,
+            "&gt;"
+        )
+
+        .replace(
+            /"/g,
+            "&quot;"
+        )
+
+        .replace(
+            /'/g,
+            "&#039;"
+        );
 
     }
 
