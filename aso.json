@@ -1,0 +1,908 @@
+﻿{
+  "80": {
+    "nome": "VANDERLEI PEIXER DA SILVA",
+    "data": "19/06/2026",
+    "tipo": "Periódico",
+    "parecer": "Apto para função"
+  },
+  "101": {
+    "nome": "JEFFERSON FARIA DE SOUSA",
+    "data": "13/01/2026",
+    "tipo": "Periódico",
+    "parecer": "Apto para função"
+  },
+  "87": {
+    "nome": "LUDSON DOS SANTOS RIBEIRO",
+    "data": "18/11/2025",
+    "tipo": "Periódico",
+    "parecer": "Apto para função"
+  },
+  "94": {
+    "nome": "NACILIO DA SILVA CHAGAS",
+    "data": "12/04/2025",
+    "tipo": "Periódico",
+    "parecer": "Apto para função"
+  },
+  "92": {
+    "nome": "RAFAEL DA SILVA BARBOSA",
+    "data": "24/11/2025",
+    "tipo": "Periódico",
+    "parecer": "Apto para função"
+  },
+  "98": {
+    "nome": "JONATHAN DO NASCIMENTO OLIVEIRA",
+    "data": "25/11/2025",
+    "tipo": "Periódico",
+    "parecer": "Apto para função"
+  },
+  "91": {
+    "nome": "PAULO HENRIQUE FERNANDES COSTA",
+    "data": "14/07/2026",
+    "tipo": "Periódico",
+    "parecer": "Apto para função"
+  },
+  "103": {
+    "nome": "JARBAS ARAUJO DANTAS JUNIOR",
+    "data": "19/02/2026",
+    "tipo": "Periódico",
+    "parecer": "Apto para função"
+  },
+  "104": {
+    "nome": "JOBSON BRUNO DE LIMA JUNIOR",
+    "data": "21/01/2026",
+    "tipo": "Periódico",
+    "parecer": "Apto para função"
+  },
+  "3": {
+    "nome": "ADILSON MACEDO AMARAL",
+    "data": "17/04/2026",
+    "tipo": "Periódico",
+    "parecer": "Apto para função"
+  },
+  "105": {
+    "nome": "LUAN FELIPE DE OLIVEIRA MENEZES",
+    "data": "23/02/2026",
+    "tipo": "Periódico",
+    "parecer": "Apto para função"
+  },
+  "107": {
+    "nome": "ROMULO FRANCISCO SOARES PIEDADE",
+    "data": "08/04/2026",
+    "tipo": "Mudança de Riscos Ocupacionais",
+    "parecer": "Apto para função"
+  },
+  "112": {
+    "nome": "EMILIO WANDERLEY MONTEIRO FARIAS",
+    "data": "23/02/2026",
+    "tipo": "Periódico",
+    "parecer": "Apto para função"
+  },
+  "11": {
+    "nome": "JOSIMAR LEMOS DE MACEDO",
+    "data": "02/05/2026",
+    "tipo": "Periódico",
+    "parecer": "Apto para função"
+  },
+  "113": {
+    "nome": "ALESSANDRO ARANHA MOREIRA",
+    "data": "19/02/2026",
+    "tipo": "Periódico",
+    "parecer": "Apto para função"
+  },
+  "116": {
+    "nome": "MARCIO ROBERTO DA SILVA",
+    "data": "03/09/2026",
+    "tipo": "Periódico",
+    "parecer": "Apto para função"
+  },
+  "121": {
+    "nome": "RILDO FELIPIO DOS SANTOS",
+    "data": "14/04/2026",
+    "tipo": "Periódico",
+    "parecer": "Apto para função"
+  },
+  "122": {
+    "nome": "ALBERTO OLIVEIRA NETO",
+    "data": "03/02/2026",
+    "tipo": "Periódico",
+    "parecer": "Apto para função"
+  },
+  "123": {
+    "nome": "GILVAN DA ROCHA",
+    "data": "18/03/2026",
+    "tipo": "Periódico",
+    "parecer": "Apto para função"
+  },
+  "21": {
+    "nome": "ELSIMAR JOSE JADIVISKY JUNIOR",
+    "data": "05/12/2026",
+    "tipo": "Periódico",
+    "parecer": "Apto para função"
+  },
+  "153": {
+    "nome": "FRANCENILDO PESSOA DA SILVA",
+    "data": "22/06/2026",
+    "tipo": "Periódico",
+    "parecer": "Apto para função"
+  },
+  "154": {
+    "nome": "ERIVALDO DOS SANTOS SILVA",
+    "data": "23/07/2026",
+    "tipo": "Periódico",
+    "parecer": "Apto para função"
+  },
+  "5": {
+    "nome": "NUBER SILVA DE CARVALHO",
+    "data": "08/06/2026",
+    "tipo": "Periódico",
+    "parecer": ""
+  },
+  "193": {
+    "nome": "TALISON MATEUS VELOSO DA COSTA",
+    "data": "23/03/2026",
+    "tipo": "Periódico",
+    "parecer": "Apto para função"
+  },
+  "162": {
+    "nome": "MANOEL VICENTE DOS SANTOS NETO",
+    "data": "12/03/2025",
+    "tipo": "Periódico",
+    "parecer": "Apto para função"
+  },
+  "166": {
+    "nome": "JULIO CESAR ESTRELLA ROMAO",
+    "data": "19/06/2026",
+    "tipo": "Periódico",
+    "parecer": ""
+  },
+  "169": {
+    "nome": "RUANLITON PEREIRA DA SILVA",
+    "data": "03/09/2026",
+    "tipo": "Mudança de Riscos Ocupacionais",
+    "parecer": "Apto para função"
+  },
+  "172": {
+    "nome": "ALEX DE OLIVEIRA SANTOS",
+    "data": "20/01/2026",
+    "tipo": "Periódico",
+    "parecer": "Apto para função"
+  },
+  "176": {
+    "nome": "GUSTAVO PINTO SILVA",
+    "data": "02/11/2026",
+    "tipo": "Periódico",
+    "parecer": "Apto para função"
+  },
+  "179": {
+    "nome": "SANDRO AVELINO DA SILVA",
+    "data": "24/02/2026",
+    "tipo": "Periódico",
+    "parecer": "Apto para função"
+  },
+  "182": {
+    "nome": "LEANDRO DO NASCIMENTO LEAL",
+    "data": "02/02/2026",
+    "tipo": "Periódico",
+    "parecer": "Apto para função"
+  },
+  "185": {
+    "nome": "ESTEVAO SANTOS EVANGELISTA",
+    "data": "13/01/2026",
+    "tipo": "Periódico",
+    "parecer": "Apto para função"
+  },
+  "186": {
+    "nome": "MARIO ILO DE SOUZA NETO",
+    "data": "06/01/2026",
+    "tipo": "Mudança de Riscos Ocupacionais",
+    "parecer": "Apto para função"
+  },
+  "15": {
+    "nome": "DANIEL PEREIRA RABELO",
+    "data": "23/02/2026",
+    "tipo": "Periódico",
+    "parecer": "Apto para função"
+  },
+  "187": {
+    "nome": "NAELSON PINHEIRO DA SILVA",
+    "data": "15/07/2026",
+    "tipo": "Retorno ao Trabalho",
+    "parecer": "Apto para função"
+  },
+  "197": {
+    "nome": "CARLOS DA COSTA VIEIRA",
+    "data": "13/04/2026",
+    "tipo": "Periódico",
+    "parecer": "Apto para função"
+  },
+  "198": {
+    "nome": "MARCELO BRAZ PINHEIRO",
+    "data": "16/04/2026",
+    "tipo": "Periódico",
+    "parecer": "Apto para função"
+  },
+  "258": {
+    "nome": "EDWIN OLIVEIRA DE MEDEIROS",
+    "data": "15/06/2026",
+    "tipo": "Periódico",
+    "parecer": "Apto para função"
+  },
+  "213": {
+    "nome": "EDILSON MARQUES DA SILVA",
+    "data": "07/08/2026",
+    "tipo": "Periódico",
+    "parecer": "Apto para função"
+  },
+  "251": {
+    "nome": "THAIS DE OLIVEIRA SILVINO",
+    "data": "22/05/2026",
+    "tipo": "Periódico",
+    "parecer": "Apto para função"
+  },
+  "29": {
+    "nome": "EDMUNDO PIANI TAVARES",
+    "data": "08/03/2026",
+    "tipo": "Periódico",
+    "parecer": "Apto para função"
+  },
+  "39": {
+    "nome": "RAFAEL KRUGER FONTOURA",
+    "data": "17/03/2026",
+    "tipo": "Periódico",
+    "parecer": "Apto para função"
+  },
+  "221": {
+    "nome": "ALBINO CANDIDO SOBRINHO",
+    "data": "15/01/2026",
+    "tipo": "Periódico",
+    "parecer": "Apto para função"
+  },
+  "216": {
+    "nome": "ROBSON VIEIRA ALVES",
+    "data": "19/05/2026",
+    "tipo": "Periódico",
+    "parecer": "Apto para função"
+  },
+  "247": {
+    "nome": "THALES DA SILVA",
+    "data": "07/03/2026",
+    "tipo": "Periódico",
+    "parecer": "Apto para função"
+  },
+  "215": {
+    "nome": "LUIZ MARINHO DO COUTO FILHO",
+    "data": "18/05/2026",
+    "tipo": "Periódico",
+    "parecer": "Apto para função"
+  },
+  "240": {
+    "nome": "MARCELO DA SILVA CANDIDO",
+    "data": "16/04/2026",
+    "tipo": "Periódico",
+    "parecer": "Apto para função"
+  },
+  "298": {
+    "nome": "LUCAS MARQUES SAMPAIO MENEZES",
+    "data": "03/12/2026",
+    "tipo": "Admissional",
+    "parecer": "Apto para função"
+  },
+  "300": {
+    "nome": "AMANDA COSTA DE ALMEIDA",
+    "data": "03/11/2026",
+    "tipo": "Admissional",
+    "parecer": "Apto para função"
+  },
+  "231": {
+    "nome": "IRAN FAILACE",
+    "data": "23/06/2026",
+    "tipo": "Periódico",
+    "parecer": "Apto para função"
+  },
+  "319": {
+    "nome": "WELLISON GUEDES DA SILVA JUNIOR",
+    "data": "13/07/2026",
+    "tipo": "Admissional",
+    "parecer": "Apto para função"
+  },
+  "303": {
+    "nome": "JULIO CESAR DA PENHA REIS RAMOS",
+    "data": "04/01/2026",
+    "tipo": "Admissional",
+    "parecer": "Apto para função"
+  },
+  "229": {
+    "nome": "GIL RICARDO DA SILVA FARIA",
+    "data": "01/06/2026",
+    "tipo": "Periódico",
+    "parecer": "Apto para função"
+  },
+  "28": {
+    "nome": "THOMAS GUEDES PINHEIRO DE FARIA JULIO",
+    "data": "19/05/2026",
+    "tipo": "Periódico",
+    "parecer": "Apto para função"
+  },
+  "312": {
+    "nome": "VINICIUS OLIVEIRA CRUZ",
+    "data": "22/07/2026",
+    "tipo": "Admissional",
+    "parecer": "Apto para função"
+  },
+  "34": {
+    "nome": "RONALDO FRANCA OHASHI",
+    "data": "03/11/2026",
+    "tipo": "Periódico",
+    "parecer": "Apto para função"
+  },
+  "35": {
+    "nome": "IRANI FERREIRA DA SILVA JUNIOR",
+    "data": "03/12/2026",
+    "tipo": "Periódico",
+    "parecer": "Apto para função"
+  },
+  "51": {
+    "nome": "SILVIO RICARDO RAMOS DE OLIVEIRA",
+    "data": "29/05/2026",
+    "tipo": "Periódico",
+    "parecer": "Apto para função"
+  },
+  "8": {
+    "nome": "JUNHO BARBOZA DE OLIVEIRA",
+    "data": "13/03/2026",
+    "tipo": "Periódico",
+    "parecer": "Apto para função"
+  },
+  "40": {
+    "nome": "RONALD CURVELLO",
+    "data": "23/03/2026",
+    "tipo": "Periódico",
+    "parecer": "Apto para função"
+  },
+  "41": {
+    "nome": "NIVALDO FERREIRA VIDAL",
+    "data": "06/08/2026",
+    "tipo": "Admissional",
+    "parecer": "Apto para função"
+  },
+  "38": {
+    "nome": "Thiago Mafra Oliveira",
+    "data": "30/07/2026",
+    "tipo": "Periódico",
+    "parecer": "Apto para função"
+  },
+  "42": {
+    "nome": "HOSANNAH SANTOS ROCHA JUNIOR",
+    "data": "06/09/2026",
+    "tipo": "Periódico",
+    "parecer": "Apto para função"
+  },
+  "52": {
+    "nome": "RAIMUNDO TIAGO COSTA LIMA",
+    "data": "27/07/2026",
+    "tipo": "Periódico",
+    "parecer": "Apto para função"
+  },
+  "2": {
+    "nome": "ADRIANO CASTRO TAVARES DINIZ",
+    "data": "23/03/2026",
+    "tipo": "Periódico",
+    "parecer": "Apto para função"
+  },
+  "54": {
+    "nome": "ANDRE LUIS DE SOUSA OLIVEIRA",
+    "data": "19/06/2026",
+    "tipo": "Periódico",
+    "parecer": "Apto para função"
+  },
+  "68": {
+    "nome": "DREYTON HENRIQUE DOS SANTOS SILVA",
+    "data": "15/09/2025",
+    "tipo": "Periódico",
+    "parecer": "Apto para função"
+  },
+  "136": {
+    "nome": "BRUNO FELIPPE THEDIM SISTON",
+    "data": "11/10/2025",
+    "tipo": "Periódico",
+    "parecer": "Apto para função"
+  },
+  "65": {
+    "nome": "PEDRO IAGO SOUSA DE OLIVEIRA",
+    "data": "19/06/2026",
+    "tipo": "Periódico",
+    "parecer": ""
+  },
+  "110": {
+    "nome": "BRUNO DA SILVA PINHEIRO",
+    "data": "23/02/2026",
+    "tipo": "Periódico",
+    "parecer": "Apto para função"
+  },
+  "281": {
+    "nome": "HEBERTON VIEIRA BERNARDO DA SILVA",
+    "data": "17/07/2026",
+    "tipo": "Periódico",
+    "parecer": "Apto para função"
+  },
+  "266": {
+    "nome": "FRANCISCO GOMES DA SILVA",
+    "data": "27/07/2026",
+    "tipo": "Periódico",
+    "parecer": "Apto para função"
+  },
+  "261": {
+    "nome": "ELISON DA SILVA FIRMINO",
+    "data": "13/04/2026",
+    "tipo": "Periódico",
+    "parecer": "Apto para função"
+  },
+  "9": {
+    "nome": "MANOEL PEDRO FARIAS CHAVES",
+    "data": "22/04/2026",
+    "tipo": "Periódico",
+    "parecer": "Apto para função"
+  },
+  "83": {
+    "nome": "CLAUDIO DO NASCIMENTO CRUZ",
+    "data": "10/06/2025",
+    "tipo": "Periódico",
+    "parecer": "Apto para função"
+  },
+  "86": {
+    "nome": "FELIPE JOSE MACHADO",
+    "data": "01/08/2026",
+    "tipo": "Periódico",
+    "parecer": "Apto para função"
+  },
+  "4": {
+    "nome": "ERINALDO EUZEBIO DOS SANTOS",
+    "data": "25/03/2026",
+    "tipo": "Periódico",
+    "parecer": "Apto para função"
+  },
+  "96": {
+    "nome": "JORGE ARMANDO YANEZ GARCIA",
+    "data": "24/11/2025",
+    "tipo": "Periódico",
+    "parecer": "Apto para função"
+  },
+  "93": {
+    "nome": "FERNANDO VINICIUS DE FRIAS BARBOSA",
+    "data": "21/01/2026",
+    "tipo": "Periódico",
+    "parecer": ""
+  },
+  "36": {
+    "nome": "ADRIANO DA SILVA PAES DOS SANTOS",
+    "data": "23/03/2026",
+    "tipo": "Periódico",
+    "parecer": "Apto para função"
+  },
+  "100": {
+    "nome": "JAIME DA SILVA VIAL",
+    "data": "24/11/2025",
+    "tipo": "Admissional",
+    "parecer": "Apto para função"
+  },
+  "106": {
+    "nome": "Camila Duarte de Alencar",
+    "data": "25/05/2026",
+    "tipo": "Mudança de Riscos Ocupacionais",
+    "parecer": ""
+  },
+  "108": {
+    "nome": "JANAINA DE FREITAS",
+    "data": "23/02/2026",
+    "tipo": "Periódico",
+    "parecer": "Apto para função"
+  },
+  "114": {
+    "nome": "JAMILLY SILVA DE SOUSA",
+    "data": "04/06/2026",
+    "tipo": "Periódico",
+    "parecer": "Apto para função"
+  },
+  "126": {
+    "nome": "VIVIANE COSTA SILVA",
+    "data": "05/11/2026",
+    "tipo": "Retorno ao Trabalho",
+    "parecer": "Apto para função"
+  },
+  "128": {
+    "nome": "RENATO VASCONCELOS CUNHA",
+    "data": "06/09/2026",
+    "tipo": "Periódico",
+    "parecer": "Apto para função"
+  },
+  "127": {
+    "nome": "BRUNO DOS SANTOS FERREIRA",
+    "data": "07/06/2026",
+    "tipo": "Periódico",
+    "parecer": "Apto para função"
+  },
+  "130": {
+    "nome": "FABRICIO ARAUJO DE CARVALHO",
+    "data": "05/12/2026",
+    "tipo": "Periódico",
+    "parecer": "Apto para função"
+  },
+  "137": {
+    "nome": "EVALDO PIANI TAVARES",
+    "data": "04/06/2026",
+    "tipo": "Retorno ao Trabalho",
+    "parecer": "Apto para função"
+  },
+  "148": {
+    "nome": "RENNAN VINICIUS ENEAS ALVES",
+    "data": "29/09/2025",
+    "tipo": "Periódico",
+    "parecer": "Apto para função"
+  },
+  "140": {
+    "nome": "PEDRO PAULO CYSNE DE OLIVEIRA",
+    "data": "29/06/2026",
+    "tipo": "Periódico",
+    "parecer": "Apto para função"
+  },
+  "146": {
+    "nome": "ADRIELLY SOUZA BARBOSA",
+    "data": "20/10/2025",
+    "tipo": "Periódico",
+    "parecer": "Apto para função"
+  },
+  "161": {
+    "nome": "NAJER COSTA VALE VASCONCELOS",
+    "data": "23/02/2026",
+    "tipo": "Periódico",
+    "parecer": "Apto para função"
+  },
+  "170": {
+    "nome": "CELIA BATISTA LEITE DE LIMA",
+    "data": "19/01/2026",
+    "tipo": "Periódico",
+    "parecer": "Apto para função"
+  },
+  "22": {
+    "nome": "PEDRO IVO DE SOUZA ISMAEL RIBEIRO",
+    "data": "23/03/2026",
+    "tipo": "Periódico",
+    "parecer": "Apto para função"
+  },
+  "183": {
+    "nome": "JOCIVALDO SOUSA SILVA",
+    "data": "21/01/2026",
+    "tipo": "Periódico",
+    "parecer": "Apto para função"
+  },
+  "181": {
+    "nome": "RIAN GABRIEL MENDES DO VALE",
+    "data": "02/09/2026",
+    "tipo": "Periódico",
+    "parecer": "Apto para função"
+  },
+  "188": {
+    "nome": "HIGOR PEREIRA GOMES",
+    "data": "04/07/2026",
+    "tipo": "Periódico",
+    "parecer": "Apto para função"
+  },
+  "195": {
+    "nome": "MANOEL RIBEIRO SOBRINHO",
+    "data": "26/03/2026",
+    "tipo": "Periódico",
+    "parecer": "Apto para função"
+  },
+  "199": {
+    "nome": "DANILO SOARES ROZEIRA",
+    "data": "13/04/2026",
+    "tipo": "Periódico",
+    "parecer": "Apto para função"
+  },
+  "203": {
+    "nome": "ANDERSON CLEITON DO NASCIMENTO SILVA",
+    "data": "23/12/2025",
+    "tipo": "Mudança de Riscos Ocupacionais",
+    "parecer": "Apto para função"
+  },
+  "206": {
+    "nome": "MYCHELL GUIMARAES NASCIMENTO",
+    "data": "22/04/2026",
+    "tipo": "Periódico",
+    "parecer": "Apto para função"
+  },
+  "27": {
+    "nome": "FRANCISCO JUNIO PORTELA ALVES DE ARAUJO",
+    "data": "23/06/2026",
+    "tipo": "Periódico",
+    "parecer": "Apto para função"
+  },
+  "263": {
+    "nome": "CLEDSON AVELINO DE CARVALHO",
+    "data": "20/10/2025",
+    "tipo": "Admissional",
+    "parecer": "Apto para função"
+  },
+  "26": {
+    "nome": "NERIS DA SILVA FEITOZA",
+    "data": "17/04/2026",
+    "tipo": "Periódico",
+    "parecer": "Apto para função"
+  },
+  "270": {
+    "nome": "VINICIUS VIEIRA DE BARROS",
+    "data": "20/10/2025",
+    "tipo": "Admissional",
+    "parecer": "Apto para função"
+  },
+  "269": {
+    "nome": "MARCELLO EDUARDO SILVA DINIZ",
+    "data": "21/10/2025",
+    "tipo": "Admissional",
+    "parecer": "Apto para função"
+  },
+  "72": {
+    "nome": "ALEXANDRE PEREIRA LOUVAIN",
+    "data": "05/04/2026",
+    "tipo": "Periódico",
+    "parecer": "Apto para função"
+  },
+  "245": {
+    "nome": "ALISSON JOSE DA SILVA VITORINO",
+    "data": "18/05/2026",
+    "tipo": "Periódico",
+    "parecer": "Apto para função"
+  },
+  "243": {
+    "nome": "WELLINGTON PAULO DOS SANTOS",
+    "data": "20/04/2026",
+    "tipo": "Periódico",
+    "parecer": "Apto para função"
+  },
+  "256": {
+    "nome": "JOEL LUIZ ALVES DE PAIVA",
+    "data": "09/01/2025",
+    "tipo": "Admissional",
+    "parecer": "Apto para função"
+  },
+  "223": {
+    "nome": "DELSON GUIMARAES CAMPOS",
+    "data": "15/01/2026",
+    "tipo": "Periódico",
+    "parecer": "Apto para função"
+  },
+  "267": {
+    "nome": "RONALDO PEREIRA LIMA",
+    "data": "30/10/2025",
+    "tipo": "Admissional",
+    "parecer": "Apto para função"
+  },
+  "282": {
+    "nome": "ANTONIO DOMINGO SALAROLLI BERNARDO",
+    "data": "15/12/2025",
+    "tipo": "Admissional",
+    "parecer": "Apto para função"
+  },
+  "285": {
+    "nome": "SILVANIA FERREIRA PEREIRA",
+    "data": "22/04/2026",
+    "tipo": "Mudança de Riscos Ocupacionais",
+    "parecer": "Apto para função"
+  },
+  "287": {
+    "nome": "VALDECI PEREIRA SAMPAIO JUNIOR",
+    "data": "29/12/2025",
+    "tipo": "Admissional",
+    "parecer": "Apto para função"
+  },
+  "292": {
+    "nome": "HELDO TABOSA DA SILVA",
+    "data": "14/01/2026",
+    "tipo": "Admissional",
+    "parecer": "Apto para função"
+  },
+  "290": {
+    "nome": "MARILENE DE CARVALHO SOARES",
+    "data": "26/01/2026",
+    "tipo": "Admissional",
+    "parecer": "Apto para função"
+  },
+  "294": {
+    "nome": "ERALDO BATISTA GOMES",
+    "data": "02/09/2026",
+    "tipo": "Admissional",
+    "parecer": "Apto para função"
+  },
+  "296": {
+    "nome": "SOCRATES JOSE DE OLIVEIRA JUNIOR",
+    "data": "25/02/2026",
+    "tipo": "Admissional",
+    "parecer": "Apto para função"
+  },
+  "306": {
+    "nome": "TITO LYS TAVARES DE SOUZA",
+    "data": "27/02/2026",
+    "tipo": "Admissional",
+    "parecer": "Apto para função"
+  },
+  "302": {
+    "nome": "LEONARDO NASCIMENTO OLIVEIRA",
+    "data": "03/03/2026",
+    "tipo": "Admissional",
+    "parecer": "Apto para função"
+  },
+  "297": {
+    "nome": "LANI KARLA DA SILVA SANTOS",
+    "data": "03/04/2026",
+    "tipo": "Admissional",
+    "parecer": "Apto para função"
+  },
+  "301": {
+    "nome": "JOSE CARLOS NUNES FILHO",
+    "data": "03/09/2026",
+    "tipo": "Admissional",
+    "parecer": "Apto para função"
+  },
+  "225": {
+    "nome": "ENZO DELCIDES RAMOS",
+    "data": "23/06/2026",
+    "tipo": "Periódico",
+    "parecer": "Apto para função"
+  },
+  "78": {
+    "nome": "FRANCISCO BELCHIOR SANTANA SOUZA FILHO",
+    "data": "25/09/2025",
+    "tipo": "Periódico",
+    "parecer": "Apto para função"
+  },
+  "304": {
+    "nome": "LUIZ EUZEBIO DOS SANTOS NETO",
+    "data": "13/04/2026",
+    "tipo": "Admissional",
+    "parecer": "Apto para função"
+  },
+  "288": {
+    "nome": "WANDERLEY NUNES",
+    "data": "02/09/2026",
+    "tipo": "Periódico",
+    "parecer": "Apto para função"
+  },
+  "305": {
+    "nome": "RODRIGO NOGUEIRA BARBOSA",
+    "data": "15/04/2026",
+    "tipo": "Admissional",
+    "parecer": "Apto para função"
+  },
+  "307": {
+    "nome": "MAURO DOS SANTOS MAGALHAES",
+    "data": "30/04/2026",
+    "tipo": "Admissional",
+    "parecer": "Apto para função"
+  },
+  "310": {
+    "nome": "PAULO JOSIVANE DE BARROS",
+    "data": "06/05/2026",
+    "tipo": "Admissional",
+    "parecer": "Apto para função"
+  },
+  "309": {
+    "nome": "GERALDO EDSON DA SILVA",
+    "data": "22/06/2026",
+    "tipo": "Admissional",
+    "parecer": "Apto para função"
+  },
+  "311": {
+    "nome": "JOSE ANSELMO ARAUJO",
+    "data": "07/02/2026",
+    "tipo": "Admissional",
+    "parecer": "Apto para função"
+  },
+  "316": {
+    "nome": "Eliezer de Oliveira Sarmento",
+    "data": "14/07/2026",
+    "tipo": "Mudança de Riscos Ocupacionais",
+    "parecer": "Apto para função"
+  },
+  "315": {
+    "nome": "FLAVIO HENRIQUE DE BRITO SILVA",
+    "data": "15/07/2026",
+    "tipo": "Admissional",
+    "parecer": "Apto para função"
+  },
+  "313": {
+    "nome": "WESLLEY ANJOS DA SILVA",
+    "data": "20/07/2026",
+    "tipo": "Admissional",
+    "parecer": "Apto para função"
+  },
+  "314": {
+    "nome": "ERIK LEONARDO DE LIMA ALVES",
+    "data": "14/07/2026",
+    "tipo": "Admissional",
+    "parecer": "Apto para função"
+  },
+  "318": {
+    "nome": "DANIEL JERONIMO DA SILVA ROMUALDO",
+    "data": "21/07/2026",
+    "tipo": "Admissional",
+    "parecer": "Apto para função"
+  },
+  "320": {
+    "nome": "VERIDIANY DA SILVA MELO",
+    "data": "08/12/2026",
+    "tipo": "Admissional",
+    "parecer": "Apto para função"
+  },
+  "317": {
+    "nome": "CLAUS LUCAS GONZAGA BEZERRA",
+    "data": "14/08/2026",
+    "tipo": "Admissional",
+    "parecer": "Apto para função"
+  },
+  "47": {
+    "nome": "TYAGO CALADO CHAVES",
+    "data": "27/05/2026",
+    "tipo": "Periódico",
+    "parecer": "Apto para função"
+  },
+  "50": {
+    "nome": "BYANCA THALYTA DA SILVA FERNANDES",
+    "data": "29/06/2026",
+    "tipo": "Periódico",
+    "parecer": "Apto para função"
+  },
+  "55": {
+    "nome": "EMILIA FRANCO LENZI",
+    "data": "08/11/2026",
+    "tipo": "Periódico",
+    "parecer": "Apto para função"
+  },
+  "58": {
+    "nome": "RAFAEL LUCAS TEIXEIRA",
+    "data": "08/07/2026",
+    "tipo": "Periódico",
+    "parecer": "Apto para função"
+  },
+  "62": {
+    "nome": "MARCELO GOMES DOS SANTOS",
+    "data": "19/03/2026",
+    "tipo": "Periódico",
+    "parecer": "Apto para função"
+  },
+  "64": {
+    "nome": "YURI MATHEUS MACEDO DE CARVALHO",
+    "data": "13/07/2026",
+    "tipo": "Periódico",
+    "parecer": "Apto para função"
+  },
+  "85": {
+    "nome": "ALEXANDRE LUCAS TEIXEIRA",
+    "data": "12/01/2025",
+    "tipo": "Periódico",
+    "parecer": "Apto para função"
+  },
+  "32": {
+    "nome": "CLEBER VILELA FIGUEIREDO DA SILVA",
+    "data": "04/06/2026",
+    "tipo": "Periódico",
+    "parecer": "Apto para função"
+  },
+  "89": {
+    "nome": "FABIANA PADILHA PEREIRA DA SILVA",
+    "data": "19/08/2026",
+    "tipo": "Periódico",
+    "parecer": "Apto para função"
+  },
+  "73": {
+    "nome": "JERTON COSTA VALE VASCONCELOS",
+    "data": "18/06/2026",
+    "tipo": "Periódico",
+    "parecer": "Apto para função"
+  },
+  "115": {
+    "nome": "GEORGIOS VOULIERIS",
+    "data": "13/07/2026",
+    "tipo": "Periódico",
+    "parecer": "Apto para função"
+  }
+}
