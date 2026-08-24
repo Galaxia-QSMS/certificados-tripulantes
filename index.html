@@ -4,7 +4,6 @@
 <head>
 
     <meta charset="UTF-8">
-
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -23,10 +22,7 @@
             margin: 0;
             padding: 0;
 
-            font-family:
-                Arial,
-                Helvetica,
-                sans-serif;
+            font-family: Arial, Helvetica, sans-serif;
 
             background: #f2f5f8;
 
@@ -98,7 +94,7 @@
 
 
         /* =====================================================
-           CARD DO FUNCIONÁRIO
+           FUNCIONÁRIO
         ===================================================== */
 
         .funcionario {
@@ -250,7 +246,7 @@
 
 
         /* =====================================================
-           TÍTULO
+           TÍTULO CERTIFICADOS
         ===================================================== */
 
         .titulo-certificados {
@@ -384,7 +380,7 @@
 
 
         /* =====================================================
-           CERTIFICADO
+           CARD CERTIFICADO
         ===================================================== */
 
         .certificado {
@@ -505,7 +501,7 @@
 
 
         /* =====================================================
-           DOCUMENTO NÃO DISPONÍVEL
+           DOCUMENTO SEM LINK
         ===================================================== */
 
         .sem-documento {
@@ -646,11 +642,6 @@
         @media (max-width: 600px) {
 
 
-            body {
-                background: #f2f5f8;
-            }
-
-
             .topo {
                 padding: 18px 15px 15px;
             }
@@ -781,16 +772,12 @@
 
 
     <h1 class="titulo-site">
-
         Consulta de Certificados
-
     </h1>
 
 
     <p class="subtitulo-site">
-
         Controle de capacitação dos tripulantes
-
     </p>
 
 
@@ -807,13 +794,9 @@
 
     <div id="conteudo">
 
-
         <div class="carregando">
-
             Carregando informações...
-
         </div>
-
 
     </div>
 
@@ -860,14 +843,12 @@
 
     let todosCertificados = [];
 
-
-    let filtroAtual =
-        "todos";
+    let filtroAtual = "todos";
 
 
 
     // =====================================================
-    // 1. VERIFICAR MATRÍCULA
+    // VERIFICAR MATRÍCULA
     // =====================================================
 
 
@@ -890,16 +871,15 @@
 
         `;
 
-
     }
 
 
-    // =====================================================
-    // 2. CARREGAR dados.json
-    // =====================================================
-
-
     else {
+
+
+        // =================================================
+        // CARREGAR dados.json
+        // =================================================
 
 
         fetch(
@@ -934,7 +914,7 @@
 
 
                 // =============================================
-                // ENCONTRAR FUNCIONÁRIO
+                // FUNCIONÁRIO
                 // =============================================
 
 
@@ -954,7 +934,7 @@
                             </h2>
 
                             <p>
-                                Matrícula: ${matricula}
+                                Matrícula: ${escapeHTML(matricula)}
                             </p>
 
                         </div>
@@ -1015,28 +995,31 @@
 
                 const validos =
                     todosCertificados.filter(
-                        c =>
-                            c.status === "valido"
+                        certificado =>
+                            certificado.status ===
+                            "valido"
                     ).length;
 
 
                 const proximos =
                     todosCertificados.filter(
-                        c =>
-                            c.status === "proximo"
+                        certificado =>
+                            certificado.status ===
+                            "proximo"
                     ).length;
 
 
                 const vencidos =
                     todosCertificados.filter(
-                        c =>
-                            c.status === "vencido"
+                        certificado =>
+                            certificado.status ===
+                            "vencido"
                     ).length;
 
 
 
                 // =============================================
-                // CABEÇALHO
+                // MONTAR PÁGINA
                 // =============================================
 
 
@@ -1046,9 +1029,7 @@
 
 
                         <h1>
-                            ${escapeHTML(
-                                funcionario.nome
-                            )}
+                            ${escapeHTML(funcionario.nome)}
                         </h1>
 
 
@@ -1062,9 +1043,7 @@
                                 </span>
 
                                 <span class="dado-valor">
-                                    ${escapeHTML(
-                                        matricula
-                                    )}
+                                    ${escapeHTML(matricula)}
                                 </span>
 
                             </div>
@@ -1077,9 +1056,7 @@
                                 </span>
 
                                 <span class="dado-valor">
-                                    ${escapeHTML(
-                                        funcionario.cargo
-                                    )}
+                                    ${escapeHTML(funcionario.cargo)}
                                 </span>
 
                             </div>
@@ -1092,77 +1069,60 @@
 
 
 
+                    <!-- =====================================
+                         RESUMO
+                    ====================================== -->
+
+
                     <section class="resumo">
 
 
                         <div class="resumo-card">
 
-                            <span
-                                class="resumo-numero"
-                            >
+                            <span class="resumo-numero">
                                 ${total}
                             </span>
 
-                            <span
-                                class="resumo-label"
-                            >
+                            <span class="resumo-label">
                                 Total
                             </span>
 
                         </div>
 
 
-                        <div
-                            class="resumo-card resumo-valido"
-                        >
+                        <div class="resumo-card resumo-valido">
 
-                            <span
-                                class="resumo-numero"
-                            >
+                            <span class="resumo-numero">
                                 ${validos}
                             </span>
 
-                            <span
-                                class="resumo-label"
-                            >
+                            <span class="resumo-label">
                                 Válidos
                             </span>
 
                         </div>
 
 
-                        <div
-                            class="resumo-card resumo-proximo"
-                        >
+                        <div class="resumo-card resumo-proximo">
 
-                            <span
-                                class="resumo-numero"
-                            >
+                            <span class="resumo-numero">
                                 ${proximos}
                             </span>
 
-                            <span
-                                class="resumo-label"
-                            >
+                            <span class="resumo-label">
                                 Próximos
                             </span>
 
                         </div>
 
 
-                        <div
-                            class="resumo-card resumo-vencido"
-                        >
+                        <div class="resumo-card resumo-vencido">
 
-                            <span
-                                class="resumo-numero"
-                            >
+                            <span class="resumo-numero">
                                 ${vencidos}
                             </span>
 
-                            <span
-                                class="resumo-label"
-                            >
+                            <span class="resumo-label">
                                 Vencidos
                             </span>
 
@@ -1173,10 +1133,16 @@
 
 
 
+                    <!-- =====================================
+                         CERTIFICADOS
+                    ====================================== -->
+
+
                     <section>
 
 
                         <div class="titulo-certificados">
+
 
                             <h2>
                                 Certificados
@@ -1190,8 +1156,12 @@
                                 ${total} certificado(s)
                             </span>
 
+
                         </div>
 
+
+
+                        <!-- BUSCA -->
 
 
                         <div class="busca">
@@ -1205,6 +1175,9 @@
 
                         </div>
 
+
+
+                        <!-- FILTROS -->
 
 
                         <div class="filtros">
@@ -1246,9 +1219,7 @@
 
 
 
-                        <div
-                            id="listaCertificados"
-                        ></div>
+                        <div id="listaCertificados"></div>
 
 
                     </section>
@@ -1274,9 +1245,7 @@
 
 
                                     document
-                                        .querySelectorAll(
-                                            ".filtro"
-                                        )
+                                        .querySelectorAll(".filtro")
                                         .forEach(
                                             b =>
                                                 b.classList.remove(
@@ -1305,7 +1274,7 @@
 
 
                 // =============================================
-                // BUSCA
+                // CAMPO DE BUSCA
                 // =============================================
 
 
@@ -1365,35 +1334,77 @@
     // CALCULAR STATUS
     // =====================================================
 
+    function calcularStatus(vencimento) {
 
-    function calcularStatus(
-        vencimento
-    ) {
+
+        /*
+         * IMPORTANTE:
+         *
+         * Se não existir data de vencimento,
+         * o certificado será considerado VÁLIDO.
+         *
+         * Exemplo:
+         *
+         * "vencimento": ""
+         *
+         * ou
+         *
+         * "vencimento": null
+         *
+         * ou qualquer texto que não contenha
+         * uma data no formato DD/MM/AAAA.
+         */
 
 
         if (
             !vencimento ||
-            !vencimento.includes("/")
+            !String(vencimento).includes("/")
         ) {
 
 
             return {
 
-                status: "proximo",
+                status: "valido",
 
                 texto:
-                    "⚠️ Data de vencimento não informada",
+                    "🟢 Certificado válido",
 
                 classe:
-                    "status status-proximo"
+                    "status status-valido"
 
             };
 
         }
 
 
+
+        // =================================================
+        // CONVERTER DATA
+        // =================================================
+
+
         const partes =
-            vencimento.split("/");
+            String(vencimento).split("/");
+
+
+        if (
+            partes.length !== 3
+        ) {
+
+
+            return {
+
+                status: "valido",
+
+                texto:
+                    "🟢 Certificado válido",
+
+                classe:
+                    "status status-valido"
+
+            };
+
+        }
 
 
         const dia =
@@ -1417,6 +1428,29 @@
             );
 
 
+        if (
+            isNaN(dia) ||
+            isNaN(mes) ||
+            isNaN(ano)
+        ) {
+
+
+            return {
+
+                status: "valido",
+
+                texto:
+                    "🟢 Certificado válido",
+
+                classe:
+                    "status status-valido"
+
+            };
+
+        }
+
+
+
         const dataVencimento =
             new Date(
                 ano,
@@ -1437,6 +1471,12 @@
         );
 
 
+
+        // =================================================
+        // DIAS RESTANTES
+        // =================================================
+
+
         const diferenca =
             dataVencimento -
             hoje;
@@ -1454,6 +1494,12 @@
             );
 
 
+
+        // =================================================
+        // VENCIDO
+        // =================================================
+
+
         if (
             diasRestantes < 0
         ) {
@@ -1461,8 +1507,7 @@
 
             return {
 
-                status:
-                    "vencido",
+                status: "vencido",
 
                 texto:
                     "🔴 Certificado vencido",
@@ -1475,6 +1520,12 @@
         }
 
 
+
+        // =================================================
+        // PRÓXIMO DO VENCIMENTO
+        // =================================================
+
+
         if (
             diasRestantes <= 90
         ) {
@@ -1482,8 +1533,7 @@
 
             return {
 
-                status:
-                    "proximo",
+                status: "proximo",
 
                 texto:
                     "🟡 Próximo do vencimento",
@@ -1496,10 +1546,15 @@
         }
 
 
+
+        // =================================================
+        // VÁLIDO
+        // =================================================
+
+
         return {
 
-            status:
-                "valido",
+            status: "valido",
 
             texto:
                 "🟢 Certificado válido",
@@ -1516,7 +1571,6 @@
     // =====================================================
     // RENDERIZAR CERTIFICADOS
     // =====================================================
-
 
     function renderizarCertificados() {
 
@@ -1548,6 +1602,7 @@
         }
 
 
+
         const busca =
             campoBusca
                 ? campoBusca.value
@@ -1557,21 +1612,24 @@
 
 
 
+        // =================================================
+        // FILTRAR
+        // =================================================
+
+
         const filtrados =
             todosCertificados.filter(
                 certificado => {
 
 
                     // -----------------------------------------
-                    // FILTRO STATUS
+                    // STATUS
                     // -----------------------------------------
 
 
                     if (
-                        filtroAtual !==
-                        "todos" &&
-                        certificado.status !==
-                        filtroAtual
+                        filtroAtual !== "todos" &&
+                        certificado.status !== filtroAtual
                     ) {
 
                         return false;
@@ -1587,11 +1645,13 @@
 
                     if (
                         busca &&
-                        !certificado.curso
-                            .toLowerCase()
-                            .includes(
-                                busca
-                            )
+                        !String(
+                            certificado.curso || ""
+                        )
+                        .toLowerCase()
+                        .includes(
+                            busca
+                        )
                     ) {
 
                         return false;
@@ -1606,10 +1666,20 @@
 
 
 
+        // =================================================
+        // CONTADOR
+        // =================================================
+
+
         contador.textContent =
             filtrados.length +
             " certificado(s)";
 
+
+
+        // =================================================
+        // NENHUM RESULTADO
+        // =================================================
 
 
         if (
@@ -1646,6 +1716,11 @@
 
 
 
+        // =================================================
+        // CRIAR CARDS
+        // =================================================
+
+
         filtrados.forEach(
             certificado => {
 
@@ -1662,18 +1737,17 @@
 
 
                 // =============================================
-                // DOCUMENTO
+                // BOTÃO OU AVISO
                 // =============================================
 
 
-                let documentoHTML =
-                    "";
+                let documentoHTML = "";
 
 
 
                 if (
                     certificado.link &&
-                    certificado.link.trim() !== ""
+                    String(certificado.link).trim() !== ""
                 ) {
 
 
@@ -1716,7 +1790,7 @@
 
 
                 // =============================================
-                // CARD
+                // HTML DO CARD
                 // =============================================
 
 
@@ -1731,25 +1805,23 @@
                     </div>
 
 
+
                     <div class="informacoes">
 
 
                         <div class="informacao">
 
-                            <span
-                                class="informacao-label"
-                            >
+                            <span class="informacao-label">
                                 Conclusão
                             </span>
 
 
-                            <span
-                                class="informacao-valor"
-                            >
+                            <span class="informacao-valor">
+
                                 ${escapeHTML(
-                                    certificado.conclusao ||
-                                    "-"
+                                    certificado.conclusao || "-"
                                 )}
+
                             </span>
 
                         </div>
@@ -1758,20 +1830,22 @@
 
                         <div class="informacao">
 
-                            <span
-                                class="informacao-label"
-                            >
+                            <span class="informacao-label">
                                 Vencimento
                             </span>
 
 
-                            <span
-                                class="informacao-valor"
-                            >
-                                ${escapeHTML(
-                                    certificado.vencimento ||
-                                    "-"
-                                )}
+                            <span class="informacao-valor">
+
+                                ${
+                                    certificado.vencimento &&
+                                    String(certificado.vencimento).trim() !== ""
+                                    ?
+                                    escapeHTML(certificado.vencimento)
+                                    :
+                                    "Indeterminado"
+                                }
+
                             </span>
 
                         </div>
@@ -1780,9 +1854,8 @@
                     </div>
 
 
-                    <div
-                        class="${certificado.statusClasse}"
-                    >
+
+                    <div class="${certificado.statusClasse}">
 
                         ${certificado.statusTexto}
 
@@ -1812,10 +1885,7 @@
     // PROTEGER TEXTO HTML
     // =====================================================
 
-
-    function escapeHTML(
-        texto
-    ) {
+    function escapeHTML(texto) {
 
 
         return String(
