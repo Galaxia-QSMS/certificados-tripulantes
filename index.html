@@ -248,7 +248,7 @@
 
 
         /* =====================================================
-           TÍTULO CERTIFICADOS
+           ÁREA DE CERTIFICADOS
         ===================================================== */
 
         .titulo-certificados {
@@ -273,6 +273,71 @@
             border-radius: 20px;
             font-size: 12px;
             font-weight: bold;
+        }
+
+
+        /* =====================================================
+           PESQUISA
+        ===================================================== */
+
+        .area-filtros {
+            background: #ffffff;
+            border-radius: 12px;
+            padding: 16px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.06);
+        }
+
+
+        .campo-pesquisa {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #d9dee4;
+            border-radius: 8px;
+            font-size: 14px;
+            outline: none;
+            margin-bottom: 12px;
+        }
+
+
+        .campo-pesquisa:focus {
+            border-color: #174a8b;
+            box-shadow: 0 0 0 2px rgba(23,74,139,0.08);
+        }
+
+
+        /* =====================================================
+           FILTROS
+        ===================================================== */
+
+        .filtros {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+
+        .filtro {
+            border: none;
+            background: #eef1f4;
+            color: #555;
+            padding: 8px 13px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+
+        .filtro:hover {
+            opacity: 0.85;
+        }
+
+
+        .filtro.ativo {
+            background: #174a8b;
+            color: white;
         }
 
 
@@ -366,7 +431,7 @@
 
 
         /* =====================================================
-           BOTÃO
+           BOTÕES
         ===================================================== */
 
         .botao-pdf {
@@ -396,6 +461,20 @@
             border-radius: 7px;
             font-size: 14px;
             font-weight: bold;
+        }
+
+
+        /* =====================================================
+           SEM RESULTADOS
+        ===================================================== */
+
+        .sem-resultados {
+            background: #ffffff;
+            border-radius: 12px;
+            padding: 35px 20px;
+            text-align: center;
+            color: #777;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.06);
         }
 
 
@@ -521,6 +600,23 @@
             }
 
 
+            .area-filtros {
+                padding: 13px;
+            }
+
+
+            .filtros {
+                gap: 6px;
+            }
+
+
+            .filtro {
+                flex: 1;
+                min-width: 45%;
+                text-align: center;
+            }
+
+
             .certificado {
                 padding: 17px;
             }
@@ -574,15 +670,18 @@
         alt="Galáxia Navegação"
     >
 
+
     <h1 class="titulo-site">
         Consulta de Certificados
     </h1>
+
 
     <p class="subtitulo-site">
         Controle de capacitação dos tripulantes
     </p>
 
 </header>
+
 
 
 <!-- =========================================================
@@ -602,6 +701,7 @@
 </main>
 
 
+
 <!-- =========================================================
      RODAPÉ
 ========================================================= -->
@@ -613,21 +713,35 @@
 </footer>
 
 
+
 <script>
 
 
     // =====================================================
-    // 1. PEGAR MATRÍCULA DA URL
+    // 1. PEGAR MATRÍCULA
     // =====================================================
 
     const parametros =
         new URLSearchParams(window.location.search);
 
+
     const matricula =
         parametros.get("matricula");
 
+
     const conteudo =
         document.getElementById("conteudo");
+
+
+    // =====================================================
+    // VARIÁVEIS DOS CERTIFICADOS
+    // =====================================================
+
+    let certificadosOriginais = [];
+
+    let filtroAtual = "todos";
+
+    let termoPesquisa = "";
 
 
     // =====================================================
@@ -640,7 +754,9 @@
 
             <div class="erro">
 
-                <h2>Matrícula não informada</h2>
+                <h2>
+                    Matrícula não informada
+                </h2>
 
                 <p>
                     Utilize o QR Code para acessar a consulta.
@@ -663,17 +779,21 @@
 
             fetch("dados.json", {
                 cache: "no-cache"
-            }).then(resposta => {
+            })
+            .then(resposta => {
 
                 if (!resposta.ok) {
+
                     throw new Error(
                         "Não foi possível carregar os certificados."
                     );
+
                 }
 
                 return resposta.json();
 
             }),
+
 
             fetch("aso.json", {
                 cache: "no-cache"
@@ -705,6 +825,7 @@
             })
 
         ])
+
 
         .then(([dados, dadosASO]) => {
 
@@ -741,7 +862,7 @@
 
 
             // =================================================
-            // 5. BUSCAR ASO
+            // 5. ASO
             // =================================================
 
             const aso =
@@ -760,7 +881,9 @@
                         ${funcionario.nome}
                     </h1>
 
+
                     <div class="dados-funcionario">
+
 
                         <div class="dado">
 
@@ -787,16 +910,16 @@
 
                         </div>
 
+
                     </div>
 
                 </section>
-
 
             `;
 
 
             // =================================================
-            // 7. CARD DO ASO
+            // 7. CARD ASO
             // =================================================
 
             html += `
@@ -820,10 +943,6 @@
 
             if (aso) {
 
-
-                // ---------------------------------------------
-                // PARECER
-                // ---------------------------------------------
 
                 const parecerOriginal =
                     aso.parecer || "Não informado";
@@ -855,6 +974,7 @@
 
                 }
 
+
                 else if (
                     parecer.includes("INAPTO")
                 ) {
@@ -866,6 +986,7 @@
                         "🔴";
 
                 }
+
 
                 else if (
                     parecer.includes("APTO")
@@ -935,11 +1056,10 @@
 
                 `;
 
-
             }
 
-            else {
 
+            else {
 
                 html += `
 
@@ -974,284 +1094,181 @@
                         Certificados
                     </h2>
 
-                    <span class="contador">
+
+                    <span
+                        class="contador"
+                        id="contadorCertificados"
+                    >
 
                         ${funcionario.certificados.length}
-
                         certificado(s)
 
                     </span>
 
                 </div>
 
+
+                <!-- =========================================
+                     PESQUISA E FILTROS
+                ========================================== -->
+
+                <div class="area-filtros">
+
+
+                    <input
+                        type="text"
+                        id="campoPesquisa"
+                        class="campo-pesquisa"
+                        placeholder="🔎 Pesquisar certificado..."
+                    >
+
+
+                    <div class="filtros">
+
+
+                        <button
+                            class="filtro ativo"
+                            data-filtro="todos"
+                        >
+                            Todos
+                        </button>
+
+
+                        <button
+                            class="filtro"
+                            data-filtro="valido"
+                        >
+                            🟢 Válidos
+                        </button>
+
+
+                        <button
+                            class="filtro"
+                            data-filtro="proximo"
+                        >
+                            🟡 Próximos
+                        </button>
+
+
+                        <button
+                            class="filtro"
+                            data-filtro="vencido"
+                        >
+                            🔴 Vencidos
+                        </button>
+
+
+                    </div>
+
+
+                </div>
+
+
+                <div id="listaCertificados"></div>
+
             `;
 
 
+            conteudo.innerHTML =
+                html;
+
+
             // =================================================
-            // 9. CERTIFICADOS
+            // 9. GUARDAR CERTIFICADOS
             // =================================================
 
-            funcionario.certificados.forEach(
-                certificado => {
+            certificadosOriginais =
+                funcionario.certificados;
 
 
-                    // -----------------------------------------
-                    // DATA DE VENCIMENTO
-                    // -----------------------------------------
+            // =================================================
+            // 10. RENDERIZAR CERTIFICADOS
+            // =================================================
 
-                    let diasRestantes = null;
+            renderizarCertificados();
 
 
-                    if (
-                        certificado.vencimento &&
-                        certificado.vencimento.trim() !== ""
-                    ) {
+            // =================================================
+            // 11. PESQUISA
+            // =================================================
 
+            const campoPesquisa =
+                document.getElementById(
+                    "campoPesquisa"
+                );
 
-                        const partes =
-                            certificado.vencimento.split("/");
 
+            campoPesquisa.addEventListener(
+                "input",
+                function() {
 
-                        if (
-                            partes.length === 3 &&
-                            !isNaN(partes[0]) &&
-                            !isNaN(partes[1]) &&
-                            !isNaN(partes[2])
-                        ) {
+                    termoPesquisa =
+                        this.value
+                            .toLowerCase()
+                            .trim();
 
 
-                            const dataVencimento =
-                                new Date(
-                                    partes[2],
-                                    partes[1] - 1,
-                                    partes[0]
-                                );
-
-
-                            const hoje =
-                                new Date();
-
-
-                            hoje.setHours(
-                                0,
-                                0,
-                                0,
-                                0
-                            );
-
-
-                            const diferenca =
-                                dataVencimento - hoje;
-
-
-                            diasRestantes =
-                                Math.ceil(
-                                    diferenca /
-                                    (1000 * 60 * 60 * 24)
-                                );
-
-                        }
-
-                    }
-
-
-                    // -----------------------------------------
-                    // STATUS
-                    // -----------------------------------------
-
-                    let statusTexto;
-                    let statusClasse;
-
-
-                    // Sem vencimento = válido / indeterminado
-                    if (
-                        diasRestantes === null
-                    ) {
-
-                        statusTexto =
-                            "🟢 Certificado válido";
-
-                        statusClasse =
-                            "status status-valido";
-
-                    }
-
-
-                    else if (
-                        diasRestantes < 0
-                    ) {
-
-                        statusTexto =
-                            "🔴 Certificado vencido";
-
-                        statusClasse =
-                            "status status-vencido";
-
-                    }
-
-
-                    else if (
-                        diasRestantes <= 90
-                    ) {
-
-                        statusTexto =
-                            "🟡 Próximo do vencimento";
-
-                        statusClasse =
-                            "status status-proximo";
-
-                    }
-
-
-                    else {
-
-                        statusTexto =
-                            "🟢 Certificado válido";
-
-                        statusClasse =
-                            "status status-valido";
-
-                    }
-
-
-                    // -----------------------------------------
-                    // BOTÃO DO CERTIFICADO
-                    // -----------------------------------------
-
-                    let botaoCertificado;
-
-
-                    if (
-                        certificado.link &&
-                        certificado.link.trim() !== ""
-                    ) {
-
-                        botaoCertificado = `
-
-                            <a
-                                class="botao-pdf"
-                                href="${certificado.link}"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                            >
-
-                                📄 Ver certificado
-
-                            </a>
-
-                        `;
-
-                    }
-
-                    else {
-
-                        botaoCertificado = `
-
-                            <span class="botao-indisponivel">
-
-                                📄 Certificado não disponível
-
-                            </span>
-
-                        `;
-
-                    }
-
-
-                    // -----------------------------------------
-                    // CARD
-                    // -----------------------------------------
-
-                    html += `
-
-                        <article class="certificado">
-
-
-                            <div class="curso">
-
-                                ${certificado.curso}
-
-                            </div>
-
-
-                            <div class="informacoes">
-
-
-                                <div class="informacao">
-
-                                    <span class="informacao-label">
-                                        Conclusão
-                                    </span>
-
-                                    <span class="informacao-valor">
-                                        ${certificado.conclusao || "Não informado"}
-                                    </span>
-
-                                </div>
-
-
-                                <div class="informacao">
-
-                                    <span class="informacao-label">
-                                        Vencimento
-                                    </span>
-
-                                    <span class="informacao-valor">
-
-                                        ${
-                                            certificado.vencimento &&
-                                            certificado.vencimento.trim() !== ""
-                                            ? certificado.vencimento
-                                            : "Indeterminado"
-                                        }
-
-                                    </span>
-
-                                </div>
-
-
-                            </div>
-
-
-                            <div class="${statusClasse}">
-
-                                ${statusTexto}
-
-                            </div>
-
-
-                            <br>
-
-
-                            ${botaoCertificado}
-
-
-                        </article>
-
-                    `;
+                    renderizarCertificados();
 
                 }
             );
 
 
             // =================================================
-            // 10. MOSTRAR NA TELA
+            // 12. FILTROS
             // =================================================
 
-            conteudo.innerHTML =
-                html;
+            const botoesFiltro =
+                document.querySelectorAll(
+                    ".filtro"
+                );
+
+
+            botoesFiltro.forEach(
+                botao => {
+
+                    botao.addEventListener(
+                        "click",
+                        function() {
+
+
+                            filtroAtual =
+                                this.dataset.filtro;
+
+
+                            botoesFiltro.forEach(
+                                b =>
+                                    b.classList.remove(
+                                        "ativo"
+                                    )
+                            );
+
+
+                            this.classList.add(
+                                "ativo"
+                            );
+
+
+                            renderizarCertificados();
+
+                        }
+                    );
+
+                }
+            );
 
 
         })
 
 
         // =====================================================
-        // 11. ERRO
+        // 13. ERRO
         // =====================================================
 
         .catch(erro => {
 
             console.error(erro);
+
 
             conteudo.innerHTML = `
 
@@ -1273,6 +1290,427 @@
 
     }
 
+
+
+    // =========================================================
+    // FUNÇÃO: DETERMINAR STATUS
+    // =========================================================
+
+    function obterStatus(certificado) {
+
+
+        let diasRestantes = null;
+
+
+        // -----------------------------------------------------
+        // SEM VENCIMENTO = VÁLIDO
+        // -----------------------------------------------------
+
+        if (
+            !certificado.vencimento ||
+            certificado.vencimento.trim() === ""
+        ) {
+
+            return {
+                tipo: "valido",
+                texto: "🟢 Certificado válido"
+            };
+
+        }
+
+
+        // -----------------------------------------------------
+        // CONVERTER DATA
+        // -----------------------------------------------------
+
+        const partes =
+            certificado.vencimento.split("/");
+
+
+        if (
+            partes.length !== 3
+        ) {
+
+            return {
+                tipo: "valido",
+                texto: "🟢 Certificado válido"
+            };
+
+        }
+
+
+        const dataVencimento =
+            new Date(
+                partes[2],
+                partes[1] - 1,
+                partes[0]
+            );
+
+
+        const hoje =
+            new Date();
+
+
+        hoje.setHours(
+            0,
+            0,
+            0,
+            0
+        );
+
+
+        const diferenca =
+            dataVencimento - hoje;
+
+
+        diasRestantes =
+            Math.ceil(
+                diferenca /
+                (1000 * 60 * 60 * 24)
+            );
+
+
+        // -----------------------------------------------------
+        // VENCIDO
+        // -----------------------------------------------------
+
+        if (
+            diasRestantes < 0
+        ) {
+
+            return {
+                tipo: "vencido",
+                texto: "🔴 Certificado vencido"
+            };
+
+        }
+
+
+        // -----------------------------------------------------
+        // PRÓXIMO
+        // -----------------------------------------------------
+
+        if (
+            diasRestantes <= 90
+        ) {
+
+            return {
+                tipo: "proximo",
+                texto: "🟡 Próximo do vencimento"
+            };
+
+        }
+
+
+        // -----------------------------------------------------
+        // VÁLIDO
+        // -----------------------------------------------------
+
+        return {
+            tipo: "valido",
+            texto: "🟢 Certificado válido"
+        };
+
+    }
+
+
+
+    // =========================================================
+    // FUNÇÃO: RENDERIZAR CERTIFICADOS
+    // =========================================================
+
+    function renderizarCertificados() {
+
+
+        const lista =
+            document.getElementById(
+                "listaCertificados"
+            );
+
+
+        const contador =
+            document.getElementById(
+                "contadorCertificados"
+            );
+
+
+        if (!lista) {
+            return;
+        }
+
+
+        // =====================================================
+        // FILTRAR
+        // =====================================================
+
+        const certificadosFiltrados =
+            certificadosOriginais.filter(
+                certificado => {
+
+
+                    const status =
+                        obterStatus(certificado);
+
+
+                    // -----------------------------------------
+                    // FILTRO DE STATUS
+                    // -----------------------------------------
+
+                    if (
+                        filtroAtual !== "todos" &&
+                        status.tipo !== filtroAtual
+                    ) {
+
+                        return false;
+
+                    }
+
+
+                    // -----------------------------------------
+                    // PESQUISA
+                    // -----------------------------------------
+
+                    if (
+                        termoPesquisa !== ""
+                    ) {
+
+                        const curso =
+                            (
+                                certificado.curso || ""
+                            ).toLowerCase();
+
+
+                        if (
+                            !curso.includes(
+                                termoPesquisa
+                            )
+                        ) {
+
+                            return false;
+
+                        }
+
+                    }
+
+
+                    return true;
+
+                }
+            );
+
+
+        // =====================================================
+        // CONTADOR
+        // =====================================================
+
+        contador.textContent =
+            `${certificadosFiltrados.length} certificado(s)`;
+
+
+        // =====================================================
+        // SEM RESULTADOS
+        // =====================================================
+
+        if (
+            certificadosFiltrados.length === 0
+        ) {
+
+            lista.innerHTML = `
+
+                <div class="sem-resultados">
+
+                    🔎
+
+                    <h3>
+                        Nenhum certificado encontrado
+                    </h3>
+
+                    <p>
+                        Tente alterar o filtro ou
+                        o termo da pesquisa.
+                    </p>
+
+                </div>
+
+            `;
+
+            return;
+
+        }
+
+
+        // =====================================================
+        // MONTAR HTML
+        // =====================================================
+
+        let html = "";
+
+
+        certificadosFiltrados.forEach(
+            certificado => {
+
+
+                const status =
+                    obterStatus(certificado);
+
+
+                let statusClasse =
+                    "status status-valido";
+
+
+                if (
+                    status.tipo === "proximo"
+                ) {
+
+                    statusClasse =
+                        "status status-proximo";
+
+                }
+
+
+                if (
+                    status.tipo === "vencido"
+                ) {
+
+                    statusClasse =
+                        "status status-vencido";
+
+                }
+
+
+                // ---------------------------------------------
+                // BOTÃO
+                // ---------------------------------------------
+
+                let botaoCertificado;
+
+
+                if (
+                    certificado.link &&
+                    certificado.link.trim() !== ""
+                ) {
+
+                    botaoCertificado = `
+
+                        <a
+                            class="botao-pdf"
+                            href="${certificado.link}"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                        >
+
+                            📄 Ver certificado
+
+                        </a>
+
+                    `;
+
+                }
+
+                else {
+
+                    botaoCertificado = `
+
+                        <span class="botao-indisponivel">
+
+                            📄 Certificado não disponível
+
+                        </span>
+
+                    `;
+
+                }
+
+
+                // ---------------------------------------------
+                // CARD
+                // ---------------------------------------------
+
+                html += `
+
+                    <article class="certificado">
+
+
+                        <div class="curso">
+
+                            ${certificado.curso}
+
+                        </div>
+
+
+                        <div class="informacoes">
+
+
+                            <div class="informacao">
+
+                                <span class="informacao-label">
+                                    Conclusão
+                                </span>
+
+                                <span class="informacao-valor">
+
+                                    ${
+                                        certificado.conclusao ||
+                                        "Não informado"
+                                    }
+
+                                </span>
+
+                            </div>
+
+
+                            <div class="informacao">
+
+                                <span class="informacao-label">
+                                    Vencimento
+                                </span>
+
+                                <span class="informacao-valor">
+
+                                    ${
+                                        certificado.vencimento &&
+                                        certificado.vencimento.trim() !== ""
+                                        ? certificado.vencimento
+                                        : "Indeterminado"
+                                    }
+
+                                </span>
+
+                            </div>
+
+
+                        </div>
+
+
+                        <div class="${statusClasse}">
+
+                            ${status.texto}
+
+                        </div>
+
+
+                        <br>
+
+
+                        ${botaoCertificado}
+
+
+                    </article>
+
+                `;
+
+            }
+        );
+
+
+        // =====================================================
+        // MOSTRAR
+        // =====================================================
+
+        lista.innerHTML =
+            html;
+
+    }
 
 </script>
 
