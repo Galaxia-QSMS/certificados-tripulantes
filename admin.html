@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Administração | Galáxia Academy</title>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #f4f7f9;
+            color: #1f2933;
+        }
+
+        header {
+            background: #ffffff;
+            border-bottom: 1px solid #e5e7eb;
+            padding: 18px 30px;
+        }
+
+        .header-content {
+            max-width: 1000px;
+            margin: auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+        }
+
+        .logo {
+            height: 55px;
+            max-width: 180px;
+            object-fit: contain;
+        }
+
+        .voltar {
+            text-decoration: none;
+            color: #1f5f8b;
+            font-weight: 600;
+        }
+
+        main {
+            max-width: 700px;
+            margin: 50px auto;
+            padding: 0 20px;
+        }
+
+        .card {
+            background: #ffffff;
+            border-radius: 18px;
+            padding: 35px;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+        }
+
+        h1 {
+            margin-top: 0;
+            margin-bottom: 8px;
+            color: #173b57;
+        }
+
+        .descricao {
+            color: #667085;
+            margin-bottom: 30px;
+            line-height: 1.5;
+        }
+
+        label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        input {
+            width: 100%;
+            padding: 14px;
+            border: 1px solid #d0d5dd;
+            border-radius: 10px;
+            font-size: 16px;
+            margin-bottom: 18px;
+        }
+
+        button {
+            width: 100%;
+            padding: 14px;
+            border: none;
+            border-radius: 10px;
+            background: #1f6f9f;
+            color: white;
+            font-size: 16px;
+            font-weight: 700;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #185b82;
+        }
+
+        button:disabled {
+            background: #98a6b3;
+            cursor: not-allowed;
+        }
+
+        .resultado {
+            display: none;
+            margin-top: 25px;
+            padding: 20px;
+            border-radius: 12px;
+            background: #eef7ef;
+            border: 1px solid #b7d9bc;
+        }
+
+        .resultado h2 {
+            margin-top: 0;
+            color: #286238;
+            font-size: 20px;
+        }
+
+        .campo {
+            margin-top: 12px;
+            padding: 12px;
+            background: white;
+            border-radius: 8px;
+            border: 1px solid #dce8de;
+        }
+
+        .campo strong {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .senha {
+            font-family: monospace;
+            font-size: 18px;
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+
+        .erro {
+            display: none;
+            margin-top: 20px;
+            padding: 15px;
+            border-radius: 10px;
+            background: #fff1f1;
+            border: 1px solid #e0aaaa;
+            color: #8a2525;
+        }
+
+        .aviso {
+            margin-top: 25px;
+            padding: 15px;
+            background: #fff8e7;
+            border: 1px solid #ead28c;
+            border-radius: 10px;
+            color: #705a16;
+            font-size: 14px;
+            line-height: 1.5;
+        }
+
+        @media (max-width: 600px) {
+            .header-content {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            main {
+                margin: 25px auto;
+            }
+
+            .card {
+                padding: 25px 20px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <div class="header-content">
+
+        <img
+            src="Logo - Fonte Azul.png"
+            alt="Galáxia Navegação"
+            class="logo"
+        >
+
+        <a href="index.html" class="voltar">
+            ← Voltar para a Academy
+        </a>
+
+    </div>
+</header>
+
+<main>
+
+    <div class="card">
+
+        <h1>Administração de acessos</h1>
+
+        <p class="descricao">
+            Utilize esta página para criar o primeiro acesso de um colaborador
+            à Galáxia Academy.
+        </p>
+
+        <label for="matricula">
+            Matrícula do colaborador
+        </label>
+
+        <input
+            type="text"
+            id="matricula"
+            placeholder="Ex.: 123"
+            autocomplete="off"
+        >
+
+        <button
+            id="btnCriar"
+            onclick="provisionarFuncionario()"
+        >
+            Criar acesso
+        </button>
+
+        <div id="erro" class="erro"></div>
+
+        <div id="resultado" class="resultado">
+
+            <h2>✓ Acesso criado com sucesso</h2>
+
+            <div class="campo">
+                <strong>Nome</strong>
+                <span id="resultadoNome"></span>
+            </div>
+
+            <div class="campo">
+                <strong>Matrícula</strong>
+                <span id="resultadoMatricula"></span>
+            </div>
+
+            <div class="campo">
+                <strong>Senha temporária</strong>
+                <span id="resultadoSenha" class="senha"></span>
+            </div>
+
+            <div class="aviso">
+                ⚠️ Anote esta senha temporária antes de sair da página.
+                Ela será utilizada pelo colaborador para realizar o primeiro acesso.
+            </div>
+
+        </div>
+
+    </div>
+
+</main>
+
+<script>
+
+const SUPABASE_URL =
+    "https://rczrcipqonybqsjswjpx.supabase.co";
+
+const SUPABASE_PUBLISHABLE_KEY =
+    "sb_publishable_B5zJXt33VGPVZnJeFqOo4Q_NCJ_JLrh";
+
+const supabaseClient =
+    supabase.createClient(
+        SUPABASE_URL,
+        SUPABASE_PUBLISHABLE_KEY
+    );
+
+
+async function provisionarFuncionario() {
+
+    const matricula =
+        document
+            .getElementById("matricula")
+            .value
+            .trim();
+
+    const botao =
+        document.getElementById("btnCriar");
+
+    const resultado =
+        document.getElementById("resultado");
+
+    const erro =
+        document.getElementById("erro");
+
+    resultado.style.display = "none";
+    erro.style.display = "none";
+
+    if (!matricula) {
+
+        erro.textContent =
+            "Informe a matrícula do colaborador.";
+
+        erro.style.display = "block";
+
+        return;
+    }
+
+    botao.disabled = true;
+    botao.textContent = "Criando acesso...";
+
+    try {
+
+        const {
+            data: {
+                session
+            }
+        } =
+            await supabaseClient.auth.getSession();
+
+        if (!session) {
+
+            throw new Error(
+                "Sua sessão não está ativa. Faça login novamente na Academy."
+            );
+        }
+
+        const resposta =
+            await fetch(
+                `${SUPABASE_URL}/functions/v1/provisionar-funcionarios`,
+                {
+                    method: "POST",
+
+                    headers: {
+                        "Content-Type": "application/json",
+                        "Authorization":
+                            `Bearer ${session.access_token}`
+                    },
+
+                    body: JSON.stringify({
+                        matricula: matricula
+                    })
+                }
+            );
+
+        const dados =
+            await resposta.json();
+
+        if (!resposta.ok || !dados.sucesso) {
+
+            throw new Error(
+                dados.erro ||
+                "Não foi possível criar o acesso."
+            );
+        }
+
+        document
+            .getElementById("resultadoNome")
+            .textContent =
+            dados.nome;
+
+        document
+            .getElementById("resultadoMatricula")
+            .textContent =
+            dados.matricula;
+
+        document
+            .getElementById("resultadoSenha")
+            .textContent =
+            dados.senha_temporaria;
+
+        resultado.style.display =
+            "block";
+
+        document
+            .getElementById("matricula")
+            .value = "";
+
+    } catch (error) {
+
+        console.error(error);
+
+        erro.textContent =
+            error.message ||
+            "Erro inesperado.";
+
+        erro.style.display =
+            "block";
+
+    } finally {
+
+        botao.disabled = false;
+        botao.textContent =
+            "Criar acesso";
+    }
+}
+
+</script>
+
+</body>
+</html>
