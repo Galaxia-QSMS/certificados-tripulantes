@@ -16,9 +16,6 @@
     <!-- Biblioteca ZIP -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
 
-    <!-- Biblioteca para transformar QR Code em imagem -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
-
 
     <style>
 
@@ -37,10 +34,14 @@
 
 
         .container {
-            max-width: 1000px;
+            max-width: 1100px;
             margin: auto;
         }
 
+
+        /* =====================================================
+           TOPO
+        ====================================================== */
 
         .topo {
             background: white;
@@ -75,6 +76,10 @@
         }
 
 
+        /* =====================================================
+           AÇÕES
+        ====================================================== */
+
         .acoes {
             background: white;
             padding: 22px;
@@ -89,7 +94,42 @@
             font-size: 18px;
             font-weight: bold;
             color: #174a8b;
-            margin-bottom: 18px;
+            margin-bottom: 10px;
+        }
+
+
+        .resumo {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            flex-wrap: wrap;
+            margin: 15px 0 20px;
+        }
+
+
+        .resumo-item {
+            padding: 10px 16px;
+            border-radius: 8px;
+            font-size: 13px;
+            font-weight: bold;
+        }
+
+
+        .total {
+            background: #eaf1f8;
+            color: #174a8b;
+        }
+
+
+        .gerados {
+            background: #e8f5e9;
+            color: #26733a;
+        }
+
+
+        .novos {
+            background: #fff5cc;
+            color: #856404;
         }
 
 
@@ -105,6 +145,22 @@
         }
 
 
+        button:hover {
+            transform: translateY(-1px);
+        }
+
+
+        .botao-novos {
+            background: #f2c300;
+            color: #222;
+        }
+
+
+        .botao-novos:hover {
+            background: #dcb000;
+        }
+
+
         .botao-gerar {
             background: #174a8b;
             color: white;
@@ -117,19 +173,31 @@
 
 
         .botao-zip {
-            background: #f2c300;
-            color: #222;
+            background: #174a8b;
+            color: white;
         }
 
 
         .botao-zip:hover {
-            background: #dcb000;
+            background: #123b70;
+        }
+
+
+        .botao-zip-novos {
+            background: #26733a;
+            color: white;
+        }
+
+
+        .botao-zip-novos:hover {
+            background: #1d5c2d;
         }
 
 
         button:disabled {
             opacity: 0.5;
             cursor: not-allowed;
+            transform: none;
         }
 
 
@@ -139,6 +207,10 @@
             font-size: 13px;
         }
 
+
+        /* =====================================================
+           GRADE
+        ====================================================== */
 
         .grade {
             display: grid;
@@ -153,6 +225,39 @@
             padding: 20px;
             text-align: center;
             box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+            position: relative;
+        }
+
+
+        .qr-card.novo {
+            border: 2px solid #f2c300;
+        }
+
+
+        .qr-card.gerado {
+            border: 2px solid #dfe7df;
+        }
+
+
+        .status {
+            display: inline-block;
+            font-size: 11px;
+            font-weight: bold;
+            padding: 5px 9px;
+            border-radius: 20px;
+            margin-bottom: 10px;
+        }
+
+
+        .status-novo {
+            background: #fff1a8;
+            color: #856404;
+        }
+
+
+        .status-gerado {
+            background: #e8f5e9;
+            color: #26733a;
         }
 
 
@@ -199,6 +304,10 @@
             margin-top: 15px;
         }
 
+
+        /* =====================================================
+           RESPONSIVO
+        ====================================================== */
 
         @media (max-width: 600px) {
 
@@ -264,6 +373,38 @@
         </div>
 
 
+        <div class="resumo">
+
+            <div class="resumo-item total">
+                👥 Total:
+                <span id="total">0</span>
+            </div>
+
+
+            <div class="resumo-item gerados">
+                ✅ Já gerados:
+                <span id="quantidadeGerados">0</span>
+            </div>
+
+
+            <div class="resumo-item novos">
+                🆕 Novos:
+                <span id="quantidadeNovos">0</span>
+            </div>
+
+        </div>
+
+
+        <button
+            class="botao-novos"
+            id="btnNovos"
+            onclick="gerarNovos()"
+            disabled
+        >
+            🆕 GERAR QR DOS NOVOS
+        </button>
+
+
         <button
             class="botao-gerar"
             id="btnGerar"
@@ -271,6 +412,19 @@
             disabled
         >
             🔲 GERAR TODOS
+        </button>
+
+
+        <br>
+
+
+        <button
+            class="botao-zip-novos"
+            id="btnZipNovos"
+            onclick="baixarZIPNovos()"
+            disabled
+        >
+            📦 BAIXAR NOVOS EM ZIP
         </button>
 
 
@@ -325,16 +479,152 @@
 
     let qrcodesGerados = [];
 
+    let qrcodesNovos = [];
+
+
+
+    // =====================================================
+    // CONTROLE DOS QR CODES JÁ GERADOS
+    // =====================================================
+
+    function obterQRsGerados() {
+
+        const dadosSalvos =
+            localStorage.getItem("galaxia_qrs_gerados");
+
+        if (!dadosSalvos) {
+
+            return {};
+
+        }
+
+        try {
+
+            return JSON.parse(dadosSalvos);
+
+        } catch (erro) {
+
+            console.error(
+                "Erro ao ler controle dos QR Codes:",
+                erro
+            );
+
+            return {};
+
+        }
+
+    }
+
+
+
+    function salvarQRGerado(matricula) {
+
+        const controle =
+            obterQRsGerados();
+
+
+        controle[matricula] = true;
+
+
+        localStorage.setItem(
+            "galaxia_qrs_gerados",
+            JSON.stringify(controle)
+        );
+
+    }
+
+
+
+    function qrJaFoiGerado(matricula) {
+
+        const controle =
+            obterQRsGerados();
+
+        return controle[matricula] === true;
+
+    }
+
+
+
+    // =====================================================
+    // ATUALIZAR RESUMO
+    // =====================================================
+
+    function atualizarResumo() {
+
+
+        const matriculas =
+            Object.keys(dados);
+
+
+        let quantidadeGerados = 0;
+
+        let quantidadeNovos = 0;
+
+
+        matriculas.forEach(matricula => {
+
+            if (
+                qrJaFoiGerado(matricula)
+            ) {
+
+                quantidadeGerados++;
+
+            } else {
+
+                quantidadeNovos++;
+
+            }
+
+        });
+
+
+        document.getElementById("total").innerText =
+            matriculas.length;
+
+
+        document.getElementById("quantidadeGerados").innerText =
+            quantidadeGerados;
+
+
+        document.getElementById("quantidadeNovos").innerText =
+            quantidadeNovos;
+
+
+        document.getElementById("contador").innerText =
+            matriculas.length +
+            " colaborador(es) cadastrado(s)";
+
+
+        // =================================================
+        // BOTÃO DE NOVOS
+        // =================================================
+
+        document.getElementById("btnNovos").disabled =
+            quantidadeNovos === 0;
+
+
+        // =================================================
+        // BOTÃO ZIP NOVOS
+        // =================================================
+
+        document.getElementById("btnZipNovos").disabled =
+            qrcodesNovos.length === 0;
+
+    }
+
 
 
     // =====================================================
     // CARREGAR dados.json
     // =====================================================
 
-
-    fetch("dados.json", {
-        cache: "no-cache"
-    })
+    fetch(
+        "dados.json",
+        {
+            cache: "no-cache"
+        }
+    )
 
 
     .then(resposta => {
@@ -357,17 +647,11 @@
         dados = resultado;
 
 
-        const quantidade =
-            Object.keys(dados).length;
-
-
-        document.getElementById("contador").innerText =
-            quantidade +
-            " tripulante(s) encontrado(s)";
+        atualizarResumo();
 
 
         document.getElementById("mensagem").innerText =
-            "Clique em GERAR TODOS para criar os QR Codes.";
+            "Os dados foram carregados. Verifique os novos colaboradores.";
 
 
         document.getElementById("btnGerar").disabled =
@@ -395,11 +679,78 @@
 
 
     // =====================================================
+    // GERAR SOMENTE NOVOS
+    // =====================================================
+
+    function gerarNovos() {
+
+
+        const matriculasNovas =
+            Object.keys(dados).filter(
+                matricula =>
+                    !qrJaFoiGerado(matricula)
+            );
+
+
+        if (
+            matriculasNovas.length === 0
+        ) {
+
+            alert(
+                "Não existem novos colaboradores para gerar QR Code."
+            );
+
+            return;
+
+        }
+
+
+        gerarQRs(
+            matriculasNovas
+        );
+
+    }
+
+
+
+    // =====================================================
     // GERAR TODOS
     // =====================================================
 
-
     function gerarTodos() {
+
+
+        const matriculas =
+            Object.keys(dados);
+
+
+        if (
+            matriculas.length === 0
+        ) {
+
+            document.getElementById("mensagem").innerText =
+                "Nenhum colaborador encontrado.";
+
+            return;
+
+        }
+
+
+        gerarQRs(
+            matriculas
+        );
+
+    }
+
+
+
+    // =====================================================
+    // FUNÇÃO PRINCIPAL DE GERAÇÃO
+    // =====================================================
+
+    function gerarQRs(
+        matriculas
+    ) {
 
 
         const grade =
@@ -411,170 +762,246 @@
 
         qrcodesGerados = [];
 
-
-        const matriculas =
-            Object.keys(dados);
-
-
-        if (matriculas.length === 0) {
-
-            document.getElementById("mensagem").innerText =
-                "Nenhum funcionário encontrado.";
-
-            return;
-
-        }
+        qrcodesNovos = [];
 
 
         document.getElementById("mensagem").innerText =
             "Gerando QR Codes...";
 
 
-        matriculas.forEach(matricula => {
+        matriculas.forEach(
+            matricula => {
 
 
-            const funcionario =
-                dados[matricula];
+                const funcionario =
+                    dados[matricula];
 
 
-            // =================================================
-            // CARD
-            // =================================================
+                const eraNovo =
+                    !qrJaFoiGerado(matricula);
 
 
-            const card =
-                document.createElement("div");
+                // =================================================
+                // CARD
+                // =================================================
+
+                const card =
+                    document.createElement("div");
 
 
-            card.className =
-                "qr-card";
-
-
-            // =================================================
-            // NOME
-            // =================================================
-
-
-            const nome =
-                document.createElement("h2");
-
-
-            nome.innerText =
-                funcionario.nome || "Sem nome";
-
-
-            card.appendChild(nome);
-
-
-            // =================================================
-            // MATRÍCULA
-            // =================================================
-
-
-            const matriculaTexto =
-                document.createElement("div");
-
-
-            matriculaTexto.className =
-                "matricula";
-
-
-            matriculaTexto.innerText =
-                "Matrícula: " + matricula;
-
-
-            card.appendChild(matriculaTexto);
-
-
-            // =================================================
-            // QR CODE
-            // =================================================
-
-
-            const qrDiv =
-                document.createElement("div");
-
-
-            qrDiv.className =
-                "qr-code";
-
-
-            card.appendChild(qrDiv);
-
-
-            new QRCode(qrDiv, {
-
-                text:
-                    URL_SITE + encodeURIComponent(matricula),
-
-                width: 180,
-
-                height: 180,
-
-                correctLevel:
-                    QRCode.CorrectLevel.H
-
-            });
-
-
-            // =================================================
-            // BOTÃO INDIVIDUAL
-            // =================================================
-
-
-            const botao =
-                document.createElement("button");
-
-
-            botao.className =
-                "botao-download";
-
-
-            botao.innerText =
-                "⬇ Baixar QR Code";
-
-
-            botao.onclick =
-                function() {
-
-                    baixarIndividual(
-                        qrDiv,
-                        matricula,
-                        funcionario.nome
+                card.className =
+                    "qr-card " +
+                    (
+                        eraNovo
+                            ? "novo"
+                            : "gerado"
                     );
+
+
+                // =================================================
+                // STATUS
+                // =================================================
+
+                const status =
+                    document.createElement("div");
+
+
+                status.className =
+                    "status " +
+                    (
+                        eraNovo
+                            ? "status-novo"
+                            : "status-gerado"
+                    );
+
+
+                status.innerText =
+                    eraNovo
+                        ? "🆕 NOVO QR"
+                        : "✅ QR JÁ GERADO";
+
+
+                card.appendChild(status);
+
+
+                // =================================================
+                // NOME
+                // =================================================
+
+                const nome =
+                    document.createElement("h2");
+
+
+                nome.innerText =
+                    funcionario.nome ||
+                    "Sem nome";
+
+
+                card.appendChild(nome);
+
+
+                // =================================================
+                // MATRÍCULA
+                // =================================================
+
+                const matriculaTexto =
+                    document.createElement("div");
+
+
+                matriculaTexto.className =
+                    "matricula";
+
+
+                matriculaTexto.innerText =
+                    "Matrícula: " +
+                    matricula;
+
+
+                card.appendChild(
+                    matriculaTexto
+                );
+
+
+                // =================================================
+                // QR CODE
+                // =================================================
+
+                const qrDiv =
+                    document.createElement("div");
+
+
+                qrDiv.className =
+                    "qr-code";
+
+
+                card.appendChild(
+                    qrDiv
+                );
+
+
+                new QRCode(
+                    qrDiv,
+                    {
+
+                        text:
+                            URL_SITE +
+                            encodeURIComponent(
+                                matricula
+                            ),
+
+                        width: 180,
+
+                        height: 180,
+
+                        correctLevel:
+                            QRCode.CorrectLevel.H
+
+                    }
+                );
+
+
+                // =================================================
+                // BOTÃO INDIVIDUAL
+                // =================================================
+
+                const botao =
+                    document.createElement("button");
+
+
+                botao.className =
+                    "botao-download";
+
+
+                botao.innerText =
+                    "⬇ Baixar QR Code";
+
+
+                botao.onclick =
+                    function() {
+
+                        baixarIndividual(
+                            qrDiv,
+                            matricula,
+                            funcionario.nome
+                        );
+
+                    };
+
+
+                card.appendChild(
+                    botao
+                );
+
+
+                grade.appendChild(
+                    card
+                );
+
+
+                // =================================================
+                // CONTROLE
+                // =================================================
+
+                const item = {
+
+                    matricula:
+                        matricula,
+
+                    nome:
+                        funcionario.nome ||
+                        "Sem nome",
+
+                    elemento:
+                        qrDiv,
+
+                    eraNovo:
+                        eraNovo
 
                 };
 
 
-            card.appendChild(botao);
+                qrcodesGerados.push(
+                    item
+                );
 
 
-            grade.appendChild(card);
+                if (
+                    eraNovo
+                ) {
+
+                    qrcodesNovos.push(
+                        item
+                    );
+
+                }
 
 
-            qrcodesGerados.push({
+                // =================================================
+                // MARCA COMO GERADO
+                // =================================================
 
-                matricula:
-                    matricula,
+                salvarQRGerado(
+                    matricula
+                );
 
-                nome:
-                    funcionario.nome || "Sem nome",
+            }
+        );
 
-                elemento:
-                    qrDiv
 
-            });
+        atualizarResumo();
 
-        });
+
+        document.getElementById("btnZip").disabled =
+            qrcodesGerados.length === 0;
+
+
+        document.getElementById("btnZipNovos").disabled =
+            qrcodesNovos.length === 0;
 
 
         document.getElementById("mensagem").innerText =
             matriculas.length +
-            " QR Codes gerados com sucesso!";
-
-
-        document.getElementById("btnZip").disabled =
-            false;
+            " QR Code(s) gerado(s) com sucesso!";
 
     }
 
@@ -584,7 +1011,6 @@
     // BAIXAR QR INDIVIDUAL
     // =====================================================
 
-
     function baixarIndividual(
         elemento,
         matricula,
@@ -593,7 +1019,9 @@
 
 
         const canvas =
-            elemento.querySelector("canvas");
+            elemento.querySelector(
+                "canvas"
+            );
 
 
         if (!canvas) {
@@ -619,7 +1047,9 @@
 
 
         link.href =
-            canvas.toDataURL("image/png");
+            canvas.toDataURL(
+                "image/png"
+            );
 
 
         link.click();
@@ -631,7 +1061,6 @@
     // =====================================================
     // BAIXAR TODOS EM ZIP
     // =====================================================
-
 
     async function baixarZIP() {
 
@@ -649,6 +1078,54 @@
         }
 
 
+        await criarZIP(
+            qrcodesGerados,
+            "QR_Codes_Tripulantes.zip"
+        );
+
+    }
+
+
+
+    // =====================================================
+    // BAIXAR SOMENTE NOVOS EM ZIP
+    // =====================================================
+
+    async function baixarZIPNovos() {
+
+
+        if (
+            qrcodesNovos.length === 0
+        ) {
+
+            alert(
+                "Não existem novos QR Codes para baixar."
+            );
+
+            return;
+
+        }
+
+
+        await criarZIP(
+            qrcodesNovos,
+            "QR_Codes_Novos.zip"
+        );
+
+    }
+
+
+
+    // =====================================================
+    // CRIAR ZIP
+    // =====================================================
+
+    async function criarZIP(
+        lista,
+        nomeZIP
+    ) {
+
+
         const zip =
             new JSZip();
 
@@ -658,34 +1135,42 @@
 
 
         for (
-            const item of qrcodesGerados
+            const item of lista
         ) {
 
 
             const canvas =
-                item.elemento.querySelector("canvas");
+                item.elemento.querySelector(
+                    "canvas"
+                );
 
 
             if (!canvas) {
+
                 continue;
+
             }
 
 
             const blob =
-                await new Promise(resolve => {
+                await new Promise(
+                    resolve => {
 
-                    canvas.toBlob(
-                        resolve,
-                        "image/png"
-                    );
+                        canvas.toBlob(
+                            resolve,
+                            "image/png"
+                        );
 
-                });
+                    }
+                );
 
 
             const nomeArquivo =
                 item.matricula +
                 "_" +
-                limparNome(item.nome) +
+                limparNome(
+                    item.nome
+                ) +
                 ".png";
 
 
@@ -698,11 +1183,11 @@
 
 
         const arquivoZIP =
-            await zip.generateAsync({
-
-                type: "blob"
-
-            });
+            await zip.generateAsync(
+                {
+                    type: "blob"
+                }
+            );
 
 
         const link =
@@ -716,7 +1201,7 @@
 
 
         link.download =
-            "QR_Codes_Tripulantes.zip";
+            nomeZIP;
 
 
         link.click();
@@ -735,16 +1220,19 @@
 
 
     // =====================================================
-    // LIMPAR NOME PARA USAR NO ARQUIVO
+    // LIMPAR NOME
     // =====================================================
 
-
-    function limparNome(nome) {
+    function limparNome(
+        nome
+    ) {
 
 
         return nome
 
-            .normalize("NFD")
+            .normalize(
+                "NFD"
+            )
 
             .replace(
                 /[\u0300-\u036f]/g,
