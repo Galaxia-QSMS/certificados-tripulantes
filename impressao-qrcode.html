@@ -179,25 +179,22 @@
             width: 180px;
         }
 
+        .btn-qr:hover {
+            background: #1d4ed8;
+        }
+
 
         /* ==========================================
            ARTE
            
-           TAMANHO REAL:
-           11 cm × 16 cm
-
-           VISUALIZAÇÃO:
+           11 × 16 cm
+           
+           Visual:
            330 × 480 px
-
+           
            QR:
-           4,5 cm × 4,5 cm
-           = 135 × 135 px
-
-           DOWNLOAD:
-           1100 × 1600 px
-
-           QR no download:
-           450 × 450 px
+           4,5 × 4,5 cm
+           135 × 135 px
         ========================================== */
 
         .arte-wrapper {
@@ -218,7 +215,7 @@
 
 
         /* ==========================================
-           NOME DA ARTE
+           NOME
         ========================================== */
 
         .arte-nome {
@@ -226,13 +223,15 @@
 
             top: 7px;
 
-            left: 10px;
-            right: 10px;
+            left: 8px;
+            right: 8px;
 
             height: 14px;
 
             display: flex;
+
             align-items: center;
+
             justify-content: center;
 
             font-size: 8px;
@@ -260,13 +259,15 @@
 
             top: 21px;
 
-            left: 10px;
-            right: 10px;
+            left: 8px;
+            right: 8px;
 
             height: 10px;
 
             display: flex;
+
             align-items: center;
+
             justify-content: center;
 
             font-size: 6.5px;
@@ -281,19 +282,11 @@
            QR CODES
 
            135 × 135 px
-           = 4,5 × 4,5 cm
 
-           Espaçamento vertical:
-           15 px
+           DUAS COLUNAS
 
-           Linha 1:
-           y = 45
-
-           Linha 2:
-           y = 195
-
-           Linha 3:
-           y = 345
+           Pequena margem lateral
+           Espaço central entre os QR
         ========================================== */
 
         .qr-arte {
@@ -305,38 +298,48 @@
         }
 
 
+        /* PRIMEIRA LINHA */
+
         .qr1 {
-            left: 15px;
+            left: 8px;
             top: 45px;
         }
 
         .qr2 {
-            left: 180px;
+            left: 187px;
             top: 45px;
         }
 
 
+        /* SEGUNDA LINHA */
+
         .qr3 {
-            left: 15px;
+            left: 8px;
             top: 195px;
         }
 
         .qr4 {
-            left: 180px;
+            left: 187px;
             top: 195px;
         }
 
 
+        /* TERCEIRA LINHA */
+
         .qr5 {
-            left: 15px;
+            left: 8px;
             top: 345px;
         }
 
         .qr6 {
-            left: 180px;
+            left: 187px;
             top: 345px;
         }
 
+
+        /* ==========================================
+           BOTÃO ARTE
+        ========================================== */
 
         .btn-arte {
             background: #059669;
@@ -384,12 +387,19 @@
 <div class="container">
 
 
+    <!-- ==========================================
+         TOPO
+    ========================================== -->
+
     <div class="topo">
 
         <h1>Impressão de QR Codes</h1>
 
         <div class="subtitulo">
-            Gere os QR Codes dos tripulantes e escolha individualmente o que deseja baixar.
+
+            Gere os QR Codes dos tripulantes e escolha individualmente
+            o que deseja baixar.
+
         </div>
 
 
@@ -420,7 +430,7 @@
             id="busca"
             class="busca"
             placeholder="🔎 Buscar por nome ou matrícula..."
-            oninput="filtrar()">
+            oninput="filtrar">
 
 
         <div
@@ -431,6 +441,10 @@
     </div>
 
 
+    <!-- ==========================================
+         LISTA
+    ========================================== -->
+
     <div id="lista"></div>
 
 
@@ -440,9 +454,15 @@
 
 <script>
 
+
+    /* ==========================================
+       VARIÁVEIS
+    ========================================== */
+
     let dados = {};
 
     let pessoas = [];
+
 
 
     /* ==========================================
@@ -528,6 +548,7 @@
     }
 
 
+
     /* ==========================================
        GERAR TODOS
     ========================================== */
@@ -546,7 +567,9 @@
 
 
         const lista =
-            document.getElementById("lista");
+            document.getElementById(
+                "lista"
+            );
 
 
         lista.innerHTML = "";
@@ -578,6 +601,7 @@
     }
 
 
+
     /* ==========================================
        CRIAR CARD
     ========================================== */
@@ -603,6 +627,7 @@
 
         card.dataset.matricula =
             pessoa.matricula.toLowerCase();
+
 
 
         /* CABEÇALHO */
@@ -668,6 +693,7 @@
         );
 
 
+
         /* OPÇÕES */
 
         const opcoes =
@@ -678,6 +704,7 @@
 
         opcoes.className =
             "opcoes";
+
 
 
         /* ======================================
@@ -777,6 +804,7 @@
         );
 
 
+
         /* ======================================
            ARTE
         ====================================== */
@@ -819,6 +847,7 @@
             "arte-" + index;
 
 
+
         /* NOME */
 
         const arteNome =
@@ -839,6 +868,7 @@
         arte.appendChild(
             arteNome
         );
+
 
 
         /* MATRÍCULA */
@@ -863,7 +893,10 @@
         );
 
 
-        /* 6 QR */
+
+        /* ======================================
+           6 QR
+        ====================================== */
 
         for (
             let i = 1;
@@ -901,6 +934,9 @@
 
         }
 
+
+
+        /* BOTÃO */
 
         const botaoArte =
             document.createElement(
@@ -942,6 +978,7 @@
         );
 
 
+
         opcoes.appendChild(
             opcaoQR
         );
@@ -962,7 +999,6 @@
         );
 
 
-        /* QR INDIVIDUAL */
 
         setTimeout(
             () => {
@@ -980,6 +1016,7 @@
         return card;
 
     }
+
 
 
     /* ==========================================
@@ -1020,8 +1057,9 @@
     }
 
 
+
     /* ==========================================
-       BAIXAR QR
+       BAIXAR QR INDIVIDUAL
     ========================================== */
 
     function baixarQR(
@@ -1091,31 +1129,30 @@
             );
 
 
-        const desenhar =
-            function() {
+        function desenhar() {
 
-                ctx.drawImage(
-                    img,
-                    0,
-                    0,
-                    135,
-                    135
-                );
+            ctx.drawImage(
+                img,
+                0,
+                0,
+                135,
+                135
+            );
 
 
-                baixarCanvas(
-                    canvasNovo,
+            baixarCanvas(
+                canvasNovo,
 
-                    "QR_" +
-                    limparNome(
-                        pessoa.nome
-                    ) +
-                    "_" +
-                    pessoa.matricula +
-                    ".png"
-                );
+                "QR_" +
+                limparNome(
+                    pessoa.nome
+                ) +
+                "_" +
+                pessoa.matricula +
+                ".png"
+            );
 
-            };
+        }
 
 
         if (img.complete) {
@@ -1134,16 +1171,9 @@
     }
 
 
+
     /* ==========================================
        BAIXAR ARTE
-
-       ARTE FINAL:
-       1100 × 1600 px
-       = 11 × 16 cm
-
-       QR:
-       450 × 450 px
-       = 4,5 × 4,5 cm
     ========================================== */
 
     async function baixarArte(
@@ -1183,6 +1213,7 @@
             1100,
             1600
         );
+
 
 
         /* ======================================
@@ -1231,6 +1262,7 @@
         );
 
 
+
         /* ======================================
            MATRÍCULA
         ====================================== */
@@ -1251,49 +1283,32 @@
         );
 
 
+
         /* ======================================
            QR CODES
+
+           QR = 450 × 450 px
+
+           11 cm = 1100 px
+
+           Margem:
+           50 px
+
+           Espaço central:
+           100 px
         ====================================== */
 
         const qrSize =
             450;
 
 
-        /*
-           Largura:
-           1100 px
-
-           QR + QR:
-           900 px
-
-           Sobram:
-           200 px
-
-           Margem:
-           100 px de cada lado.
-        */
-
         const x1 =
-            100;
+            50;
 
 
         const x2 =
-            550;
+            600;
 
-
-        /*
-           Altura:
-
-           QR = 450 px
-
-           Espaçamento = 50 px
-
-           450 + 50 + 450 + 50 + 450
-           = 1450 px
-
-           Cabe perfeitamente em
-           1600 px.
-        */
 
         const y1 =
             100;
@@ -1342,8 +1357,9 @@
         ];
 
 
+
         /* ======================================
-           PRIMEIRO QR
+           QR ORIGINAL
         ====================================== */
 
         const qrOriginal =
@@ -1375,6 +1391,7 @@
             qrOriginal.querySelector(
                 "img"
             );
+
 
 
         /* ======================================
@@ -1423,6 +1440,7 @@
         }
 
 
+
         /* ======================================
            DOWNLOAD
         ====================================== */
@@ -1443,6 +1461,7 @@
         );
 
     }
+
 
 
     /* ==========================================
@@ -1502,6 +1521,7 @@
     }
 
 
+
     /* ==========================================
        DOWNLOAD
     ========================================== */
@@ -1542,6 +1562,7 @@
     }
 
 
+
     /* ==========================================
        LIMPAR NOME
     ========================================== */
@@ -1566,6 +1587,7 @@
         );
 
     }
+
 
 
     /* ==========================================
@@ -1628,6 +1650,7 @@
     }
 
 
+
     /* ==========================================
        INICIAR
     ========================================== */
@@ -1635,6 +1658,7 @@
     carregarDados();
 
 </script>
+
 
 </body>
 
