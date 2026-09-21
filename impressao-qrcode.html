@@ -9,17 +9,12 @@
 
     <title>Impressão de QR Codes | Galáxia Navegação</title>
 
+
     <!-- QR CODE -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
 
-    <!-- JSZIP -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
-
-    <!-- HTML2CANVAS -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
-
-    <!-- FILESAVER -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
+    <!-- JS PDF -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 
 
     <style>
@@ -27,6 +22,7 @@
         * {
             box-sizing: border-box;
         }
+
 
         body {
 
@@ -48,23 +44,23 @@
 
         .painel {
 
-            max-width: 1000px;
+            max-width: 900px;
 
-            margin: 0 auto 30px;
+            margin: 0 auto;
 
-            background: white;
+            background: #ffffff;
 
-            padding: 25px;
+            padding: 30px;
 
             border-radius: 12px;
 
             box-shadow:
-                0 3px 12px rgba(0,0,0,.10);
+                0 3px 15px rgba(0,0,0,.10);
 
         }
 
 
-        .painel h1 {
+        h1 {
 
             margin: 0 0 10px;
 
@@ -73,20 +69,26 @@
         }
 
 
-        .painel p {
+        p {
 
-            margin: 6px 0;
+            margin: 7px 0;
 
             color: #555;
 
         }
 
 
-        .info {
+        .informacoes {
 
-            margin-top: 15px;
+            margin-top: 20px;
 
-            font-weight: bold;
+            padding: 15px;
+
+            background: #f7f7f7;
+
+            border-radius: 8px;
+
+            line-height: 1.7;
 
         }
 
@@ -99,7 +101,7 @@
 
             gap: 12px;
 
-            margin-top: 20px;
+            margin-top: 25px;
 
         }
 
@@ -108,20 +110,20 @@
 
             border: none;
 
-            padding: 13px 20px;
-
             border-radius: 8px;
 
-            cursor: pointer;
+            padding: 14px 22px;
 
             font-size: 15px;
 
             font-weight: bold;
 
+            cursor: pointer;
+
         }
 
 
-        .btn-gerar {
+        .btn-pdf {
 
             background: #0066cc;
 
@@ -130,205 +132,101 @@
         }
 
 
-        .btn-zip {
+        .btn-pdf:hover {
 
-            background: #198754;
-
-            color: white;
+            background: #0052a3;
 
         }
 
 
-        button:hover {
+        button:disabled {
 
-            opacity: .9;
+            opacity: .6;
+
+            cursor: not-allowed;
 
         }
 
 
         #status {
 
-            margin-top: 18px;
+            margin-top: 20px;
 
             font-weight: bold;
 
-        }
-
-
-        /*
-        =====================================================
-        ÁREA DAS ARTES
-        =====================================================
-        */
-
-        #artes {
-
-            display: flex;
-
-            flex-direction: column;
-
-            align-items: center;
-
-            gap: 30px;
+            line-height: 1.6;
 
         }
 
 
-        /*
-        =====================================================
-        ARTE
+        .barra {
 
-        10 cm x 15 cm
+            width: 100%;
 
-        300 DPI
+            height: 14px;
 
-        1181 x 1772 px
-        =====================================================
-        */
+            background: #e5e7eb;
 
-        .arte {
-
-            width: 1181px;
-
-            height: 1772px;
-
-            background: white;
-
-            display: flex;
-
-            flex-direction: column;
-
-            align-items: center;
-
-            padding-top: 45px;
+            border-radius: 10px;
 
             overflow: hidden;
-
-            position: relative;
-
-        }
-
-
-        /*
-        =====================================================
-        CABEÇALHO
-        =====================================================
-        */
-
-        .cabecalho {
-
-            width: 1080px;
-
-            height: 170px;
-
-            display: flex;
-
-            flex-direction: column;
-
-            align-items: center;
-
-            justify-content: center;
-
-            text-align: center;
-
-            margin-bottom: 10px;
-
-        }
-
-
-        .nome {
-
-            width: 1050px;
-
-            font-size: 40px;
-
-            font-weight: bold;
-
-            line-height: 1.1;
-
-            white-space: nowrap;
-
-            overflow: hidden;
-
-            text-overflow: ellipsis;
-
-        }
-
-
-        .matricula {
 
             margin-top: 12px;
 
-            font-size: 28px;
+            display: none;
 
-            font-weight: bold;
+        }
+
+
+        .progresso {
+
+            width: 0%;
+
+            height: 100%;
+
+            background: #0066cc;
+
+            transition: width .2s;
 
         }
 
 
         /*
         =====================================================
-        GRID
+        ÁREA OCULTA PARA GERAR OS QR CODES
         =====================================================
         */
 
-        .grid {
-
-            width: 1062px;
-
-            height: 1593px;
-
-            display: grid;
-
-            grid-template-columns:
-                531px
-                531px;
-
-            grid-template-rows:
-                531px
-                531px
-                531px;
-
-        }
-
-
-        .qr-container {
-
-            width: 531px;
-
-            height: 531px;
-
-            display: flex;
-
-            align-items: center;
-
-            justify-content: center;
-
-        }
-
-
-        .qr {
-
-            width: 531px;
-
-            height: 531px;
-
-        }
-
-
-        /*
-        =====================================================
-        OCULTAR ÁREA DE GERAÇÃO
-        =====================================================
-        */
-
-        #area-geracao {
+        #area-qr {
 
             position: absolute;
 
             left: -100000px;
 
             top: 0;
+
+            width: 300px;
+
+            height: 300px;
+
+            background: white;
+
+        }
+
+
+        /*
+        =====================================================
+        QR CODE TEMPORÁRIO
+        =====================================================
+        */
+
+        #qr-temporario {
+
+            width: 512px;
+
+            height: 512px;
+
+            background: white;
 
         }
 
@@ -342,28 +240,45 @@
 
 <div class="painel">
 
+
     <h1>
         🖨️ Impressão de QR Codes
     </h1>
 
-    <p>
-        Geração automática das artes para impressão.
-    </p>
 
     <p>
-        <strong>Formato:</strong>
-        10 × 15 cm
+        Geração automática das etiquetas dos tripulantes.
     </p>
 
-    <p>
-        <strong>QR Codes:</strong>
-        6 por tripulante — aproximadamente 4,5 × 4,5 cm cada.
-    </p>
+
+    <div class="informacoes">
+
+        <div>
+            📄 <strong>Tamanho da página:</strong>
+            10 × 15 cm
+        </div>
+
+        <div>
+            🔲 <strong>QR Codes por tripulante:</strong>
+            6
+        </div>
+
+        <div>
+            📐 <strong>Tamanho de cada QR:</strong>
+            4,5 × 4,5 cm
+        </div>
+
+        <div>
+            👤 <strong>Fonte dos dados:</strong>
+            dados.json
+        </div>
+
+    </div>
 
 
     <div
         id="contador"
-        class="info">
+        style="margin-top:20px;font-weight:bold;">
 
         Carregando colaboradores...
 
@@ -373,19 +288,11 @@
     <div class="botoes">
 
         <button
-            class="btn-gerar"
-            onclick="gerarTodas()">
+            id="btnPDF"
+            class="btn-pdf"
+            onclick="gerarPDF()">
 
-            🖨️ GERAR ARTES DE TODOS
-
-        </button>
-
-
-        <button
-            class="btn-zip"
-            onclick="baixarZIP()">
-
-            📦 BAIXAR TODAS EM ZIP
+            📄 GERAR PDF PARA IMPRESSÃO
 
         </button>
 
@@ -394,17 +301,33 @@
 
     <div id="status"></div>
 
+
+    <div
+        id="barra"
+        class="barra">
+
+        <div
+            id="progresso"
+            class="progresso">
+        </div>
+
+    </div>
+
+
 </div>
 
 
-<!-- ÁREA OCULTA DE GERAÇÃO -->
+<!--
+=========================================================
+ÁREA OCULTA
+=========================================================
+-->
 
-<div id="area-geracao"></div>
+<div id="area-qr">
 
+    <div id="qr-temporario"></div>
 
-<!-- ARTES GERADAS -->
-
-<div id="artes"></div>
+</div>
 
 
 <script>
@@ -421,17 +344,56 @@ const DADOS_URL =
     "https://galaxia-qsms.github.io/certificados-tripulantes/dados.json";
 
 
-const URL_CERTIFICADO =
+const URL_SITE =
     "https://galaxia-qsms.github.io/certificados-tripulantes/?matricula=";
 
 
-const QR_SIZE = 531;
+/*
+Página PDF:
+
+100 mm x 150 mm
+= 10 cm x 15 cm
+*/
+
+
+const PAGINA_LARGURA = 100;
+
+const PAGINA_ALTURA = 150;
+
+
+/*
+QR:
+
+45 mm x 45 mm
+= 4,5 cm x 4,5 cm
+*/
+
+
+const QR_MM = 45;
+
+
+/*
+Posições dos QR Codes
+
+2 colunas
+3 linhas
+*/
+
+
+const QR_X = [
+    3,
+    52
+];
+
+
+const QR_Y = [
+    35,
+    82,
+    129
+];
 
 
 let dados = {};
-
-let listaArtes = [];
-
 
 
 /*
@@ -445,26 +407,27 @@ async function carregarDados() {
 
     try {
 
-        const resposta = await fetch(
-            DADOS_URL + "?t=" + Date.now()
-        );
+        const resposta =
+            await fetch(
+                DADOS_URL +
+                "?t=" +
+                Date.now()
+            );
 
 
         if (!resposta.ok) {
 
             throw new Error(
-                "Erro HTTP " + resposta.status
+                "HTTP " +
+                resposta.status
             );
 
         }
 
 
-        dados = await resposta.json();
+        dados =
+            await resposta.json();
 
-
-        /*
-        CONFERE SE É OBJETO
-        */
 
         if (
             !dados ||
@@ -472,7 +435,7 @@ async function carregarDados() {
         ) {
 
             throw new Error(
-                "Formato inválido do dados.json"
+                "Formato inválido do dados.json."
             );
 
         }
@@ -494,7 +457,6 @@ async function carregarDados() {
     catch (erro) {
 
         console.error(
-            "Erro ao carregar dados.json:",
             erro
         );
 
@@ -513,219 +475,104 @@ async function carregarDados() {
 
 /*
 =========================================================
-CRIAR QR CODE
+CRIAR QR CODE TEMPORÁRIO
 =========================================================
 */
 
 
-function criarQRCode(elemento, matricula) {
-
-    new QRCode(
-
-        elemento,
-
-        {
-
-            text:
-                URL_CERTIFICADO +
-                encodeURIComponent(matricula),
-
-            width:
-                QR_SIZE,
-
-            height:
-                QR_SIZE,
-
-            colorDark:
-                "#000000",
-
-            colorLight:
-                "#ffffff",
-
-            correctLevel:
-                QRCode.CorrectLevel.H
-
-        }
-
-    );
-
-}
-
-
-
-/*
-=========================================================
-CRIAR ARTE
-=========================================================
-*/
-
-
-async function criarArte(
-    matricula,
-    pessoa
-) {
+function criarQR(matricula) {
 
     return new Promise(
         resolve => {
 
-            const arte =
-                document.createElement(
-                    "div"
+            const container =
+                document.getElementById(
+                    "qr-temporario"
                 );
 
 
-            arte.className =
-                "arte";
+            container.innerHTML =
+                "";
 
 
-            /*
-            CABEÇALHO
-            */
+            new QRCode(
+                container,
 
-            const cabecalho =
-                document.createElement(
-                    "div"
-                );
+                {
 
+                    text:
+                        URL_SITE +
+                        encodeURIComponent(
+                            matricula
+                        ),
 
-            cabecalho.className =
-                "cabecalho";
+                    width:
+                        512,
 
+                    height:
+                        512,
 
-            const nome =
-                document.createElement(
-                    "div"
-                );
+                    colorDark:
+                        "#000000",
 
+                    colorLight:
+                        "#ffffff",
 
-            nome.className =
-                "nome";
+                    correctLevel:
+                        QRCode.CorrectLevel.H
 
-
-            nome.textContent =
-                pessoa.nome ||
-                "Nome não informado";
-
-
-            const matriculaDiv =
-                document.createElement(
-                    "div"
-                );
-
-
-            matriculaDiv.className =
-                "matricula";
-
-
-            matriculaDiv.textContent =
-                "Matrícula: " +
-                matricula;
-
-
-            cabecalho.appendChild(
-                nome
-            );
-
-
-            cabecalho.appendChild(
-                matriculaDiv
+                }
             );
 
 
             /*
-            GRID
-            */
-
-            const grid =
-                document.createElement(
-                    "div"
-                );
-
-
-            grid.className =
-                "grid";
-
-
-            /*
-            6 QR CODES
-            */
-
-            for (
-                let i = 0;
-                i < 6;
-                i++
-            ) {
-
-                const container =
-                    document.createElement(
-                        "div"
-                    );
-
-
-                container.className =
-                    "qr-container";
-
-
-                const qr =
-                    document.createElement(
-                        "div"
-                    );
-
-
-                qr.className =
-                    "qr";
-
-
-                container.appendChild(
-                    qr
-                );
-
-
-                grid.appendChild(
-                    container
-                );
-
-
-                criarQRCode(
-                    qr,
-                    matricula
-                );
-
-            }
-
-
-            arte.appendChild(
-                cabecalho
-            );
-
-
-            arte.appendChild(
-                grid
-            );
-
-
-            document
-                .getElementById(
-                    "area-geracao"
-                )
-                .appendChild(
-                    arte
-                );
-
-
-            /*
-            Aguarda QR codes
+            Aguarda o QR ser desenhado
             */
 
             setTimeout(
                 () => {
 
-                    resolve(
-                        arte
-                    );
+                    const canvas =
+                        container.querySelector(
+                            "canvas"
+                        );
+
+
+                    const imagem =
+                        container.querySelector(
+                            "img"
+                        );
+
+
+                    if (canvas) {
+
+                        resolve(
+                            canvas.toDataURL(
+                                "image/png"
+                            )
+                        );
+
+                    }
+
+                    else if (imagem) {
+
+                        resolve(
+                            imagem.src
+                        );
+
+                    }
+
+                    else {
+
+                        resolve(
+                            null
+                        );
+
+                    }
 
                 },
-                400
+
+                150
             );
 
         }
@@ -737,12 +584,101 @@ async function criarArte(
 
 /*
 =========================================================
-GERAR TODAS
+LIMPAR NOME
 =========================================================
 */
 
 
-async function gerarTodas() {
+function limparNome(nome) {
+
+    return String(nome)
+
+        .normalize("NFD")
+
+        .replace(
+            /[\u0300-\u036f]/g,
+            ""
+        )
+
+        .replace(
+            /[^a-zA-Z0-9\s_-]/g,
+            ""
+        )
+
+        .replace(
+            /\s+/g,
+            "_"
+        );
+
+}
+
+
+
+/*
+=========================================================
+ADAPTAR NOME PARA CABER
+=========================================================
+*/
+
+
+function ajustarNome(
+    pdf,
+    nome
+) {
+
+    let tamanho = 11;
+
+
+    /*
+    Limite da área:
+
+    aproximadamente 94 mm
+    */
+
+
+    while (
+        tamanho > 6
+    ) {
+
+        pdf.setFontSize(
+            tamanho
+        );
+
+
+        const largura =
+            pdf.getTextWidth(
+                nome
+            );
+
+
+        if (
+            largura <= 94
+        ) {
+
+            break;
+
+        }
+
+
+        tamanho -= 0.5;
+
+    }
+
+
+    return tamanho;
+
+}
+
+
+
+/*
+=========================================================
+GERAR PDF
+=========================================================
+*/
+
+
+async function gerarPDF() {
 
 
     const matriculas =
@@ -762,46 +698,96 @@ async function gerarTodas() {
     }
 
 
+    const botao =
+        document.getElementById(
+            "btnPDF"
+        );
+
+
     const status =
         document.getElementById(
             "status"
         );
 
 
+    const barra =
+        document.getElementById(
+            "barra"
+        );
+
+
+    const progresso =
+        document.getElementById(
+            "progresso"
+        );
+
+
+    /*
+    Desabilita botão
+    */
+
+    botao.disabled =
+        true;
+
+
+    barra.style.display =
+        "block";
+
+
+    progresso.style.width =
+        "0%";
+
+
     status.innerHTML =
-        "⏳ Preparando artes...";
+        "⏳ Preparando PDF...";
 
 
     /*
-    LIMPA
+    =====================================================
+    CRIAR PDF
+    =====================================================
     */
 
-    document
-        .getElementById(
-            "area-geracao"
-        )
-        .innerHTML = "";
+
+    const {
+        jsPDF
+    } = window.jspdf;
 
 
-    document
-        .getElementById(
-            "artes"
-        )
-        .innerHTML = "";
+    const pdf =
+        new jsPDF({
 
+            orientation:
+                "portrait",
 
-    listaArtes = [];
+            unit:
+                "mm",
+
+            format:
+                [
+                    PAGINA_LARGURA,
+                    PAGINA_ALTURA
+                ],
+
+            compress:
+                true
+
+        });
 
 
     /*
-    GERA UM POR UM
+    =====================================================
+    PROCESSAR CADA TRIPULANTE
+    =====================================================
     */
+
 
     for (
         let i = 0;
         i < matriculas.length;
         i++
     ) {
+
 
         const matricula =
             matriculas[i];
@@ -811,262 +797,288 @@ async function gerarTodas() {
             dados[matricula];
 
 
-        status.innerHTML =
+        /*
+        Atualiza progresso
+        */
 
-            `⏳ Gerando ${i + 1} de ${matriculas.length}...`;
-
-
-        const arte =
-            await criarArte(
-                matricula,
-                pessoa
+        const percentual =
+            Math.round(
+                (
+                    i /
+                    matriculas.length
+                ) * 100
             );
 
 
-        listaArtes.push({
+        progresso.style.width =
+            percentual + "%";
 
-            matricula:
-                matricula,
 
-            nome:
+        status.innerHTML =
+
+            `⏳ Gerando página ${i + 1} de ${matriculas.length} — ${pessoa.nome || "Sem nome"}...`;
+
+
+        /*
+        =================================================
+        PÁGINA
+        =================================================
+        */
+
+
+        if (i > 0) {
+
+            pdf.addPage(
+                [
+                    PAGINA_LARGURA,
+                    PAGINA_ALTURA
+                ],
+
+                "portrait"
+            );
+
+        }
+
+
+        /*
+        =================================================
+        FUNDO BRANCO
+        =================================================
+        */
+
+        pdf.setFillColor(
+            255,
+            255,
+            255
+        );
+
+
+        pdf.rect(
+            0,
+            0,
+            PAGINA_LARGURA,
+            PAGINA_ALTURA,
+            "F"
+        );
+
+
+        /*
+        =================================================
+        NOME
+        =================================================
+        */
+
+
+        const nome =
+            String(
                 pessoa.nome ||
-                "Sem nome",
-
-            elemento:
-                arte
-
-        });
-
-    }
+                "Nome não informado"
+            ).toUpperCase();
 
 
-    status.innerHTML =
-
-        `✅ ${listaArtes.length} arte(s) gerada(s).`;
-
-}
-
-
-
-/*
-=========================================================
-CONVERTER ARTE PARA PNG
-=========================================================
-*/
+        const tamanhoFonte =
+            ajustarNome(
+                pdf,
+                nome
+            );
 
 
-async function gerarPNG(
-    elemento
-) {
+        pdf.setFont(
+            "helvetica",
+            "bold"
+        );
 
 
-    const canvas =
-        await html2canvas(
-            elemento,
+        pdf.setFontSize(
+            tamanhoFonte
+        );
 
+
+        pdf.setTextColor(
+            0,
+            0,
+            0
+        );
+
+
+        pdf.text(
+            nome,
+            50,
+            10,
             {
-
-                width:
-                    1181,
-
-                height:
-                    1772,
-
-                scale:
-                    1,
-
-                backgroundColor:
-                    "#ffffff",
-
-                useCORS:
-                    true,
-
-                logging:
-                    false
-
+                align:
+                    "center"
             }
         );
 
 
-    return new Promise(
-        resolve => {
-
-            canvas.toBlob(
-                blob => {
-
-                    resolve(
-                        blob
-                    );
-
-                },
-
-                "image/png"
-            );
-
-        }
-    );
-
-}
+        /*
+        =================================================
+        MATRÍCULA
+        =================================================
+        */
 
 
-
-/*
-=========================================================
-NOME DO ARQUIVO
-=========================================================
-*/
-
-
-function limparNome(
-    nome
-) {
-
-    return String(nome)
-
-        .normalize("NFD")
-
-        .replace(
-            /[\u0300-\u036f]/g,
-            ""
-        )
-
-        .replace(
-            /[^a-zA-Z0-9\s_-]/g,
-            ""
-        )
-
-        .replace(
-            /\s+/g,
-            "_"
-        )
-
-        .substring(
-            0,
-            80
+        pdf.setFontSize(
+            7
         );
 
-}
+
+        pdf.text(
+            "MATRÍCULA: " +
+            matricula,
+            50,
+            17,
+            {
+                align:
+                    "center"
+            }
+        );
 
 
+        /*
+        =================================================
+        GERAR QR
+        =================================================
+        */
 
-/*
-=========================================================
-BAIXAR ZIP
-=========================================================
-*/
+
+        const qrImagem =
+            await criarQR(
+                matricula
+            );
 
 
-async function baixarZIP() {
+        if (!qrImagem) {
+
+            console.error(
+                "QR não gerado:",
+                matricula
+            );
+
+            continue;
+
+        }
+
+
+        /*
+        =================================================
+        INSERIR OS 6 QR CODES
+        =================================================
+        */
+
+
+        for (
+            let linha = 0;
+            linha < 3;
+            linha++
+        ) {
+
+            for (
+                let coluna = 0;
+                coluna < 2;
+                coluna++
+            ) {
+
+
+                const x =
+                    QR_X[coluna];
+
+
+                const y =
+                    QR_Y[linha];
+
+
+                pdf.addImage(
+
+                    qrImagem,
+
+                    "PNG",
+
+                    x,
+
+                    y,
+
+                    QR_MM,
+
+                    QR_MM,
+
+                    undefined,
+
+                    "FAST"
+
+                );
+
+            }
+
+        }
+
+
+        /*
+        =================================================
+        PEQUENO RESPIRO PARA O NAVEGADOR
+        =================================================
+        */
+
+        await new Promise(
+            resolve =>
+                setTimeout(
+                    resolve,
+                    10
+                )
+        );
+
+    }
 
 
     /*
-    Se ainda não gerou,
-    gera automaticamente.
+    =====================================================
+    FINALIZA
+    =====================================================
     */
 
-    if (
-        listaArtes.length === 0
-    ) {
 
-        await gerarTodas();
-
-    }
-
-
-    if (
-        listaArtes.length === 0
-    ) {
-
-        return;
-
-    }
-
-
-    const status =
-        document.getElementById(
-            "status"
-        );
+    progresso.style.width =
+        "100%";
 
 
     status.innerHTML =
-        "📦 Preparando ZIP...";
+        "💾 Finalizando PDF...";
 
 
-    const zip =
-        new JSZip();
+    /*
+    Pequena pausa para garantir
+    que o navegador concluiu a renderização.
+    */
+
+    await new Promise(
+        resolve =>
+            setTimeout(
+                resolve,
+                300
+            )
+    );
 
 
-    for (
-        let i = 0;
-        i < listaArtes.length;
-        i++
-    ) {
-
-        const item =
-            listaArtes[i];
+    /*
+    =====================================================
+    SALVAR
+    =====================================================
+    */
 
 
-        status.innerHTML =
-
-            `📦 Criando arquivo ${i + 1} de ${listaArtes.length}...`;
-
-
-        const blob =
-            await gerarPNG(
-                item.elemento
-            );
-
-
-        const nome =
-            limparNome(
-                item.nome
-            );
-
-
-        zip.file(
-
-            `${item.matricula}_${nome}.png`,
-
-            blob
-
-        );
-
-    }
-
-
-    status.innerHTML =
-        "📦 Compactando arquivos...";
-
-
-    const arquivoZIP =
-        await zip.generateAsync({
-
-            type:
-                "blob",
-
-            compression:
-                "DEFLATE",
-
-            compressionOptions:
-                {
-                    level: 6
-                }
-
-        });
-
-
-    saveAs(
-
-        arquivoZIP,
-
-        "QR_Codes_10x15_Galaxia.zip"
-
+    pdf.save(
+        "QR_Codes_Galaxia_10x15.pdf"
     );
 
 
     status.innerHTML =
 
-        `✅ ZIP pronto! ${listaArtes.length} artes geradas.`;
+        `✅ PDF gerado com sucesso! ${matriculas.length} página(s), uma para cada tripulante.`;
+
+
+    botao.disabled =
+        false;
 
 }
 
