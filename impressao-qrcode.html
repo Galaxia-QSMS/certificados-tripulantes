@@ -7,11 +7,10 @@
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Gerador de QR Codes | Galáxia Navegação</title>
+    <title>Impressão de QR Codes | Galáxia Navegação</title>
 
     <!-- QR CODE -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
-
 
     <style>
 
@@ -19,503 +18,310 @@
             box-sizing: border-box;
         }
 
-
         body {
-
             margin: 0;
-
             padding: 30px;
-
-            background: #f2f4f7;
-
-            font-family:
-                Arial,
-                Helvetica,
-                sans-serif;
-
-            color: #222;
-
+            font-family: Arial, Helvetica, sans-serif;
+            background: #f4f6f8;
+            color: #1f2937;
         }
 
-
-        .painel {
-
-            max-width: 1200px;
-
-            margin: 0 auto;
-
-            background: #ffffff;
-
-            padding: 30px;
-
-            border-radius: 12px;
-
-            box-shadow:
-                0 3px 15px rgba(0,0,0,.10);
-
+        .container {
+            max-width: 1400px;
+            margin: auto;
         }
-
 
         h1 {
-
-            margin: 0 0 10px;
-
-            font-size: 26px;
-
+            margin: 0 0 8px;
+            color: #12395b;
+            font-size: 28px;
         }
 
-
-        .descricao {
-
-            color: #555;
-
-            margin-bottom: 20px;
-
+        .subtitulo {
+            color: #64748b;
+            margin-bottom: 25px;
         }
 
-
-        .informacoes {
-
-            margin-top: 20px;
-
-            padding: 15px;
-
-            background: #f7f7f7;
-
-            border-radius: 8px;
-
-            line-height: 1.8;
-
+        .topo {
+            background: white;
+            border-radius: 12px;
+            padding: 22px;
+            margin-bottom: 25px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
         }
 
-
-        .botoes-principais {
-
+        .acoes {
             display: flex;
-
-            flex-wrap: wrap;
-
             gap: 12px;
-
-            margin-top: 25px;
-
+            align-items: center;
+            flex-wrap: wrap;
         }
-
 
         button {
-
             border: none;
-
             border-radius: 8px;
-
-            padding: 11px 16px;
-
+            padding: 12px 18px;
             font-size: 14px;
-
             font-weight: bold;
-
             cursor: pointer;
-
+            transition: 0.2s;
         }
 
-
-        button:disabled {
-
-            opacity: .5;
-
-            cursor: not-allowed;
-
+        button:hover {
+            transform: translateY(-1px);
         }
-
 
         .btn-gerar {
-
-            background: #0066cc;
-
+            background: #12395b;
             color: white;
-
-            padding: 14px 22px;
-
-            font-size: 15px;
-
         }
-
 
         .btn-gerar:hover {
-
-            background: #0052a3;
-
+            background: #0d2d49;
         }
 
-
-        .btn-qr {
-
-            background: #198754;
-
-            color: white;
-
+        .contador {
+            font-size: 14px;
+            color: #64748b;
         }
 
-
-        .btn-arte {
-
-            background: #6f42c1;
-
-            color: white;
-
-        }
-
-
-        .btn-qr:hover {
-
-            background: #157347;
-
-        }
-
-
-        .btn-arte:hover {
-
-            background: #59359a;
-
-        }
-
-
-        #status {
-
-            margin-top: 20px;
-
-            font-weight: bold;
-
-            line-height: 1.6;
-
-        }
-
-
-        .barra {
-
+        .busca {
             width: 100%;
-
-            height: 14px;
-
-            background: #e5e7eb;
-
-            border-radius: 10px;
-
-            overflow: hidden;
-
-            margin-top: 12px;
-
-            display: none;
-
-        }
-
-
-        .progresso {
-
-            width: 0%;
-
-            height: 100%;
-
-            background: #0066cc;
-
-            transition: width .2s;
-
-        }
-
-
-        #busca {
-
-            width: 100%;
-
-            margin-top: 25px;
-
-            padding: 13px 15px;
-
-            border: 1px solid #ccc;
-
+            margin-top: 18px;
+            padding: 12px 14px;
+            border: 1px solid #d1d5db;
             border-radius: 8px;
-
-            font-size: 15px;
-
-            display: none;
-
+            font-size: 14px;
+            outline: none;
         }
 
+        .busca:focus {
+            border-color: #12395b;
+        }
 
         #lista {
-
-            margin-top: 20px;
-
+            display: none;
         }
 
+        .pessoa {
+            background: white;
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+        }
 
-        .colaborador {
-
-            display: grid;
-
-            grid-template-columns:
-                minmax(220px, 1fr)
-                250px
-                550px;
-
-            gap: 20px;
-
+        .pessoa-header {
+            display: flex;
+            justify-content: space-between;
             align-items: center;
-
-            padding: 20px 0;
-
-            border-bottom: 1px solid #ddd;
-
+            gap: 15px;
+            margin-bottom: 18px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #e5e7eb;
         }
-
-
-        .dados-colaborador {
-
-            align-self: start;
-
-        }
-
 
         .nome {
-
+            font-size: 18px;
             font-weight: bold;
-
-            font-size: 16px;
-
-            margin-bottom: 7px;
-
+            color: #12395b;
         }
-
 
         .matricula {
-
-            color: #666;
-
-            font-size: 14px;
-
+            font-size: 13px;
+            color: #64748b;
+            margin-top: 4px;
         }
 
-
-        .qr-container {
-
+        .opcoes {
             display: flex;
-
-            flex-direction: column;
-
-            align-items: center;
-
-            gap: 10px;
-
+            gap: 25px;
+            flex-wrap: wrap;
+            align-items: flex-start;
         }
 
+        .opcao {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .opcao-titulo {
+            font-size: 13px;
+            font-weight: bold;
+            color: #475569;
+        }
+
+        /* ============================
+           QR INDIVIDUAL
+        ============================ */
+
+        .qr-individual-box {
+            width: 180px;
+            height: 180px;
+            border: 1px solid #e5e7eb;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: white;
+        }
 
         .qr-individual {
+            width: 160px;
+            height: 160px;
+        }
 
+        .btn-qr {
+            background: #2563eb;
+            color: white;
             width: 180px;
+        }
 
-            height: 180px;
-
-            background: white;
-
+        .btn-qr:hover {
+            background: #1d4ed8;
         }
 
 
-        .qr-individual img {
+        /* ============================
+           ARTE 10 x 15 CM
+           
+           Visualização:
+           300 x 450 px
+           
+           QR:
+           135 x 135 px
+           = 4,5 x 4,5 cm
+           
+           Posições:
+           X = 15 / 150
+           Y = 45 / 180 / 315
+           
+           Assim os seis QR cabem
+           exatamente dentro da arte.
+        ============================ */
 
-            width: 180px !important;
-
-            height: 180px !important;
-
-            display: block;
-
-        }
-
-
-        .arte-container {
-
-            display: flex;
-
-            flex-direction: column;
-
-            align-items: center;
-
-            gap: 10px;
-
-        }
-
-
-        .arte {
-
+        .arte-wrapper {
             width: 300px;
-
             height: 450px;
-
             background: white;
-
-            border: 1px solid #ddd;
-
+            border: 1px solid #cbd5e1;
             position: relative;
-
             overflow: hidden;
-
-            flex-shrink: 0;
-
+            box-shadow: 0 2px 6px rgba(0,0,0,0.08);
         }
-
 
         .arte-nome {
-
             position: absolute;
+            top: 7px;
+            left: 10px;
+            right: 10px;
 
-            top: 18px;
+            height: 17px;
 
-            left: 8px;
-
-            right: 8px;
-
-            text-align: center;
-
-            font-weight: bold;
-
-            font-family: Arial, Helvetica, sans-serif;
-
-            line-height: 1.05;
-
-            overflow: hidden;
-
-            white-space: nowrap;
-
-        }
-
-
-        .arte-matricula {
-
-            position: absolute;
-
-            top: 43px;
-
-            left: 8px;
-
-            right: 8px;
-
-            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
 
             font-size: 11px;
+            font-weight: bold;
+            color: #111827;
 
-            font-family: Arial, Helvetica, sans-serif;
-
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
         }
 
+        .arte-matricula {
+            position: absolute;
+            top: 24px;
+            left: 10px;
+            right: 10px;
+
+            height: 13px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            font-size: 8px;
+            color: #4b5563;
+        }
 
         .qr-arte {
-
             position: absolute;
-
             width: 135px;
-
             height: 135px;
-
         }
 
-
-        .qr-arte img {
-
-            width: 135px !important;
-
-            height: 135px !important;
-
-            display: block;
-
+        .qr1 {
+            left: 15px;
+            top: 45px;
         }
 
-
-        .qr-1 {
-
-            left: 9px;
-
-            top: 105px;
-
+        .qr2 {
+            left: 150px;
+            top: 45px;
         }
 
-
-        .qr-2 {
-
-            left: 156px;
-
-            top: 105px;
-
+        .qr3 {
+            left: 15px;
+            top: 180px;
         }
 
-
-        .qr-3 {
-
-            left: 9px;
-
-            top: 246px;
-
+        .qr4 {
+            left: 150px;
+            top: 180px;
         }
 
-
-        .qr-4 {
-
-            left: 156px;
-
-            top: 246px;
-
+        .qr5 {
+            left: 15px;
+            top: 315px;
         }
 
-
-        .qr-5 {
-
-            left: 9px;
-
-            top: 387px;
-
+        .qr6 {
+            left: 150px;
+            top: 315px;
         }
 
-
-        .qr-6 {
-
-            left: 156px;
-
-            top: 387px;
-
+        .btn-arte {
+            background: #059669;
+            color: white;
+            width: 300px;
         }
 
+        .btn-arte:hover {
+            background: #047857;
+        }
 
-        .mensagem-vazia {
-
-            padding: 30px;
-
+        .vazio {
+            padding: 40px;
             text-align: center;
-
-            color: #777;
-
+            color: #64748b;
+            background: white;
+            border-radius: 12px;
         }
 
+        .status {
+            margin-top: 15px;
+            font-size: 13px;
+            color: #64748b;
+        }
 
-        @media (max-width: 900px) {
+        @media (max-width: 700px) {
 
-            .colaborador {
-
-                grid-template-columns: 1fr;
-
+            body {
+                padding: 15px;
             }
 
-            .qr-individual {
-
-                width: 220px;
-
-                height: 220px;
-
+            .pessoa-header {
+                flex-direction: column;
+                align-items: flex-start;
             }
 
-            .qr-individual img {
-
-                width: 220px !important;
-
-                height: 220px !important;
-
+            .opcoes {
+                flex-direction: column;
             }
 
         }
@@ -527,88 +333,42 @@
 
 <body>
 
+<div class="container">
 
-<div class="painel">
+    <div class="topo">
 
+        <h1>Impressão de QR Codes</h1>
 
-    <h1>
-        🖨️ Gerador de QR Codes
-    </h1>
-
-
-    <div class="descricao">
-
-        Gere os QR Codes dos tripulantes e as artes prontas para impressão.
-
-    </div>
-
-
-    <div class="informacoes">
-
-        <div>
-            👤 <strong>Fonte dos dados:</strong>
-            dados.json
+        <div class="subtitulo">
+            Gere os QR Codes dos tripulantes e escolha individualmente o que deseja baixar.
         </div>
 
-        <div>
-            🔲 <strong>QR individual:</strong>
-            1 QR Code por matrícula
+        <div class="acoes">
+
+            <button
+                class="btn-gerar"
+                onclick="gerarTodos()">
+                🔲 GERAR TODOS OS QR CODES
+            </button>
+
+            <span
+                class="contador"
+                id="contador">
+                Nenhum QR Code gerado.
+            </span>
+
         </div>
 
-        <div>
-            🖨️ <strong>Arte:</strong>
-            10 × 15 cm com 6 QR Codes
-        </div>
-
-        <div>
-            📐 <strong>Cada QR da arte:</strong>
-            4,5 × 4,5 cm
-        </div>
-
-    </div>
-
-
-    <div
-        id="contador"
-        style="margin-top:20px;font-weight:bold;">
-
-        Carregando colaboradores...
-
-    </div>
-
-
-    <div class="botoes-principais">
-
-        <button
-            id="btnGerar"
-            class="btn-gerar"
-            onclick="gerarTodos()">
-
-            🔲 GERAR TODOS OS QR CODES
-
-        </button>
-
-    </div>
-
-
-    <input
-        type="text"
-        id="busca"
-        placeholder="🔎 Buscar por nome ou matrícula..."
-        oninput="filtrarColaboradores()"
-    >
-
-
-    <div id="status"></div>
-
-
-    <div
-        id="barra"
-        class="barra">
+        <input
+            type="text"
+            id="busca"
+            class="busca"
+            placeholder="🔎 Buscar por nome ou matrícula..."
+            oninput="filtrar()">
 
         <div
-            id="progresso"
-            class="progresso">
+            class="status"
+            id="status">
         </div>
 
     </div>
@@ -616,1328 +376,1003 @@
 
     <div id="lista"></div>
 
-
 </div>
-
 
 
 <script>
 
+    let dados = {};
+    let pessoas = [];
 
-/*
-=========================================================
-CONFIGURAÇÕES
-=========================================================
-*/
 
-const DADOS_URL =
-    "https://galaxia-qsms.github.io/certificados-tripulantes/dados.json";
+    /* ==========================================
+       CARREGAR DADOS
+    ========================================== */
 
-
-const URL_SITE =
-    "https://galaxia-qsms.github.io/certificados-tripulantes/?matricula=";
-
-
-let dados = {};
-
-let colaboradoresGerados = false;
-
-
-/*
-=========================================================
-CARREGAR DADOS
-=========================================================
-*/
-
-async function carregarDados() {
-
-    try {
-
-        const resposta =
-            await fetch(
-                DADOS_URL +
-                "?t=" +
-                Date.now()
-            );
-
-
-        if (!resposta.ok) {
-
-            throw new Error(
-                "HTTP " +
-                resposta.status
-            );
-
-        }
-
-
-        dados =
-            await resposta.json();
-
-
-        if (
-            !dados ||
-            typeof dados !== "object"
-        ) {
-
-            throw new Error(
-                "Formato inválido do dados.json."
-            );
-
-        }
-
-
-        const total =
-            Object.keys(dados).length;
-
-
-        document.getElementById(
-            "contador"
-        ).innerHTML =
-
-            `👥 <strong>${total}</strong> colaborador(es) encontrado(s).`;
-
-
-    }
-
-    catch (erro) {
-
-        console.error(erro);
-
-
-        document.getElementById(
-            "contador"
-        ).innerHTML =
-
-            "❌ Não foi possível carregar o dados.json.";
-
-    }
-
-}
-
-
-/*
-=========================================================
-LIMPAR NOME PARA ARQUIVO
-=========================================================
-*/
-
-function limparNome(nome) {
-
-    return String(nome)
-
-        .normalize("NFD")
-
-        .replace(
-            /[\u0300-\u036f]/g,
-            ""
-        )
-
-        .replace(
-            /[^a-zA-Z0-9\s_-]/g,
-            ""
-        )
-
-        .trim()
-
-        .replace(
-            /\s+/g,
-            "_"
-        );
-
-}
-
-
-/*
-=========================================================
-AJUSTAR TAMANHO DO NOME DA ARTE
-=========================================================
-*/
-
-function calcularFonteNome(nome) {
-
-    const quantidade =
-        nome.length;
-
-
-    if (quantidade <= 24) {
-
-        return 17;
-
-    }
-
-
-    if (quantidade <= 32) {
-
-        return 14;
-
-    }
-
-
-    if (quantidade <= 40) {
-
-        return 12;
-
-    }
-
-
-    return 10;
-
-}
-
-
-/*
-=========================================================
-CRIAR QR
-=========================================================
-*/
-
-function criarQR(container, matricula, tamanho) {
-
-    return new Promise((resolve, reject) => {
-
-        container.innerHTML = "";
-
+    async function carregarDados() {
 
         try {
 
-            new QRCode(
-                container,
-                {
-
-                    text:
-                        URL_SITE +
-                        encodeURIComponent(
-                            matricula
-                        ),
-
-                    width:
-                        tamanho,
-
-                    height:
-                        tamanho,
-
-                    colorDark:
-                        "#000000",
-
-                    colorLight:
-                        "#ffffff",
-
-                    correctLevel:
-                        QRCode.CorrectLevel.H
-
-                }
+            const resposta = await fetch(
+                "dados.json?t=" + Date.now()
             );
 
+            if (!resposta.ok) {
+                throw new Error("Não foi possível carregar o dados.json");
+            }
+
+            dados = await resposta.json();
+
+            pessoas = Object.keys(dados)
+                .map(matricula => {
+
+                    return {
+
+                        matricula: matricula,
+
+                        nome: dados[matricula].nome || "",
+
+                        certificados:
+                            dados[matricula].certificados || []
+
+                    };
+
+                })
+                .sort((a, b) =>
+                    a.nome.localeCompare(
+                        b.nome,
+                        "pt-BR"
+                    )
+                );
+
+            document.getElementById("contador").innerText =
+                pessoas.length +
+                " pessoas encontradas.";
 
         }
 
         catch (erro) {
 
-            reject(erro);
+            console.error(erro);
+
+            document.getElementById("status").innerText =
+                "❌ Erro ao carregar os dados.";
+
+        }
+
+    }
+
+
+    /* ==========================================
+       GERAR TODOS
+    ========================================== */
+
+    function gerarTodos() {
+
+        if (!pessoas.length) {
+
+            alert(
+                "Nenhuma pessoa encontrada no dados.json."
+            );
+
+            return;
+
+        }
+
+        const lista =
+            document.getElementById("lista");
+
+        lista.innerHTML = "";
+
+        pessoas.forEach((pessoa, index) => {
+
+            const card =
+                criarPessoa(pessoa, index);
+
+            lista.appendChild(card);
+
+        });
+
+        lista.style.display = "block";
+
+        document.getElementById("status").innerText =
+            "✅ QR Codes gerados. Escolha o arquivo que deseja baixar.";
+
+    }
+
+
+    /* ==========================================
+       CRIAR CARD
+    ========================================== */
+
+    function criarPessoa(pessoa, index) {
+
+        const card =
+            document.createElement("div");
+
+        card.className = "pessoa";
+
+        card.dataset.nome =
+            pessoa.nome.toLowerCase();
+
+        card.dataset.matricula =
+            pessoa.matricula.toLowerCase();
+
+
+        const header =
+            document.createElement("div");
+
+        header.className =
+            "pessoa-header";
+
+
+        const identificacao =
+            document.createElement("div");
+
+
+        const nome =
+            document.createElement("div");
+
+        nome.className = "nome";
+
+        nome.innerText =
+            pessoa.nome || "SEM NOME";
+
+
+        const matricula =
+            document.createElement("div");
+
+        matricula.className =
+            "matricula";
+
+        matricula.innerText =
+            "Matrícula: " + pessoa.matricula;
+
+
+        identificacao.appendChild(nome);
+
+        identificacao.appendChild(matricula);
+
+
+        header.appendChild(identificacao);
+
+
+        const opcoes =
+            document.createElement("div");
+
+        opcoes.className =
+            "opcoes";
+
+
+        /* ======================================
+           OPÇÃO 1 — QR INDIVIDUAL
+        ====================================== */
+
+        const opcaoQR =
+            document.createElement("div");
+
+        opcaoQR.className =
+            "opcao";
+
+
+        const tituloQR =
+            document.createElement("div");
+
+        tituloQR.className =
+            "opcao-titulo";
+
+        tituloQR.innerText =
+            "QR CODE INDIVIDUAL";
+
+
+        const qrBox =
+            document.createElement("div");
+
+        qrBox.className =
+            "qr-individual-box";
+
+
+        const qrDiv =
+            document.createElement("div");
+
+        qrDiv.className =
+            "qr-individual";
+
+        qrDiv.id =
+            "qr-" + index;
+
+
+        qrBox.appendChild(qrDiv);
+
+
+        const botaoQR =
+            document.createElement("button");
+
+        botaoQR.className =
+            "btn-qr";
+
+        botaoQR.innerText =
+            "⬇️ BAIXAR QR";
+
+
+        botaoQR.onclick = function() {
+
+            baixarQR(
+                qrDiv,
+                pessoa
+            );
+
+        };
+
+
+        opcaoQR.appendChild(tituloQR);
+
+        opcaoQR.appendChild(qrBox);
+
+        opcaoQR.appendChild(botaoQR);
+
+
+        /* ======================================
+           OPÇÃO 2 — ARTE 6 QR
+        ====================================== */
+
+        const opcaoArte =
+            document.createElement("div");
+
+        opcaoArte.className =
+            "opcao";
+
+
+        const tituloArte =
+            document.createElement("div");
+
+        tituloArte.className =
+            "opcao-titulo";
+
+        tituloArte.innerText =
+            "ARTE — 10 × 15 CM";
+
+
+        const arte =
+            document.createElement("div");
+
+        arte.className =
+            "arte-wrapper";
+
+        arte.id =
+            "arte-" + index;
+
+
+        const arteNome =
+            document.createElement("div");
+
+        arteNome.className =
+            "arte-nome";
+
+        arteNome.innerText =
+            pessoa.nome || "SEM NOME";
+
+
+        const arteMatricula =
+            document.createElement("div");
+
+        arteMatricula.className =
+            "arte-matricula";
+
+        arteMatricula.innerText =
+            "Matrícula: " + pessoa.matricula;
+
+
+        arte.appendChild(arteNome);
+
+        arte.appendChild(arteMatricula);
+
+
+        /* QR 1 */
+
+        const qrArte1 =
+            criarQRArte(
+                pessoa,
+                "qr-arte-" + index + "-1",
+                "qr-arte qr1"
+            );
+
+
+        /* QR 2 */
+
+        const qrArte2 =
+            criarQRArte(
+                pessoa,
+                "qr-arte-" + index + "-2",
+                "qr-arte qr2"
+            );
+
+
+        /* QR 3 */
+
+        const qrArte3 =
+            criarQRArte(
+                pessoa,
+                "qr-arte-" + index + "-3",
+                "qr-arte qr3"
+            );
+
+
+        /* QR 4 */
+
+        const qrArte4 =
+            criarQRArte(
+                pessoa,
+                "qr-arte-" + index + "-4",
+                "qr-arte qr4"
+            );
+
+
+        /* QR 5 */
+
+        const qrArte5 =
+            criarQRArte(
+                pessoa,
+                "qr-arte-" + index + "-5",
+                "qr-arte qr5"
+            );
+
+
+        /* QR 6 */
+
+        const qrArte6 =
+            criarQRArte(
+                pessoa,
+                "qr-arte-" + index + "-6",
+                "qr-arte qr6"
+            );
+
+
+        arte.appendChild(qrArte1);
+
+        arte.appendChild(qrArte2);
+
+        arte.appendChild(qrArte3);
+
+        arte.appendChild(qrArte4);
+
+        arte.appendChild(qrArte5);
+
+        arte.appendChild(qrArte6);
+
+
+        const botaoArte =
+            document.createElement("button");
+
+        botaoArte.className =
+            "btn-arte";
+
+        botaoArte.innerText =
+            "⬇️ BAIXAR ARTE 10×15";
+
+
+        botaoArte.onclick = function() {
+
+            baixarArte(
+                pessoa,
+                index
+            );
+
+        };
+
+
+        opcaoArte.appendChild(tituloArte);
+
+        opcaoArte.appendChild(arte);
+
+        opcaoArte.appendChild(botaoArte);
+
+
+        opcoes.appendChild(opcaoQR);
+
+        opcoes.appendChild(opcaoArte);
+
+
+        card.appendChild(header);
+
+        card.appendChild(opcoes);
+
+
+        /* ======================================
+           GERAR QR INDIVIDUAL
+        ====================================== */
+
+        setTimeout(() => {
+
+            gerarQR(
+                qrDiv,
+                pessoa
+            );
+
+        }, 20);
+
+
+        return card;
+
+    }
+
+
+    /* ==========================================
+       CRIAR QR ARTE
+    ========================================== */
+
+    function criarQRArte(
+        pessoa,
+        id,
+        classe
+    ) {
+
+        const div =
+            document.createElement("div");
+
+        div.id = id;
+
+        div.className = classe;
+
+        gerarQR(
+            div,
+            pessoa
+        );
+
+        return div;
+
+    }
+
+
+    /* ==========================================
+       GERAR QR
+    ========================================== */
+
+    function gerarQR(
+        elemento,
+        pessoa
+    ) {
+
+        elemento.innerHTML = "";
+
+        const url =
+            "https://galaxia-qsms.github.io/certificados-tripulantes/?matricula=" +
+            encodeURIComponent(
+                pessoa.matricula
+            );
+
+
+        new QRCode(
+            elemento,
+            {
+
+                text: url,
+
+                width: 135,
+
+                height: 135,
+
+                correctLevel:
+                    QRCode.CorrectLevel.H
+
+            }
+        );
+
+    }
+
+
+    /* ==========================================
+       BAIXAR QR INDIVIDUAL
+    ========================================== */
+
+    function baixarQR(
+        elemento,
+        pessoa
+    ) {
+
+        const canvas =
+            elemento.querySelector("canvas");
+
+        const img =
+            elemento.querySelector("img");
+
+
+        if (canvas) {
+
+            baixarCanvas(
+                canvas,
+                "QR_" +
+                limparNome(pessoa.nome) +
+                "_" +
+                pessoa.matricula +
+                ".png"
+            );
 
             return;
 
         }
 
 
-        let tentativas = 0;
+        if (img) {
+
+            const canvasNovo =
+                document.createElement("canvas");
+
+            canvasNovo.width = 135;
+
+            canvasNovo.height = 135;
+
+            const ctx =
+                canvasNovo.getContext("2d");
 
 
-        function verificar() {
+            img.onload = function() {
 
-            const img =
-                container.querySelector(
-                    "img"
+                ctx.drawImage(
+                    img,
+                    0,
+                    0,
+                    135,
+                    135
                 );
 
-
-            const canvas =
-                container.querySelector(
-                    "canvas"
+                baixarCanvas(
+                    canvasNovo,
+                    "QR_" +
+                    limparNome(pessoa.nome) +
+                    "_" +
+                    pessoa.matricula +
+                    ".png"
                 );
 
+            };
 
-            if (
-                img ||
-                canvas
-            ) {
 
-                resolve();
+            if (img.complete) {
 
-                return;
+                ctx.drawImage(
+                    img,
+                    0,
+                    0,
+                    135,
+                    135
+                );
+
+                baixarCanvas(
+                    canvasNovo,
+                    "QR_" +
+                    limparNome(pessoa.nome) +
+                    "_" +
+                    pessoa.matricula +
+                    ".png"
+                );
 
             }
 
+        }
 
-            tentativas++;
-
-
-            if (
-                tentativas >= 50
-            ) {
-
-                reject(
-                    new Error(
-                        "QR Code não foi criado."
-                    )
-                );
-
-                return;
-
-            }
+    }
 
 
-            setTimeout(
-                verificar,
-                30
-            );
+    /* ==========================================
+       BAIXAR ARTE 10 × 15 CM
+       
+       1000 × 1500 px
+
+       QR = 450 × 450 px
+       45 × 45 mm
+
+       X:
+       50
+       500
+
+       Y:
+       150
+       600
+       1050
+
+       Último QR:
+       1050 + 450 = 1500
+       
+       Portanto não corta.
+    ========================================== */
+
+    async function baixarArte(
+        pessoa,
+        index
+    ) {
+
+        const canvas =
+            document.createElement("canvas");
+
+        canvas.width = 1000;
+
+        canvas.height = 1500;
+
+
+        const ctx =
+            canvas.getContext("2d");
+
+
+        /* FUNDO */
+
+        ctx.fillStyle =
+            "#ffffff";
+
+        ctx.fillRect(
+            0,
+            0,
+            1000,
+            1500
+        );
+
+
+        /* ======================================
+           NOME
+        ====================================== */
+
+        ctx.fillStyle =
+            "#111827";
+
+        ctx.font =
+            "bold 32px Arial";
+
+        ctx.textAlign =
+            "center";
+
+        ctx.textBaseline =
+            "middle";
+
+
+        let nome =
+            pessoa.nome || "SEM NOME";
+
+
+        /*
+           Evita que nomes muito grandes
+           estourem a largura.
+        */
+
+        if (nome.length > 42) {
+
+            nome =
+                nome.substring(
+                    0,
+                    42
+                ) + "...";
 
         }
 
 
-        verificar();
-
-    });
-
-}
-
-
-/*
-=========================================================
-GERAR TODOS
-=========================================================
-*/
-
-async function gerarTodos() {
-
-    if (
-        colaboradoresGerados
-    ) {
-
-        document.getElementById(
-            "lista"
-        ).scrollIntoView({
-            behavior: "smooth"
-        });
-
-        return;
-
-    }
-
-
-    const matriculas =
-        Object.keys(dados);
-
-
-    if (
-        matriculas.length === 0
-    ) {
-
-        alert(
-            "Nenhum colaborador encontrado."
-        );
-
-        return;
-
-    }
-
-
-    const botao =
-        document.getElementById(
-            "btnGerar"
+        ctx.fillText(
+            nome,
+            500,
+            35
         );
 
 
-    const status =
-        document.getElementById(
-            "status"
+        /* ======================================
+           MATRÍCULA
+        ====================================== */
+
+        ctx.fillStyle =
+            "#4b5563";
+
+        ctx.font =
+            "20px Arial";
+
+
+        ctx.fillText(
+            "Matrícula: " +
+            pessoa.matricula,
+            500,
+            78
         );
 
 
-    const barra =
-        document.getElementById(
-            "barra"
-        );
+        /* ======================================
+           QR CODES
+        ====================================== */
+
+        const qrSize = 450;
 
 
-    const progresso =
-        document.getElementById(
-            "progresso"
-        );
+        const posicoes = [
+
+            {
+                x: 50,
+                y: 150
+            },
+
+            {
+                x: 500,
+                y: 150
+            },
+
+            {
+                x: 50,
+                y: 600
+            },
+
+            {
+                x: 500,
+                y: 600
+            },
+
+            {
+                x: 50,
+                y: 1050
+            },
+
+            {
+                x: 500,
+                y: 1050
+            }
+
+        ];
 
 
-    const lista =
-        document.getElementById(
-            "lista"
-        );
-
-
-    botao.disabled = true;
-
-    barra.style.display = "block";
-
-    progresso.style.width = "0%";
-
-
-    lista.innerHTML = "";
-
-
-    /*
-    Cria as linhas primeiro
-    */
-
-    matriculas.forEach(
-        (matricula, indice) => {
-
-            const pessoa =
-                dados[matricula] || {};
-
-
-            const nome =
-                String(
-                    pessoa.nome ||
-                    "NOME NÃO INFORMADO"
-                ).toUpperCase();
-
-
-            const colaborador =
-                document.createElement(
-                    "div"
-                );
-
-
-            colaborador.className =
-                "colaborador";
-
-
-            colaborador.dataset.nome =
-                nome.toLowerCase();
-
-
-            colaborador.dataset.matricula =
-                String(
-                    matricula
-                ).toLowerCase();
-
-
-            /*
-            =================================================
-            DADOS
-            =================================================
-            */
-
-            const dadosDiv =
-                document.createElement(
-                    "div"
-                );
-
-
-            dadosDiv.className =
-                "dados-colaborador";
-
-
-            dadosDiv.innerHTML =
-
-                `<div class="nome">
-                    ${nome}
-                </div>
-
-                <div class="matricula">
-                    MATRÍCULA: ${matricula}
-                </div>`;
-
-
-            /*
-            =================================================
-            QR INDIVIDUAL
-            =================================================
-            */
-
-            const qrDiv =
-                document.createElement(
-                    "div"
-                );
-
-
-            qrDiv.className =
-                "qr-container";
-
-
-            const qr =
-                document.createElement(
-                    "div"
-                );
-
-
-            qr.className =
-                "qr-individual";
-
-
-            qr.id =
-                "qr-" +
-                indice;
-
-
-            const btnQR =
-                document.createElement(
-                    "button"
-                );
-
-
-            btnQR.className =
-                "btn-qr";
-
-
-            btnQR.disabled = true;
-
-
-            btnQR.innerHTML =
-                "⬇️ BAIXAR QR";
-
-
-            btnQR.onclick =
-                function() {
-
-                    baixarQR(
-                        qr,
-                        nome,
-                        matricula
-                    );
-
-                };
-
-
-            qrDiv.appendChild(
-                qr
+        const qrOriginal =
+            document.getElementById(
+                "qr-arte-" +
+                index +
+                "-1"
             );
 
 
-            qrDiv.appendChild(
-                btnQR
+        if (!qrOriginal) {
+
+            alert(
+                "Não foi possível localizar o QR Code."
+            );
+
+            return;
+
+        }
+
+
+        const qrCanvas =
+            qrOriginal.querySelector(
+                "canvas"
+            );
+
+        const qrImg =
+            qrOriginal.querySelector(
+                "img"
             );
 
 
-            /*
-            =================================================
-            ARTE 6 QR
-            =================================================
-            */
+        if (qrCanvas) {
 
-            const arteDiv =
-                document.createElement(
-                    "div"
-                );
+            posicoes.forEach(
+                pos => {
 
-
-            arteDiv.className =
-                "arte-container";
-
-
-            const arte =
-                document.createElement(
-                    "div"
-                );
-
-
-            arte.className =
-                "arte";
-
-
-            arte.id =
-                "arte-" +
-                indice;
-
-
-            /*
-            Nome
-            */
-
-            const arteNome =
-                document.createElement(
-                    "div"
-                );
-
-
-            arteNome.className =
-                "arte-nome";
-
-
-            arteNome.style.fontSize =
-                calcularFonteNome(
-                    nome
-                ) + "px";
-
-
-            arteNome.textContent =
-                nome;
-
-
-            /*
-            Matrícula
-            */
-
-            const arteMatricula =
-                document.createElement(
-                    "div"
-                );
-
-
-            arteMatricula.className =
-                "arte-matricula";
-
-
-            arteMatricula.textContent =
-                "MATRÍCULA: " +
-                matricula;
-
-
-            arte.appendChild(
-                arteNome
-            );
-
-
-            arte.appendChild(
-                arteMatricula
-            );
-
-
-            /*
-            6 QR Codes
-            */
-
-            const classesQR = [
-                "qr-1",
-                "qr-2",
-                "qr-3",
-                "qr-4",
-                "qr-5",
-                "qr-6"
-            ];
-
-
-            const qrArte = [];
-
-
-            classesQR.forEach(
-                classe => {
-
-                    const q =
-                        document.createElement(
-                            "div"
-                        );
-
-
-                    q.className =
-                        "qr-arte " +
-                        classe;
-
-
-                    arte.appendChild(
-                        q
-                    );
-
-
-                    qrArte.push(
-                        q
+                    ctx.drawImage(
+                        qrCanvas,
+                        pos.x,
+                        pos.y,
+                        qrSize,
+                        qrSize
                     );
 
                 }
             );
 
-
-            const btnArte =
-                document.createElement(
-                    "button"
-                );
-
-
-            btnArte.className =
-                "btn-arte";
-
-
-            btnArte.disabled =
-                true;
-
-
-            btnArte.innerHTML =
-                "⬇️ BAIXAR ARTE 10×15";
-
-
-            btnArte.onclick =
-                function() {
-
-                    baixarArte(
-                        arte,
-                        nome,
-                        matricula
-                    );
-
-                };
-
-
-            arteDiv.appendChild(
-                arte
-            );
-
-
-            arteDiv.appendChild(
-                btnArte
-            );
-
-
-            /*
-            =================================================
-            MONTA LINHA
-            =================================================
-            */
-
-            colaborador.appendChild(
-                dadosDiv
-            );
-
-
-            colaborador.appendChild(
-                qrDiv
-            );
-
-
-            colaborador.appendChild(
-                arteDiv
-            );
-
-
-            lista.appendChild(
-                colaborador
-            );
-
-
-            /*
-            Guarda referências
-            */
-
-            colaborador._qr =
-                qr;
-
-            colaborador._qrArte =
-                qrArte;
-
-            colaborador._btnQR =
-                btnQR;
-
-            colaborador._btnArte =
-                btnArte;
-
-        }
-    );
-
-
-    /*
-    =====================================================
-    GERA OS QR CODES
-    =====================================================
-    */
-
-    for (
-        let i = 0;
-        i < matriculas.length;
-        i++
-    ) {
-
-        const matricula =
-            matriculas[i];
-
-
-        const pessoa =
-            dados[matricula] || {};
-
-
-        const nome =
-            String(
-                pessoa.nome ||
-                "Nome não informado"
-            ).toUpperCase();
-
-
-        const percentual =
-            Math.round(
-                (
-                    i /
-                    matriculas.length
-                ) * 100
-            );
-
-
-        progresso.style.width =
-            percentual + "%";
-
-
-        status.innerHTML =
-
-            `⏳ Gerando ${i + 1} de ${matriculas.length} — ${nome}`;
-
-
-        const colaborador =
-            lista.children[i];
-
-
-        try {
-
-            /*
-            QR individual
-            */
-
-            await criarQR(
-                colaborador._qr,
-                matricula,
-                180
-            );
-
-
-            /*
-            QR da arte
-            */
-
-            for (
-                let q = 0;
-                q < 6;
-                q++
-            ) {
-
-                await criarQR(
-                    colaborador._qrArte[q],
-                    matricula,
-                    135
-                );
-
-            }
-
-
-            /*
-            Habilita os botões
-            */
-
-            colaborador._btnQR.disabled =
-                false;
-
-
-            colaborador._btnArte.disabled =
-                false;
-
         }
 
-        catch (erro) {
+        else if (qrImg) {
 
-            console.error(
-                "Erro:",
-                matricula,
-                erro
+            await desenharImagem(
+                ctx,
+                qrImg,
+                posicoes,
+                qrSize
             );
 
         }
 
+        else {
 
-        /*
-        Dá um pequeno respiro
-        */
+            alert(
+                "QR Code ainda não foi carregado. Tente novamente."
+            );
 
-        await new Promise(
-            resolve =>
-                setTimeout(
-                    resolve,
-                    5
-                )
+            return;
+
+        }
+
+
+        /* ======================================
+           DOWNLOAD
+        ====================================== */
+
+        const nomeArquivo =
+            "ARTE_" +
+            limparNome(pessoa.nome) +
+            "_" +
+            pessoa.matricula +
+            ".png";
+
+
+        baixarCanvas(
+            canvas,
+            nomeArquivo
         );
 
     }
 
 
-    progresso.style.width =
-        "100%";
+    /* ==========================================
+       DESENHAR IMAGEM
+    ========================================== */
+
+    function desenharImagem(
+        ctx,
+        img,
+        posicoes,
+        tamanho
+    ) {
+
+        return new Promise(
+            resolve => {
+
+                function desenhar() {
+
+                    posicoes.forEach(
+                        pos => {
+
+                            ctx.drawImage(
+                                img,
+                                pos.x,
+                                pos.y,
+                                tamanho,
+                                tamanho
+                            );
+
+                        }
+                    );
+
+                    resolve();
+
+                }
 
 
-    status.innerHTML =
+                if (img.complete) {
 
-        `✅ Todos os QR Codes foram gerados!<br>
-         👥 ${matriculas.length} colaborador(es).`;
+                    desenhar();
 
+                }
 
-    document.getElementById(
-        "busca"
-    ).style.display =
-        "block";
+                else {
 
+                    img.onload =
+                        desenhar;
 
-    colaboradoresGerados =
-        true;
+                }
 
-
-    botao.disabled =
-        false;
-
-
-    botao.innerHTML =
-        "🔲 QR CODES JÁ GERADOS";
-
-
-}
-
-
-/*
-=========================================================
-BAIXAR QR INDIVIDUAL
-=========================================================
-*/
-
-function baixarQR(
-    container,
-    nome,
-    matricula
-) {
-
-    const canvas =
-        container.querySelector(
-            "canvas"
+            }
         );
 
-
-    const img =
-        container.querySelector(
-            "img"
-        );
+    }
 
 
-    let link =
-        document.createElement(
-            "a"
-        );
+    /* ==========================================
+       DOWNLOAD CANVAS
+    ========================================== */
 
+    function baixarCanvas(
+        canvas,
+        nomeArquivo
+    ) {
 
-    link.download =
-        "QR_" +
-        limparNome(nome) +
-        "_" +
-        matricula +
-        ".png";
+        const link =
+            document.createElement("a");
 
-
-    if (canvas) {
+        link.download =
+            nomeArquivo;
 
         link.href =
             canvas.toDataURL(
                 "image/png"
             );
 
-    }
-
-    else if (img) {
-
-        /*
-        Cria um canvas para transformar
-        a imagem em PNG baixável.
-        */
-
-        const temp =
-            document.createElement(
-                "canvas"
-            );
-
-
-        temp.width =
-            img.naturalWidth ||
-            512;
-
-
-        temp.height =
-            img.naturalHeight ||
-            512;
-
-
-        const ctx =
-            temp.getContext(
-                "2d"
-            );
-
-
-        ctx.drawImage(
-            img,
-            0,
-            0
+        document.body.appendChild(
+            link
         );
 
+        link.click();
 
-        link.href =
-            temp.toDataURL(
-                "image/png"
-            );
-
-    }
-
-    else {
-
-        alert(
-            "QR Code ainda não foi gerado."
+        document.body.removeChild(
+            link
         );
-
-        return;
 
     }
 
 
-    document.body.appendChild(
-        link
-    );
+    /* ==========================================
+       LIMPAR NOME PARA ARQUIVO
+    ========================================== */
 
+    function limparNome(
+        nome
+    ) {
 
-    link.click();
-
-
-    document.body.removeChild(
-        link
-    );
-
-}
-
-
-/*
-=========================================================
-BAIXAR ARTE
-=========================================================
-*/
-
-async function baixarArte(
-    elemento,
-    nome,
-    matricula
-) {
-
-    /*
-    Aqui usamos SVG/Canvas manualmente
-    para gerar uma imagem PNG de
-    10 x 15 cm em alta resolução.
-    */
-
-
-    const largura =
-        1000;
-
-
-    const altura =
-        1500;
-
-
-    const canvas =
-        document.createElement(
-            "canvas"
-        );
-
-
-    canvas.width =
-        largura;
-
-
-    canvas.height =
-        altura;
-
-
-    const ctx =
-        canvas.getContext(
-            "2d"
-        );
-
-
-    /*
-    Fundo branco
-    */
-
-    ctx.fillStyle =
-        "#ffffff";
-
-
-    ctx.fillRect(
-        0,
-        0,
-        largura,
-        altura
-    );
-
-
-    /*
-    Nome
-    */
-
-    const nomeLimpo =
-        String(
+        return (
             nome
-        ).toUpperCase();
-
-
-    let tamanhoFonte =
-        55;
-
-
-    if (
-        nomeLimpo.length > 32
-    ) {
-
-        tamanhoFonte =
-            45;
-
-    }
-
-
-    if (
-        nomeLimpo.length > 40
-    ) {
-
-        tamanhoFonte =
-            38;
-
-    }
-
-
-    ctx.fillStyle =
-        "#000000";
-
-
-    ctx.font =
-        `bold ${tamanhoFonte}px Arial`;
-
-
-    ctx.textAlign =
-        "center";
-
-
-    ctx.textBaseline =
-        "middle";
-
-
-    ctx.fillText(
-        nomeLimpo,
-        500,
-        45
-    );
-
-
-    /*
-    Matrícula
-    */
-
-    ctx.font =
-        "28px Arial";
-
-
-    ctx.fillText(
-        "MATRÍCULA: " + matricula,
-        500,
-        80
-    );
-
-
-    /*
-    =====================================================
-    PEGAR O QR DO PRIMEIRO QR DA ARTE
-    =====================================================
-    */
-
-    const primeiroQR =
-        elemento.querySelector(
-            ".qr-1"
+                .normalize("NFD")
+                .replace(
+                    /[\u0300-\u036f]/g,
+                    ""
+                )
+                .replace(
+                    /[^a-zA-Z0-9]/g,
+                    "_"
+                )
         );
 
-
-    const img =
-        primeiroQR.querySelector(
-            "img"
-        );
-
-
-    const qrCanvas =
-        primeiroQR.querySelector(
-            "canvas"
-        );
-
-
-    let qrFonte = null;
-
-
-    if (img) {
-
-        qrFonte =
-            img;
-
-    }
-
-    else if (qrCanvas) {
-
-        qrFonte =
-            qrCanvas;
-
     }
 
 
-    if (!qrFonte) {
+    /* ==========================================
+       FILTRO
+    ========================================== */
 
-        alert(
-            "QR Code ainda não foi gerado."
-        );
+    function filtrar() {
 
-        return;
-
-    }
-
-
-    /*
-    =====================================================
-    POSIÇÕES
-    =====================================================
-    */
-
-    const posicoes = [
-
-        [30, 350],
-
-        [520, 350],
-
-        [30, 820],
-
-        [520, 820],
-
-        [30, 1290],
-
-        [520, 1290]
-
-    ];
+        const termo =
+            document
+                .getElementById("busca")
+                .value
+                .toLowerCase()
+                .trim();
 
 
-    /*
-    QR = 450 × 450 px
-    equivalente a 4,5 × 4,5 cm
-    na arte de 10 × 15 cm.
-    */
-
-    posicoes.forEach(
-        posicao => {
-
-            ctx.drawImage(
-                qrFonte,
-                posicao[0],
-                posicao[1],
-                450,
-                450
+        const cards =
+            document.querySelectorAll(
+                ".pessoa"
             );
 
-        }
-    );
+
+        cards.forEach(
+            card => {
+
+                const nome =
+                    card.dataset.nome;
+
+                const matricula =
+                    card.dataset.matricula;
 
 
-    /*
-    =====================================================
-    DOWNLOAD
-    =====================================================
-    */
+                if (
+                    nome.includes(termo) ||
+                    matricula.includes(termo)
+                ) {
 
-    const link =
-        document.createElement(
-            "a"
-        );
+                    card.style.display =
+                        "";
 
+                }
 
-    link.download =
-        "ARTE_QR_" +
-        limparNome(nome) +
-        "_" +
-        matricula +
-        ".png";
+                else {
 
+                    card.style.display =
+                        "none";
 
-    link.href =
-        canvas.toDataURL(
-            "image/png"
-        );
-
-
-    document.body.appendChild(
-        link
-    );
-
-
-    link.click();
-
-
-    document.body.removeChild(
-        link
-    );
-
-}
-
-
-/*
-=========================================================
-FILTRO
-=========================================================
-*/
-
-function filtrarColaboradores() {
-
-    const termo =
-        document.getElementById(
-            "busca"
-        ).value
-        .toLowerCase()
-        .trim();
-
-
-    const colaboradores =
-        document.querySelectorAll(
-            ".colaborador"
-        );
-
-
-    colaboradores.forEach(
-        colaborador => {
-
-            const nome =
-                colaborador.dataset.nome;
-
-
-            const matricula =
-                colaborador.dataset.matricula;
-
-
-            if (
-                nome.includes(termo) ||
-                matricula.includes(termo)
-            ) {
-
-                colaborador.style.display =
-                    "grid";
+                }
 
             }
+        );
 
-            else {
-
-                colaborador.style.display =
-                    "none";
-
-            }
-
-        }
-    );
-
-}
+    }
 
 
-/*
-=========================================================
-INICIAR
-=========================================================
-*/
+    /* ==========================================
+       INICIAR
+    ========================================== */
 
-carregarDados();
+    carregarDados();
 
 </script>
-
 
 </body>
 
