@@ -650,12 +650,142 @@
 
         }
 
+
+        /* =====================================================
+           TELA INICIAL DE ACESSO
+        ===================================================== */
+
+        .bloqueio-acesso {
+            position: fixed;
+            inset: 0;
+            z-index: 99999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            background: #f2f5f8;
+        }
+
+        .caixa-acesso {
+            width: 100%;
+            max-width: 420px;
+            padding: 30px 25px;
+            background: #ffffff;
+            border-radius: 14px;
+            border-top: 5px solid #f2c300;
+            box-shadow: 0 5px 24px rgba(0,0,0,0.12);
+            text-align: center;
+        }
+
+        .logo-acesso {
+            display: block;
+            width: 80%;
+            max-width: 230px;
+            height: auto;
+            margin: 0 auto 20px;
+        }
+
+        .caixa-acesso h2 {
+            margin: 0 0 10px;
+            color: #174a8b;
+            font-size: 22px;
+        }
+
+        .caixa-acesso p {
+            color: #666;
+            font-size: 14px;
+            line-height: 1.5;
+        }
+
+        .campo-acesso {
+            width: 100%;
+            margin-top: 12px;
+            padding: 13px 14px;
+            border: 1px solid #d9dee4;
+            border-radius: 8px;
+            font-size: 16px;
+            box-sizing: border-box;
+        }
+
+        .campo-acesso:focus {
+            outline: none;
+            border-color: #174a8b;
+            box-shadow: 0 0 0 2px rgba(23,74,139,0.10);
+        }
+
+        .botao-acesso {
+            width: 100%;
+            margin-top: 14px;
+            padding: 13px;
+            border: none;
+            border-radius: 8px;
+            background: #174a8b;
+            color: #ffffff;
+            font-size: 15px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .botao-acesso:hover {
+            background: #123b70;
+        }
+
+        .mensagem-acesso {
+            min-height: 20px;
+            margin-top: 12px;
+            color: #b00020;
+            font-size: 13px;
+        }
+
+        .aviso-acesso {
+            margin-top: 18px;
+            color: #888;
+            font-size: 11px;
+        }
+
     </style>
 
 </head>
 
 
 <body>
+
+
+<div id="bloqueioAcesso" class="bloqueio-acesso">
+    <section class="caixa-acesso" aria-labelledby="tituloAcesso">
+        <img
+            class="logo-acesso"
+            src="Logo%20-%20Fonte%20Azul.png"
+            alt="Galáxia Navegação"
+        >
+
+        <h2 id="tituloAcesso">Acesso ao Portal</h2>
+        <p>
+            Para consultar os certificados e as informações ocupacionais,
+            informe sua matrícula.
+        </p>
+
+        <form id="formAcesso">
+            <input
+                id="codigoAcesso"
+                class="campo-acesso"
+                type="password"
+                inputmode="text"
+                autocomplete="off"
+                placeholder="Digite sua matrícula"
+                aria-label="Matrícula de acesso"
+                required
+            >
+            <button class="botao-acesso" type="submit">Acessar consulta</button>
+            <div id="mensagemAcesso" class="mensagem-acesso" role="alert"></div>
+        </form>
+
+        <div class="aviso-acesso">
+            Galáxia Navegação • Consulta restrita a colaboradores
+        </div>
+    </section>
+</div>
+
 
 
 <!-- =========================================================
@@ -728,6 +858,46 @@
     const matricula =
         parametros.get("matricula");
 
+    // =====================================================
+    // TELA DE ACESSO: EXIGE A MATRÍCULA ANTES DA CONSULTA
+    // Observação: é uma barreira simples para desencorajar
+    // acessos casuais, não uma autenticação segura.
+    // =====================================================
+
+    const formularioAcesso = document.getElementById("formAcesso");
+    const campoCodigoAcesso = document.getElementById("codigoAcesso");
+    const mensagemAcesso = document.getElementById("mensagemAcesso");
+    const bloqueioAcesso = document.getElementById("bloqueioAcesso");
+
+    if (!matricula) {
+        campoCodigoAcesso.disabled = true;
+        formularioAcesso.querySelector("button").disabled = true;
+        mensagemAcesso.textContent =
+            "A matrícula não foi identificada. Acesse pelo QR Code do colaborador.";
+    } else {
+        campoCodigoAcesso.focus();
+    }
+
+    formularioAcesso.addEventListener("submit", function(evento) {
+        evento.preventDefault();
+
+        const codigoDigitado = campoCodigoAcesso.value.trim();
+        const matriculaEsperada = String(matricula || "").trim();
+
+        if (
+            codigoDigitado !== "" &&
+            matriculaEsperada !== "" &&
+            codigoDigitado.toLocaleUpperCase("pt-BR") ===
+                matriculaEsperada.toLocaleUpperCase("pt-BR")
+        ) {
+            bloqueioAcesso.style.display = "none";
+        } else {
+            mensagemAcesso.textContent =
+                "Código inválido. Confira sua matrícula e tente novamente.";
+            campoCodigoAcesso.value = "";
+            campoCodigoAcesso.focus();
+        }
+    });
 
     const conteudo =
         document.getElementById("conteudo");
