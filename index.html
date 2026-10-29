@@ -762,7 +762,7 @@
         <h2 id="tituloAcesso">Acesso ao Portal</h2>
         <p>
             Para consultar os certificados e as informações ocupacionais,
-            informe sua matrícula.
+            informe a senha de acesso.
         </p>
 
         <form id="formAcesso">
@@ -772,8 +772,8 @@
                 type="password"
                 inputmode="text"
                 autocomplete="off"
-                placeholder="Digite sua matrícula"
-                aria-label="Matrícula de acesso"
+                placeholder="Digite a senha"
+                aria-label="Senha de acesso"
                 required
             >
             <button class="botao-acesso" type="submit">Acessar consulta</button>
@@ -859,7 +859,7 @@
         parametros.get("matricula");
 
     // =====================================================
-    // TELA DE ACESSO: EXIGE A MATRÍCULA ANTES DA CONSULTA
+    // TELA DE ACESSO: EXIGE UMA SENHA ÚNICA ANTES DA CONSULTA
     // Observação: é uma barreira simples para desencorajar
     // acessos casuais, não uma autenticação segura.
     // =====================================================
@@ -882,18 +882,13 @@
         evento.preventDefault();
 
         const codigoDigitado = campoCodigoAcesso.value.trim();
-        const matriculaEsperada = String(matricula || "").trim();
+        const senhaCorreta = "QSMS";
 
-        if (
-            codigoDigitado !== "" &&
-            matriculaEsperada !== "" &&
-            codigoDigitado.toLocaleUpperCase("pt-BR") ===
-                matriculaEsperada.toLocaleUpperCase("pt-BR")
-        ) {
+        if (codigoDigitado.toLocaleUpperCase("pt-BR") === senhaCorreta) {
             bloqueioAcesso.style.display = "none";
         } else {
             mensagemAcesso.textContent =
-                "Código inválido. Confira sua matrícula e tente novamente.";
+                "Senha incorreta. Tente novamente.";
             campoCodigoAcesso.value = "";
             campoCodigoAcesso.focus();
         }
